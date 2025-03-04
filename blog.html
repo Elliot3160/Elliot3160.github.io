@@ -6,8 +6,31 @@
     <title>Jurassic Journeys</title>
     <link rel="stylesheet" href="blog.css">
     <script src="script2.js" defer></script>
-</head>
+    <!-- Firebase SDK -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+  
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAL4pPnhp_ilCHq7IDPqttPkK5hwU8AcFs",
+      authDomain: "jurassicjourneys-4f8a5.firebaseapp.com",
+      projectId: "jurassicjourneys-4f8a5",
+      storageBucket: "jurassicjourneys-4f8a5.appspot.com",
+      messagingSenderId: "694503402770",
+      appId: "1:694503402770:web:d965b96f72a326b53b17cb",
+      measurementId: "G-CF89RSVBEF"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+  </script>  
 <body>
+    <div class="view-counter">
+        <img src="eye.png" alt="Eye Icon" class="eye-icon">
+        <span id="viewCount">0</span>
+    </div>
     <header class="header">
         <div class="header-container">
             <h1 class="site-title">Jurassic Journeys: Lyme Regis</h1>
@@ -82,5 +105,40 @@
     </main>
         <button onclick="scrollToTop()" class="footerbutton"><b>Return to top</b></button>
     </main>
+    <div class="view-counter">
+        <img src="eye.png" alt="Eye Icon" class="eye-icon">
+        <span id="viewCount">Loading...</span>
+    </div>
+    
+    <script type="module">
+      // Import Firestore functions
+      import { doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+      import { db } from "./firebase-config.js"; // Make sure to create this file
+    
+      // Firestore document reference
+      const viewRef = doc(db, "views", "counter");
+    
+      // Function to update the view count
+      async function updateViewCount() {
+        try {
+          const docSnap = await getDoc(viewRef);
+    
+          if (docSnap.exists()) {
+            let currentViews = docSnap.data().count;
+            await updateDoc(viewRef, { count: currentViews + 1 });
+            document.getElementById("viewCount").textContent = currentViews + 1;
+          } else {
+            await setDoc(viewRef, { count: 1 });
+            document.getElementById("viewCount").textContent = 1;
+          }
+        } catch (error) {
+          console.error("Error updating views:", error);
+          document.getElementById("viewCount").textContent = "Error";
+        }
+      }
+    
+      // Run the function when the page loads
+      updateViewCount();
+    </script>    
 </body>
 </html>
