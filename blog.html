@@ -5,32 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jurassic Journeys</title>
     <link rel="stylesheet" href="blog.css">
-    <script src="script2.js" defer></script>
-    <!-- Firebase SDK -->
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-    import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
-  
-    // Firebase Configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyAL4pPnhp_ilCHq7IDPqttPkK5hwU8AcFs",
-      authDomain: "jurassicjourneys-4f8a5.firebaseapp.com",
-      projectId: "jurassicjourneys-4f8a5",
-      storageBucket: "jurassicjourneys-4f8a5.appspot.com",
-      messagingSenderId: "694503402770",
-      appId: "1:694503402770:web:d965b96f72a326b53b17cb",
-      measurementId: "G-CF89RSVBEF"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-  </script>  
+    <script src="script2.js" defer></script> 
 <body>
-    <div class="view-counter">
-        <img src="eye.png" alt="Eye Icon" class="eye-icon">
-        <span id="viewCount">0</span>
-    </div>
     <header class="header">
         <div class="header-container">
             <h1 class="site-title">Jurassic Journeys: Lyme Regis</h1>
@@ -109,36 +85,58 @@
         <img src="eye.png" alt="Eye Icon" class="eye-icon">
         <span id="viewCount">Loading...</span>
     </div>
-    
     <script type="module">
-      // Import Firestore functions
-      import { doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
-      import { db } from "./firebase-config.js"; // Make sure to create this file
-    
-      // Firestore document reference
-      const viewRef = doc(db, "views", "counter");
-    
-      // Function to update the view count
-      async function updateViewCount() {
-        try {
-          const docSnap = await getDoc(viewRef);
-    
-          if (docSnap.exists()) {
-            let currentViews = docSnap.data().count;
-            await updateDoc(viewRef, { count: currentViews + 1 });
-            document.getElementById("viewCount").textContent = currentViews + 1;
-          } else {
-            await setDoc(viewRef, { count: 1 });
-            document.getElementById("viewCount").textContent = 1;
+        // Firebase and Firestore code should be placed inside this event listener
+        document.addEventListener('DOMContentLoaded', () => {
+          // Firebase Configuration
+          const firebaseConfig = {
+            apiKey: "AIzaSyAL4pPnhp_ilCHq7IDPqttPkK5hwU8AcFs",
+            authDomain: "jurassicjourneys-4f8a5.firebaseapp.com",
+            projectId: "jurassicjourneys-4f8a5",
+            storageBucket: "jurassicjourneys-4f8a5.appspot.com",
+            messagingSenderId: "694503402770",
+            appId: "1:694503402770:web:d965b96f72a326b53b17cb",
+            measurementId: "G-CF89RSVBEF"
+          };
+      
+          // Initialize Firebase
+          const app = initializeApp(firebaseConfig);
+          const db = getFirestore(app); // Firestore instance
+      
+          // Reference the Firestore document for the view counter
+          const viewRef = doc(db, "views", "counter");
+      
+          // Function to update the view count
+          async function updateViewCount() {
+            try {
+              // Get the current document data
+              const docSnap = await getDoc(viewRef);
+      
+              // Check if the document exists
+              if (docSnap.exists()) {
+                // If it exists, retrieve the current view count
+                let currentViews = docSnap.data().count;
+      
+                // Increment the view count and update Firestore
+                await updateDoc(viewRef, { count: currentViews + 1 });
+      
+                // Display the updated view count on the webpage
+                document.getElementById("viewCount").textContent = currentViews + 1;
+              } else {
+                // If the document doesn't exist, create it with an initial view count of 1
+                await setDoc(viewRef, { count: 1 });
+                document.getElementById("viewCount").textContent = 1;
+              }
+            } catch (error) {
+              // In case of an error, display "Error" in the view counter
+              console.error("Error updating views:", error);
+              document.getElementById("viewCount").textContent = "Error";
+            }
           }
-        } catch (error) {
-          console.error("Error updating views:", error);
-          document.getElementById("viewCount").textContent = "Error";
-        }
-      }
-    
-      // Run the function when the page loads
-      updateViewCount();
-    </script>    
+      
+          // Run the function when the page loads
+          updateViewCount();
+        });
+      </script>       
 </body>
 </html>
