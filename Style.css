@@ -1,18 +1,39 @@
-body {
-  font-family: 'Inter', sans-serif;
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --main-bg: #f4f7f9;
+  --dark-bg: #0a0a0a;
+  --accent: #0077ff;
+  --card-bg: #ffffff;
+  --text: #1a1a1a;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --radius: 14px;
+}
+
+* {
   margin: 0;
   padding: 0;
-  background: #f7f7f7;
-  color: #222;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text);
+  line-height: 1.6;
 }
 
 header {
-  background-color: #0a0a0a;
+  background-color: var(--dark-bg);
   color: white;
   padding: 1rem 2rem;
+  box-shadow: var(--shadow);
 }
 
 nav {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,52 +42,84 @@ nav {
 nav a {
   color: white;
   text-decoration: none;
-  margin-left: 1rem;
-  font-weight: 500;
+  margin-left: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
 }
 
 .hero {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
+  background: linear-gradient(to right, #0077ff, #00c8ff);
+  color: white;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
+  font-weight: 800;
   margin-bottom: 1rem;
 }
 
 .hero p {
   font-size: 1.2rem;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
+  opacity: 0.9;
 }
 
 .links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 3rem 1rem;
   gap: 2rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card {
-  background: white;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 280px;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .card a {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
   text-decoration: none;
-  color: #0a0a0a;
-  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #444;
 }
 
 footer {
+  background-color: #ececec;
   text-align: center;
   padding: 2rem;
-  background: #eaeaea;
   font-size: 0.9rem;
+  color: #555;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
 }
