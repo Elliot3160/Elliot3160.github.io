@@ -1,143 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <title>Palaeoclimates and Our Warming World</title>
-    <meta name="google-site-verification" content="gmvEAJwLwPtA4AB7jgr9WBYIXuITbeVpi7O1v29Vw30" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fossils & Futures</title>
+  <meta name="description" content="Exploring Earth's past to inform our future. A blog and research hub by Elliot." />
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="main-header">
-        <!-- What are Palaeoclimates and why are they relevant to us? -->
-         <h1 id="logo">Palaeoclimates and our Warming World</h1>
-         <nav>
-            <ul id="nav-ul">
-                <li>
-                    <a href="About_Us_Page.html" target="_blank" class="navbutton">About</a></li>
-                <li>
-                    <a href="Contact_Page.html" target="_blank" class="navbutton">Contact</a></li>
-                <!-- this code is a short-cut to making list nav>ul>li*3>a -->
-                    <!-- include links in "" to help navigate to websites/other websites -->
-            </ul>
-         </nav>   
-    </header>
-    <main id="main-one">
-        <div id="main-content">
-            <aside id="aside">        
-                <section id="second-section">
-                    <header id="navbarheader">
-                        <h3>
-                            Read time: 10 minutes
-                            <br>
-                            Author: Elliot May
-                        </h3>
-                    <h4>
-                        Filter by geological time:
-                    </h4>
-                    <nav>
-                        <ul id="periodlist">
-                            <li><a href="">Anthropocene</a></li>
-                            <li><a href="">Quaternary</a></li>
-                            <li><a href="">Tertiary</a></li>
-                            <li><a href="">Mesozoic</a></li>
-                            <li><a href="">Palaeozoic</a></li>
-                        </ul>
-                    </nav>
-                </section>
-            </aside>
-            <div id="main-div">
-                <aside id="geological-timescale-image">
-                    <img src="Geological_Timescale.jpg" alt="The geological timeline with respective periods, epochs and systems and their respective durations" style="width: 100%;">
-                    <p>The geological timeline with respective periods, epochs and systems and their respective durations</p>
-                </aside>
-                <article id="first-article">
-                    <header>
-                        <h2 id="header-two">
-                            A Brief Introduction
-                        </h2>
-                        <p><b>*Please see our flagship <a href="Nav_page.html">'Navigation Hub'</a> for all our websites.</b> All other websites besides our Navigation Hub are under development to follow a similar format and style.</p>
-                    </header>
-                        <p id="paragraph1">
-                            Welcome to Palaeoclimates and Our Warming World! In this series of websites we will voyage through time to worlds past and examine how the climate has changed at the will of both the earth system and more recently, humans. Taking the geological perspective will make it clear that our planet has changed dramatically - both in climate and animal life. We know that our climate has changed rapidly from the layering of rocks and the life forms preserved within them, which are known as fossils. Together they record the succession of climates and biology over incomprehensible periods of time...whoever said rocks were boring!?
-                            <br>
-                            Curious about the author, website and services provided? Please see the 'About page' for more.
-                            <!-- use paragraphs to make line breaks. Can use lorem(followed by number) to input text (of varying sizes) without having to type it out manually - saves time because it shows you how the website looks before manually typing content. -->
-                        </p>
-                        <p id="paragraph2">
-                            Palaeoclimates are periods in Earth's history which correspond to geological periods. Each period has a unique climate, which includes new, or persisting forms of life which will continue to evolve. Each climate leaves its signature on the Earth - manifested as different types of rock. Rocks formed by climates are sedimentary in nature, consisting of compacted grains of rock. You may already be familiar with sandstone - in this instance, sand grains (usually quartz and feldspar) become compacted to form a solid mass of sandstone. Subject to forces of erosion over millions of years, it will weather down to pebbles and then grains, ready to be compacted and cemented once again. In the rock record, sedimentary rocks form layers which are known as strata. The first law of geology states that younger strata overlies older strata. This means that the deeper through the rock strata you go, the older the rocks become.
-                            <h4>Posted: 20/08/2024</h4>
-                        <a href="About_Us_Page.html" target="_blank">Author's profile</a>
-                        </p>
-                    </article>
-            </div>
-        </div>
-        <hr>
-        <!-- main content goes here -->
-        <div>
-        <h2>Sign up for our newsletter!</h2>
-        <form action="" method="" form class="container">
-            <label for="first_name">First Name:</label>
-            <input type="text" id="first_name" name="first_name" required>
-            <br>
-            <label for="Surname">Surname:</label>
-            <input type="text" id="Surname" name="Surname"
-            required>
-            <br>
-            <label for="email_address">Email Address:</label>
-            <input type="email" id="email_address" name="email_address" required>
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <label for="Favourite_Period">Favourite Period</label>
-            <input type="radio" name="Favourite_Period" id="Quaternary" value="Quaternary">
-            <label for="Quaternary">Quaternary</label>
-            <input type="radio" name="Favourite_Period" id="Tertiary" value="Tertiary">
-            <label for="Tertiary">Tertiary</label>
-            <input type="radio" name="Favourite_Period" id="Mesozoic" value="Mesozoic">
-            <label for="Mesozoic">Mesozoic</label><input type="radio" name="Favourite_Period" id="Palaeozoic" value="Palaeozoic">
-            <label for="Palaeozoic">Palaeozoic</label>
-            <br>
-            <label for="country">Country:</label>
-            <select name="country" id="country">
-                <option value="england">England</option>
-                <option value="scotland">Scotland</option>
-                <option value="wales">Wales</option>
-                <option value="northern_ireland">Northern Ireland</option>
-            </select>
-            <br>
-            <label for="bio">Biography:</label>
-            <textarea name="bio" id="bio" cols="10" rows="5"></textarea>
-            <br>
-            <input type="checkbox" id="subscribe" name="subscribe">
-            <label for="subscribe">Subscribe to receive a weekly newsletter here!</label>
-            <input type="submit" value="Send!">
-            <br>
-            <hr>
-        </form>
-    </main>
-    <footer>
-        <h4>Palaeoclimates and our Modern World</h4>
-        <section>
-            <nav>
-                <ul id="footer-ul">
-                    <div>
-                        <li><a href="http://127.0.0.1:5500/Day_1/Elliot3160.github.io/index.html" target="_blank">Home</a></li>
-                        <li><a href="http://127.0.0.1:5500/Day_1/Elliot3160.github.io/About_Us_Page.html" target="_blank">About</a></li>
-                        <li><a href="http://127.0.0.1:5500/Day_1/Elliot3160.github.io/Contact_Page.html" target="_blank">Contact</a></li>
-                        
-                    </div>
-                    <div>
-                        <li><a href="">Privacy Policy</a></li>
-                        <li><a href="">Terms and Conditions</a></li>
-                        <li><a href="">Cookie Policy</a></li>
-                    </div>
-                </ul>
-            </nav>
-        </section>
-        <!-- footer goes here -->
-    </footer>
+  <header>
+    <nav>
+      <div><strong>Fossils & Futures</strong></div>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="cv.html">CV</a>
+        <a href="navigation-hub.html">Navigation Hub</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Fossils & Futures</h1>
+    <p>Exploring Earth's geological past to shape our understanding of the climate future — research, writing, and resources from Elliot.</p>
+  </section>
+
+  <section class="links">
+    <div class="card">
+      <a href="blog.html">Read the Blog</a>
+      <p>Insights on palaeoclimate, volcanology, and environmental change.</p>
+    </div>
+    <div class="card">
+      <a href="navigation-hub.html">Navigation Hub</a>
+      <p>Jump to research resources, tools, and datasets.</p>
+    </div>
+    <div class="card">
+      <a href="cv.html">My CV</a>
+      <p>View academic background, experience, and skills.</p>
+    </div>
+    <div class="card">
+      <a href="about.html">About Me</a>
+      <p>Who I am, what I do, and why it matters.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Elliot. All rights reserved. | <a href="mailto:your-email@example.com">Contact</a>
+  </footer>
 </body>
 </html>
