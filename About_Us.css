@@ -59,9 +59,13 @@ nav div:first-child {
   font-weight: 800;
   font-size: 1.5rem;
   background: var(--gradient-accent);
+  background-clip: text;
   -webkit-background-clip: text;
+  color: transparent;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
+
 
 nav a {
   color: white;
