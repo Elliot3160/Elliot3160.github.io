@@ -69,6 +69,7 @@ nav a:hover {
   max-width: 650px;
   margin: 0 auto;
   opacity: 0.9;
+  line-height: 1.5;  /* Increase line height for better readability */
 }
 
 .links {
