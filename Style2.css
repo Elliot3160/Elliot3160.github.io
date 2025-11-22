@@ -169,3 +169,20 @@ main img {
   margin-top: 0.5rem;
   line-height: 1.4;
 }
+
+.donate-button {
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111;
+    background-color: #FFC439; /* PayPal Gold */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.donate-button:hover {
+    background-color: #FFB020;
+    transform: translateY(-2px);
+}
