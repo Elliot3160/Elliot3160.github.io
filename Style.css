@@ -24,6 +24,8 @@ body {
   line-height: 1.6;
 }
 
+/* ====================== HEADER ====================== */
+
 header {
   background-color: var(--dark-bg);
   color: white;
@@ -51,6 +53,8 @@ nav a:hover {
   color: var(--accent);
 }
 
+/* ====================== HERO ====================== */
+
 .hero {
   text-align: center;
   padding: 5rem 2rem;
@@ -69,8 +73,10 @@ nav a:hover {
   max-width: 650px;
   margin: 0 auto;
   opacity: 0.9;
-  line-height: 1.5;  /* Increase line height for better readability */
+  line-height: 1.5;
 }
+
+/* ====================== HOMEPAGE CARDS ====================== */
 
 .links {
   display: flex;
@@ -111,6 +117,8 @@ nav a:hover {
   color: #444;
 }
 
+/* ====================== FOOTER ====================== */
+
 footer {
   background-color: #ececec;
   text-align: center;
@@ -123,4 +131,92 @@ footer a {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
+}
+
+/* ======================
+   ABOUT + INFO PAGE LAYOUT
+   ====================== */
+
+.about-page main,
+.info-page main,
+.content-page main {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 2rem 3rem;
+}
+
+/* Sections as clean white cards */
+.about-page main section,
+.info-page main section,
+.content-page main section {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Section titles */
+.about-page main h2,
+.info-page main h2,
+.content-page main h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+  font-weight: 800;
+}
+
+/* Paragraph text */
+.about-page main p,
+.info-page main p,
+.content-page main p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* Lists */
+.about-page main ul,
+.info-page main ul,
+.content-page main ul {
+  margin-left: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.about-page main li,
+.info-page main li,
+.content-page main li {
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
+}
+
+/* Centered italic quote styling */
+.about-page main p[style*="italic"],
+.info-page main p[style*="italic"],
+.content-page main p[style*="italic"] {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-page main,
+  .info-page main,
+  .content-page main {
+    padding: 0 1.5rem 2rem;
+  }
+
+  .about-page main section,
+  .info-page main section,
+  .content-page main section {
+    padding: 1.5rem;
+  }
 }
