@@ -1,0 +1,187 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --main-bg: #f4f7f9;
+  --dark-bg: #0a0a0a;
+  --accent: #0077ff;
+  --card-bg: #ffffff;
+  --text: #1a1a1a;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --radius: 14px;
+}
+
+/* ========== GLOBAL RESET & BASE ========== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Make in-page anchors scroll nicely */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========== HEADER & NAVIGATION (SITE-WIDE) ========== */
+
+header {
+  background-color: var(--dark-bg);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* ========== HERO SECTION (HOMEPAGE + QUATERNARY PAGE) ========== */
+
+.hero {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(to right, #0077ff, #00c8ff);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 650px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* ========== HOMEPAGE LINK CARDS ========== */
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card a {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* ========== NEW FOR CONTENT PAGES (e.g. whatisclimatechange.html) ========== */
+
+/* Main content container for article-style pages */
+main {
+  max-width: 900px;
+  margin: 3rem auto 4rem auto;
+  padding: 0 1.5rem;
+}
+
+/* Each section block */
+main section {
+  background: #ffffff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Section headings */
+main h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Paragraphs in main content */
+main p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Lists inside content */
+main ul {
+  margin-left: 1.25rem;
+  padding-left: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+main li {
+  margin-bottom: 0.35rem;
+}
+
+/* Optional: emphasise key terms */
+strong, b {
+  font-weight: 700;
+}
+
+/* ========== FOOTER (SITE-WIDE) ========== */
+
+footer {
+  background-color: #ececec;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
