@@ -170,14 +170,20 @@ main img {
   line-height: 1.4;
 }
 
+.donate-box {
+    text-align: center; /* Centers the button */
+    margin: 2rem 0;
+}
+
 .donate-button {
+    display: inline-block; /* Required to make the background + padding work */
     padding: 0.9rem 2rem;
     font-size: 1.1rem;
     font-weight: 600;
     color: #111;
     background-color: #FFC439; /* PayPal Gold */
-    border: none;
     border-radius: 50px;
+    text-decoration: none; /* Removes underline from link */
     cursor: pointer;
     transition: all 0.2s ease;
 }
