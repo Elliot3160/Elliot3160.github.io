@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dissertation – Fossils & Futures</title>
+
+    <link rel="stylesheet" href="Style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="about-page">
+
+    <!-- ====================== HEADER ====================== -->
+    <header>
+        <nav>
+            <div><strong>Fossils & Futures</strong></div>
+            <div>
+                <a href="index.html">Home</a>
+                <a href="blog.html">Blog</a>
+                <a href="about.html">About</a>
+                <a href="cv.html">CV</a>
+                <a href="navigation-hub.html">Navigation Hub</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ====================== HERO ====================== -->
+    <section class="hero">
+        <h1>My MSc Dissertation</h1>
+        <p>Machine Learning Approaches to Tephra Classification<br>
+        A publication-safe summary of my research at the Centre for Quaternary Research.</p>
+    </section>
+
+    <!-- ====================== MAIN CONTENT ====================== -->
+    <main>
+
+        <!-- Overview -->
+        <section>
+            <h2>Project Overview</h2>
+            <p>
+                My MSc dissertation investigated how modern machine-learning methods can improve the
+                classification and correlation of Icelandic tephra. Traditionally, tephra correlation relies
+                on manually comparing glass shard geochemistry with reference datasets — a process that can be
+                time-consuming, subjective, and limited by human interpretation.
+            </p>
+            <p>
+                This project explored whether algorithmic approaches can enhance consistency, reproducibility,
+                and confidence in tephrochronological classification, especially as datasets continue to grow.
+            </p>
+        </section>
+
+        <!-- Context -->
+        <section>
+            <h2>Research Context</h2>
+            <p>
+                Tephra layers act as instant geological time-markers, allowing scientists to synchronise
+                palaeoenvironmental and archaeological records across vast distances. With the increased use of
+                EPMA and high-resolution analytical datasets, there is a growing need for tools that can help
+                automate or support tephra classification.
+            </p>
+            <p>
+                This project was completed within the <strong>Centre for Quaternary Research (CQR)</strong> at
+                Royal Holloway, one of Europe’s leading groups in palaeoenvironmental reconstruction and volcanic
+                ash studies.
+            </p>
+        </section>
+
+        <!-- Aims -->
+        <section>
+            <h2>Project Aims</h2>
+            <p>The dissertation addressed three central questions:</p>
+            <ul>
+                <li><strong>Can machine-learning models accurately classify Icelandic glass shard chemistry?</strong></li>
+                <li><strong>Do ensemble models provide more stable predictions than individual algorithms?</strong></li>
+                <li><strong>How can stratigraphic age information refine probabilistic predictions?</strong></li>
+            </ul>
+            <p>
+                These questions were approached conceptually without publishing any specific datasets,
+                methods or figures — ensuring the work remains eligible for future journal submission.
+            </p>
+        </section>
+
+        <!-- Methods -->
+        <section>
+            <h2>Methodological Framework (High-Level)</h2>
+            <p>
+                To protect the publishability of the research, only a general outline of the methods is
+                provided here. The project developed a machine-learning workflow combining:
+            </p>
+            <ul>
+                <li>Random Forests</li>
+                <li>XGBoost</li>
+                <li>Flexible Discriminant Analysis</li>
+                <li>Compositional data transformations (CLR)</li>
+                <li>Soft-voting ensemble averaging</li>
+                <li>Stratigraphic Bayesian age constraints</li>
+                <li>Uncertainty and class-probability diagnostics</li>
+            </ul>
+            <p>
+                The pipeline was designed to be transparent, scalable, and reproducible, with a focus on
+                strengthening analytical tephrochronology.
+            </p>
+        </section>
+
+        <!-- Key Insights -->
+        <section>
+            <h2>Key Insights (Non-Numerical)</h2>
+            <p>
+                While specific accuracy results are withheld, the research produced several conceptual insights:
+            </p>
+            <ul>
+                <li>Ensemble models can improve stability and reduce overclassification.</li>
+                <li>Integrating age priors helps contextualise ambiguous samples.</li>
+                <li>Uncertainty assessment is as important as producing a class label.</li>
+                <li>Automated classification can complement, not replace, expert interpretation.</li>
+            </ul>
+            <p>
+                These findings align with current trends in geoscience, where hybrid approaches (expert +
+                machine learning) offer powerful advantages.
+            </p>
+        </section>
+
+        <!-- Importance -->
+        <section>
+            <h2>Why This Research Matters</h2>
+            <p>
+                High-quality tephra correlation underpins a wide range of Quaternary and volcanic research,
+                including:
+            </p>
+            <ul>
+                <li>palaeoclimate synchronisation</li>
+                <li>volcanic hazard assessment</li>
+                <li>archaeological dating</li>
+                <li>ice-core and marine-core alignment</li>
+                <li>Holocene & Pleistocene environmental reconstruction</li>
+            </ul>
+            <p>
+                The project demonstrates that machine learning can support these fields by providing
+                reproducible, scalable classification tools.
+            </p>
+        </section>
+
+        <!-- Future Work -->
+        <section>
+            <h2>Future Directions</h2>
+            <p>
+                A manuscript based on this dissertation is in preparation. Future development will focus on:
+            </p>
+            <ul>
+                <li>expanding datasets and class representation</li>
+                <li>integrating trace-element chemistry</li>
+                <li>advancing Bayesian ensemble modelling</li>
+                <li>building a researcher-friendly application or web tool</li>
+                <li>testing generalisability across volcanic provinces</li>
+            </ul>
+            <p>
+                The long-term goal is to create a robust open-source platform for tephra classification that
+                can be used across the global tephrochronology community.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer>
+        &copy; 2025 Elliot. All rights reserved. | 
+        <a href="mailto:your-email@example.com">Contact</a>
+    </footer>
+
+</body>
+</html>
