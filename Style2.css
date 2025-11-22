@@ -1,0 +1,150 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --main-bg: #f4f7f9;
+  --dark-bg: #0a0a0a;
+  --accent: #0077ff;
+  --text: #1a1a1a;
+  --radius: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ========== HEADER (same as Style.css for brand consistency) ========== */
+
+header {
+  background-color: var(--dark-bg);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* ========== HERO BANNER (same modern gradient) ========== */
+
+.hero {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(to right, #0077ff, #00c8ff);
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
+/* ========== MAIN CONTENT (clean academic layout) ========== */
+
+main {
+  max-width: 850px;             /* narrower for readability */
+  margin: 3rem auto 4rem auto;  /* center the column */
+  padding: 0 2rem;              /* mobile padding */
+}
+
+main section {
+  margin-bottom: 3rem;
+}
+
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 800;
+  color: var(--dark-bg);
+}
+
+main p {
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  color: #333;
+}
+
+main ul {
+  margin-left: 1.25rem;
+  margin-bottom: 1.2rem;
+}
+
+main li {
+  margin-bottom: 0.5rem;
+}
+
+/* Quote/italic line styling */
+main p[style*="italic"] {
+  font-size: 1.15rem !important;
+  opacity: 0.9;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========== FOOTER ========== */
+
+footer {
+  background-color: #ececec;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+@media (max-width: 768px) {
+  main {
+    margin: 2rem auto;
+    padding: 0 1.25rem;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+}
