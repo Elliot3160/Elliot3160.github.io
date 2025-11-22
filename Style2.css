@@ -148,3 +148,24 @@ footer a:hover {
     font-size: 2.4rem;
   }
 }
+
+/* Blog / article media */
+main figure {
+  margin: 2rem 0;
+}
+
+main img {
+  max-width: 100%;      /* never wider than the text column */
+  height: auto;
+  display: block;
+  margin: 0 auto;       /* centre inside the column */
+  border-radius: 8px;   /* optional: soften corners */
+}
+
+.caption {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
