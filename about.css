@@ -1,57 +1,81 @@
-/* ====================== PAGE CONTENT LAYOUT (ABOUT, INFO PAGES) ====================== */
+/* ======================
+   PAGE CONTENT LAYOUT
+   (ABOUT, INFO PAGES)
+   ====================== */
 
 main {
-  max-width: 900px;              /* keeps text nicely centred */
-  margin: -3rem auto 4rem auto;  /* centres and pulls content slightly up towards hero */
-  padding: 0 2rem 3rem;          /* side padding so it’s not against the edges */
+  max-width: 900px;                 /* keeps text nicely centred */
+  margin: -3rem auto 4rem auto;     /* lifts content up under hero */
+  padding: 0 2rem 3rem;             /* breathing room on sides */
 }
 
-/* Each content block on the About page */
+/* Each content section appears as a soft card */
 main section {
   background: #ffffff;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 2.25rem 2.5rem;
-  margin-bottom: 2rem;
+  padding: 2.5rem 2.25rem;
+  margin-bottom: 2.5rem;
+  transition: box-shadow var(--transition), transform var(--transition);
 }
 
-/* Headings inside main content */
+/* Gentle hover lift — matches the card behaviour on home page */
+main section:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Section titles */
 main h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
   font-weight: 800;
+  letter-spacing: 0.01em;
+  background: var(--gradient-accent);      /* same gradient as nav title */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Paragraph text styling */
+/* Paragraph styling */
 main p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #333;
-  line-height: 1.7;
+  line-height: 1.75;
+  margin-bottom: 1rem;
 }
 
-/* Lists inside content */
+/* Lists */
 main ul {
   margin-top: 0.75rem;
-  margin-left: 1.25rem;
+  margin-left: 1.35rem;
   padding-left: 0.5rem;
 }
 
 main li {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.45rem;
+  line-height: 1.65;
+  font-size: 1.05rem;
 }
 
-/* Make the italic quote line on About page look nice (optional) */
+/* Special styling for the italic quote line */
 main p[style*="italic"] {
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+  font-size: 1.15rem;
+  opacity: 0.9;
 }
 
-/* Responsive tweaks for smaller screens */
+/* ======================
+   RESPONSIVE DESIGN
+   ====================== */
+
 @media (max-width: 768px) {
   main {
     margin: -2rem auto 3rem auto;
-    padding: 0 1.25rem 2.5rem;
+    padding: 0 1.5rem 2.5rem;
   }
 
   main section {
@@ -59,6 +83,14 @@ main p[style*="italic"] {
   }
 
   main h2 {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
+  }
+
+  main p {
+    font-size: 1rem;
+  }
+
+  main li {
+    font-size: 1rem;
   }
 }
