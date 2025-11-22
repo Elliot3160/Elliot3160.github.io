@@ -1,224 +1,64 @@
-/* Import font - keep as is */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+/* ====================== PAGE CONTENT LAYOUT (ABOUT, INFO PAGES) ====================== */
 
-:root {
-  --main-bg: #f4f7f9;
-  --dark-bg: #0a0a0a;
-  --accent: #0077ff;
-  --accent-hover: #005ecc;    /* Slightly darker for hover */
-  --card-bg: #ffffff;
-  --text: #1a1a1a;
-  --shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.18);
-  --radius: 16px;
-  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --gradient-accent: linear-gradient(45deg, #0077ff, #00c8ff);
+main {
+  max-width: 900px;              /* keeps text nicely centred */
+  margin: -3rem auto 4rem auto;  /* centres and pulls content slightly up towards hero */
+  padding: 0 2rem 3rem;          /* side padding so it’s not against the edges */
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--main-bg);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 400;
-}
-
-/* Header */
-header {
-  background: var(--dark-bg);
-  color: white;
-  padding: 1.25rem 3rem;
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: background var(--transition);
-}
-
-header:hover {
-  background: #111111;
-}
-
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav div:first-child {
-  font-weight: 800;
-  font-size: 1.5rem;
-  background: var(--gradient-accent);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 2rem;
-  font-weight: 600;
-  font-size: 1.05rem;
-  position: relative;
-  transition: color var(--transition);
-}
-
-nav a::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width var(--transition);
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-}
-
-nav a:hover,
-nav a:focus {
-  color: var(--accent-hover);
-}
-
-nav a:hover::after,
-nav a:focus::after {
-  width: 100%;
-}
-
-/* Hero */
-.hero {
-  text-align: center;
-  padding: 6rem 2rem 8rem;
-  background: linear-gradient(135deg, #0077ff, #00c8ff);
-  color: white;
-  box-shadow: inset 0 -5rem 5rem -2rem rgba(0, 0, 0, 0.25);
-  border-bottom-left-radius: 80px 40px;
-  border-bottom-right-radius: 80px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero h1 {
-  font-size: 4rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  letter-spacing: -0.04em;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
-}
-
-.hero p {
-  font-size: 1.3rem;
-  max-width: 700px;
-  margin: 0 auto;
-  opacity: 0.95;
-  line-height: 1.6;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.15);
-}
-
-/* Links Section */
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 5rem 2rem 6rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Cards */
-.card {
-  background: linear-gradient(145deg, #ffffff, #f0f5ff);
+/* Each content block on the About page */
+main section {
+  background: #ffffff;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 2.5rem 2rem 3rem;
-  width: 320px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-  border: 2px solid transparent;
+  padding: 2.25rem 2.5rem;
+  margin-bottom: 2rem;
 }
 
-.card:hover,
-.card:focus-within {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-  background: linear-gradient(145deg, #e0f0ff, #cce8ff);
-  border-color: var(--accent);
-}
-
-.card a {
-  font-weight: 800;
-  font-size: 1.2rem;
-  color: var(--accent);
-  text-decoration: none;
-  display: block;
+/* Headings inside main content */
+main h2 {
+  font-size: 1.8rem;
   margin-bottom: 0.75rem;
-  letter-spacing: 0.02em;
-  transition: color var(--transition);
+  font-weight: 800;
 }
 
-.card a:hover,
-.card a:focus {
-  color: var(--accent-hover);
-  text-decoration: underline;
-}
-
-.card p {
+/* Paragraph text styling */
+main p {
   font-size: 1rem;
-  color: #555;
-  line-height: 1.5;
+  color: #333;
+  line-height: 1.7;
 }
 
-/* Footer */
-footer {
-  background-color: #ececec;
-  text-align: center;
-  padding: 2.5rem 2rem;
-  font-size: 0.9rem;
-  color: #555;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+/* Lists inside content */
+main ul {
+  margin-top: 0.75rem;
+  margin-left: 1.25rem;
+  padding-left: 0.5rem;
 }
 
-footer a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 700;
-  transition: color var(--transition);
+main li {
+  margin-bottom: 0.4rem;
 }
 
-footer a:hover,
-footer a:focus {
-  color: var(--accent-hover);
-  text-decoration: underline;
+/* Make the italic quote line on About page look nice (optional) */
+main p[style*="italic"] {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Responsive adjustments */
+/* Responsive tweaks for smaller screens */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 3rem;
+  main {
+    margin: -2rem auto 3rem auto;
+    padding: 0 1.25rem 2.5rem;
   }
-  .links {
-    gap: 1.5rem;
-    padding: 3rem 1rem 4rem;
+
+  main section {
+    padding: 1.75rem 1.5rem;
   }
-  .card {
-    width: 100%;
-    max-width: 320px;
+
+  main h2 {
+    font-size: 1.5rem;
   }
 }
