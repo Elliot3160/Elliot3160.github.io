@@ -1,0 +1,74 @@
+/* ===== BUILD YOUR WEBSITE SECTION ===== */
+
+#build-website {
+  background: radial-gradient(circle at top, #020617 0, #020617 45%, #000 100%);
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  padding: 3.5rem 0;
+}
+
+#build-website h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: #e5e7eb;
+  text-align: left;
+}
+
+#build-website h3 {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #e5e7eb;
+}
+
+#build-website p {
+  color: #9ca3af;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+#build-website ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+
+#build-website ul li {
+  color: #9ca3af;
+  margin-bottom: 0.65rem;
+  padding-left: 1.3rem;
+  position: relative;
+  font-size: 0.97rem;
+}
+
+#build-website ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #38bdf8;
+  font-size: 1rem;
+}
+
+/* Centered button layout */
+#build-website .guide-buttons {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#build-website .guide-buttons .btn {
+  flex-shrink: 0;
+}
+
+/* Muted paragraph below the buttons */
+#build-website .muted {
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
