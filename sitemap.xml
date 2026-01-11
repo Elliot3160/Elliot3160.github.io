@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Home -->
   <url><loc>https://elliot3160.github.io/</loc></url>
-
-  <!-- Main pages -->
   <url><loc>https://elliot3160.github.io/about.html</loc></url>
   <url><loc>https://elliot3160.github.io/blog.html</loc></url>
   <url><loc>https://elliot3160.github.io/buildyourownwebsite.html</loc></url>
@@ -17,9 +13,6 @@
   <url><loc>https://elliot3160.github.io/privacypolicy.html</loc></url>
   <url><loc>https://elliot3160.github.io/tephralink.html</loc></url>
   <url><loc>https://elliot3160.github.io/whatisclimatechange.html</loc></url>
-
-  <!-- Google Search Console verification file (safe to include) -->
   <url><loc>https://elliot3160.github.io/google0c16b923d0fbec7a.html</loc></url>
-
 </urlset>
 
