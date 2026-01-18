@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://elliot3160.github.io/sitemap_new.xml
+Sitemap: https://elliot3160.github.io/sitemap.xml
