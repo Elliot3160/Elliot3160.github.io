@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI as a Geologist? The Promise and Peril of Automated Ground Investigation Workflows</title>
+  <meta name="description" content="A technical insight on the opportunities and risks of applying AI to ground investigation workflows, with a focus on data quality, AGS, QA/QC, logging, factual reporting and geological judgement." />
+  <link rel="stylesheet" href="aiandgeology.css" />
+</head>
+
+<body>
+  <div class="progress" id="progress"></div>
+
+  <header>
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Digital ground investigation</div>
+        <h1>AI as a Geologist?</h1>
+        <p class="subtitle">
+          The promise and peril of automated ground investigation workflows — and why reliable data, technical governance and geological judgement must come before better algorithms.
+        </p>
+        <div class="meta-row" aria-label="Article metadata">
+          <span class="pill">Technical insight</span>
+          <span class="pill">Ground investigation</span>
+          <span class="pill">AI, AGS & QA/QC</span>
+          <span class="pill">By Elliot May</span>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <div>
+          <h2>The central argument</h2>
+          <p class="thesis">
+            <strong>AI is not the problem.</strong> Weak data structures, fragmented workflows and poor technical governance are the problem. Used well, AI could support geologists and engineers. Used poorly, it could make unreliable workflows faster, cleaner-looking and harder to challenge.
+          </p>
+        </div>
+
+        <nav class="mini-nav" aria-label="Article sections">
+          <a href="#promise">The promise</a>
+          <a href="#technical-records">Technical records, not ordinary text</a>
+          <a href="#engineering-consequence">From factual data to consequence</a>
+          <a href="#data-first">Data first, AI second</a>
+          <a href="#assistant-not-author">AI as assistant, not author</a>
+        </nav>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <section class="article-shell">
+      <article>
+        <p class="lead">
+          Artificial intelligence is increasingly being discussed as a tool that can be inserted into professional workflows to improve efficiency, reduce manual processing and accelerate delivery. In ground investigation, however, that assumption deserves careful scrutiny.
+        </p>
+
+        <p>
+          Ground investigation data is not simply administrative information. A borehole log, trial pit record, laboratory testing schedule, groundwater observation or AGS dataset forms part of the factual evidence base from which ground models, geotechnical parameters, contamination assessments, design assumptions and construction risks may later be developed.
+        </p>
+
+        <p>
+          This distinction is critical. Used appropriately, AI could improve data interrogation, consistency checking, factual reporting and quality assurance. Used poorly, it could make fragmented workflows faster, neater and more difficult to challenge, while introducing subtle technical errors into the project record.
+        </p>
+
+        <div class="callout">
+          <span class="label">Key question</span>
+          <p>
+            The question is not whether AI has a role in ground investigation. It is whether the industry has the data structure, technical governance and review processes required to use it safely.
+          </p>
+        </div>
+
+        <h2 id="promise">The promise of AI in ground investigation</h2>
+
+        <p>
+          There are several areas where AI could provide genuine value to ground investigation workflows, particularly where large volumes of factual information need to be checked, queried or summarised.
+        </p>
+
+        <p>
+          One clear application is data quality control. AI-assisted tools could help identify missing sample references, inconsistent stratum names, duplicated test IDs, overlapping depth intervals, incomplete groundwater observations, mismatched laboratory schedules, or terminology that does not align with project-specific logging guidance.
+        </p>
+
+        <p>
+          These checks are not merely administrative. They directly affect the reliability of the factual dataset. If an exploratory hole log, laboratory schedule and AGS file contain conflicting information, the resulting report may appear complete while containing inconsistencies that later affect interpretation.
+        </p>
+
+        <p>
+          AI could also support cross-checking between field descriptions and laboratory data. For example, if a soil is logged as predominantly cohesive but particle size distribution testing indicates a significant granular fraction, or if Atterberg limit results suggest behaviour that does not align with the field description, an AI-assisted system could flag this discrepancy for review.
+        </p>
+
+        <blockquote>
+          The key point is that the system should not make the final judgement. It should identify possible inconsistencies for a competent geologist or geotechnical engineer to assess.
+        </blockquote>
+
+        <p>
+          There is also considerable potential in factual reporting. AI could assist with compiling test summary tables, checking consistency between exploratory hole records and appendices, identifying missing results, reviewing sample depth ranges, and interrogating large datasets more efficiently.
+        </p>
+
+        <p>For example, a project team could query a dataset for:</p>
+
+        <div class="technical-list" aria-label="Example AI-assisted data queries">
+          <div><strong>Groundwater screening</strong>Exploratory holes where groundwater was encountered within Made Ground.</div>
+          <div><strong>Testing completeness</strong>Samples scheduled for contamination testing where results are missing.</div>
+          <div><strong>Parameter review</strong>SPT N-values within a defined stratum and depth range.</div>
+          <div><strong>Stratigraphic consistency</strong>Exploratory holes where descriptions of the same interpreted unit vary significantly.</div>
+          <div><strong>Field/lab comparison</strong>Laboratory results that appear inconsistent with logged material descriptions.</div>
+        </div>
+
+        <p>
+          In this context, AI is not replacing geological judgement. It is improving access to the factual dataset and helping technical staff identify issues that may otherwise be missed during manual review.
+        </p>
+
+        <div class="callout green">
+          <span class="label">Practical principle</span>
+          <p>
+            The best use of AI in ground investigation is not as a substitute for the geologist, but as a controlled second pair of eyes.
+          </p>
+        </div>
+
+        <h2 id="technical-records">Geological descriptions are not ordinary text</h2>
+
+        <p>
+          The primary risk arises when AI is treated as a tool for rewriting or standardising technical records without adequate understanding of geological and geotechnical meaning.
+        </p>
+
+        <p>
+          A soil or rock description is not simply prose. It is a structured technical record. In accordance with standard logging practice, descriptions communicate material type, relative proportions, secondary constituents, structure, colour, consistency or density, discontinuities, weathering, fabric, inclusions and uncertainty.
+        </p>
+
+        <p>
+          Word order matters. Capitalisation matters. Qualifiers matter. The distinction between a principal constituent and a secondary constituent matters.
+        </p>
+
+        <div class="example-box" aria-label="Soil description comparison">
+          <div class="soil-term">Slightly gravelly sandy CLAY</div>
+          <div class="soil-term">Clayey sandy GRAVEL</div>
+        </div>
+
+        <p>
+          The first description identifies clay as the principal soil type, with sand and a slight gravel component. The second identifies gravel as the principal soil type, with clay and sand as secondary constituents. These are not stylistic variations. They imply different material behaviour, different likely permeability, different earthworks characteristics and potentially different design considerations.
+        </p>
+
+        <p>
+          A general language model may interpret both phrases as broadly similar because they contain the same words. A geologist or geotechnical engineer understands that the technical meaning has changed.
+        </p>
+
+        <p>
+          This is why automated “tidying” of geological descriptions is risky. A system that improves grammar, standardises wording or rearranges descriptions could unintentionally alter the factual record. The output may look cleaner and more professional while becoming less faithful to the original observation.
+        </p>
+
+        <p>
+          This risk is particularly important in ground investigation because logs often preserve field judgement made under imperfect conditions. Material boundaries may be gradual. Samples may be disturbed. Recovery may be poor. Groundwater observations may be time-dependent. Made Ground may be heterogeneous. Rock mass descriptions may vary with core recovery and fracture condition.
+        </p>
+
+        <div class="callout blue">
+          <span class="label">Technical risk</span>
+          <p>
+            An automated system that smooths away uncertainty may produce a more polished record, but not a more accurate one.
+          </p>
+        </div>
+
+        <h2 id="engineering-consequence">From factual record to engineering consequence</h2>
+
+        <p>
+          The risk of poor automation is not confined to the report itself. Ground investigation data sits upstream of engineering decision-making.
+        </p>
+
+        <p>
+          A factual report may later inform the development of a ground model, selection of characteristic parameters, foundation recommendations, slope stability assessment, retaining wall design, pavement design, earthworks strategy, groundwater control, contamination risk assessment or material reuse strategy.
+        </p>
+
+        <p>
+          If the factual dataset is inconsistent, incorrectly standardised or stripped of uncertainty, those issues can propagate into later design and risk decisions.
+        </p>
+
+        <p>
+          For example, a subtle change in soil description may influence how a stratum is grouped. A grouping decision may influence parameter selection. Parameter selection may influence design assumptions. Design assumptions may influence cost, programme, safety and constructability.
+        </p>
+
+        <blockquote>
+          This is why AI adoption in ground investigation cannot be treated as a simple productivity exercise. It must be considered in terms of technical defensibility, professional accountability and risk transfer.
+        </blockquote>
+
+        <h2>The workflow problem</h2>
+
+        <p>
+          AI is often presented as a solution to inefficiency. However, in ground investigation, many inefficiencies arise not from a lack of automation, but from fragmented data workflows.
+        </p>
+
+        <p>
+          A typical project may involve handwritten or digital field records, exploratory hole logs, photographs, monitoring data, laboratory schedules, laboratory certificates, drawings, AGS files, spreadsheets, factual report appendices and client-specific deliverables. These may pass through multiple people, systems and review stages before issue.
+        </p>
+
+        <p>
+          Where workflows rely on manual data transfer, inconsistent templates, legacy software, disconnected laboratory records or late-stage QA checks, AI may not solve the underlying problem. It may simply accelerate an already weak process.
+        </p>
+
+        <p>Before asking whether AI can write better logs or produce faster reports, the industry should ask more basic questions:</p>
+
+        <div class="technical-list" aria-label="Workflow governance questions">
+          <div><strong>Structured capture</strong>Is the data captured in a structured format?</div>
+          <div><strong>Terminology</strong>Are logging terms standardised?</div>
+          <div><strong>Traceability</strong>Are field records linked reliably to samples, tests and laboratory results?</div>
+          <div><strong>AGS validation</strong>Can the dataset be exported and validated in a client-ready AGS format?</div>
+          <div><strong>Change control</strong>Are changes traceable?</div>
+          <div><strong>Embedded review</strong>Is technical review built into the workflow rather than added at the end?</div>
+        </div>
+
+        <p>
+          Without these foundations, AI risks becoming a digital layer placed over a poorly governed data process.
+        </p>
+
+        <p>
+          That may create the appearance of innovation without improving technical reliability.
+        </p>
+
+        <h2 id="data-first">Data first, AI second</h2>
+
+        <p>
+          For AI to be useful in ground investigation, the industry must prioritise data quality and workflow governance before automation.
+        </p>
+
+        <p>
+          This means structured data capture, standardised logging templates, controlled terminology, reliable sample and test referencing, robust AGS validation, clear QA/QC procedures and defined technical ownership.
+        </p>
+
+        <p>
+          It also means preserving the distinction between observation, correction, standardisation and interpretation.
+        </p>
+
+        <p>
+          An AI system may be able to flag that a description does not match company guidance. It may be able to highlight that a sample reference appears in a laboratory schedule but not on the exploratory hole log. It may be able to identify that the same stratum has been named differently across multiple boreholes.
+        </p>
+
+        <p>
+          However, deciding whether the original record is wrong, whether the laboratory data should change the geological description, or whether a stratum should be reinterpreted remains a technical judgement.
+        </p>
+
+        <p>
+          That judgement must remain with a competent professional.
+        </p>
+
+        <h3>Any AI-assisted workflow should therefore include:</h3>
+
+        <div class="technical-list" aria-label="AI workflow requirements">
+          <div><strong>Human-in-the-loop review</strong>AI should flag, suggest and summarise. A competent person should decide.</div>
+          <div><strong>Audit trails</strong>AI-assisted changes should be traceable, with the original record preserved.</div>
+          <div><strong>Defined accountability</strong>It should be clear who reviewed the output and who approved the final record.</div>
+          <div><strong>Validation against standards and project requirements</strong>Outputs should be checked against relevant logging guidance, AGS requirements and client deliverables.</div>
+          <div><strong>Clear separation between factual and interpretive outputs</strong>AI should not blur the boundary between what was observed, what was tested and what has been interpreted.</div>
+        </div>
+
+        <div class="callout">
+          <span class="label">Risk principle</span>
+          <p>
+            In ground engineering, automation without accountability is not innovation. It is risk transfer.
+          </p>
+        </div>
+
+        <h2 id="assistant-not-author">AI as assistant, not author</h2>
+
+        <p>
+          The safest and most useful model is to treat AI as a technical assistant, not as the author of the geological record.
+        </p>
+
+        <div class="comparison" aria-label="Poor and better uses of AI">
+          <div class="compare-card bad">
+            <h3>Poor use</h3>
+            <p>Rewrite this borehole log to make it sound better.</p>
+            <p>Generate the factual report automatically.</p>
+            <p>Interpret the ground conditions.</p>
+          </div>
+
+          <div class="compare-card good">
+            <h3>Better use</h3>
+            <p>Flag descriptions that appear inconsistent with the logging standard, while preserving the original description for review.</p>
+            <p>Compile a draft test summary table, cross-check it against the laboratory schedule, and highlight missing or inconsistent references.</p>
+            <p>Identify potential correlations, outliers, inconsistencies and data gaps for a geologist or engineer to assess.</p>
+          </div>
+        </div>
+
+        <p>
+          This distinction is fundamental. AI is well suited to pattern recognition, summarisation, consistency checking and data interrogation. It is less suited to replacing judgement in situations where observations are uncertain, context-dependent or technically consequential.
+        </p>
+
+        <p>
+          The ground is inherently variable. Field descriptions involve judgement. Laboratory results require context. Stratigraphic boundaries may be transitional. Made Ground can be highly heterogeneous. Rock mass quality depends not only on lithology, but also on discontinuity condition, recovery, weathering and structure.
+        </p>
+
+        <p>
+          A useful AI tool should help technical staff manage this complexity. It should not conceal it behind polished wording or automated certainty.
+        </p>
+
+        <h2>Conclusion</h2>
+
+        <p>
+          AI has significant potential in ground investigation. It could reduce administrative burden, improve consistency checking, strengthen data interrogation and help technical teams identify issues across complex datasets.
+        </p>
+
+        <p>
+          However, it will only deliver that value if it is built on reliable data structures, robust workflows and clear technical governance.
+        </p>
+
+        <p>
+          The future should not be AI replacing the geologist. It should be AI helping geologists and engineers spend less time wrestling with fragmented data and more time applying professional judgement to the ground.
+        </p>
+
+        <div class="closing-card">
+          <p>
+            The industry does not need artificial geological judgement.<br />
+            It needs better tools to support real geological judgement.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>© Elliot May — Technical insight article</span>
+    <span>Designed as a standalone web brief for professional sharing</span>
+  </footer>
+
+  <script>
+    const progress = document.getElementById("progress");
+
+    function updateProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percentage = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progress.style.width = `${percentage}%`;
+    }
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+  </script>
+</body>
+</html>
