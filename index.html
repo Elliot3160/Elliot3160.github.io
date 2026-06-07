@@ -5,9 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fossils & Futures</title>
   <meta name="description" content="Fossils & Futures – geology, palaeoclimate, tephra analysis, engineering geology and earth science tools explained clearly by Elliot, an engineering geologist and Quaternary researcher.">
-  <link rel="canonical" href="https://elliot3160.github.io/" />
+  <link rel="canonical" href="https://github.io" />
+  
+  <!-- FIX: Open Graph Meta Tags for Professional Social Media Sharing Cards -->
+  <meta property="og:title" content="Fossils & Futures | Geoscience, Tephra Tools & Engineering Geology" />
+  <meta property="og:description" content="Explore practical guides, earth science research, and proprietary tools like TephraLink, managed by Elliot, an engineering geologist." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://github.io" />
+  <meta property="og:image" content="https://github.ioassets/og-preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://googleapis.com" rel="stylesheet">
 </head>
 
 <body>
@@ -32,17 +41,15 @@
   </section>
 
   <section class="intro">
-  <div class="container">
-    <p>
-      Fossils &amp; Futures is a geoscience site covering Quaternary science,
-      tephrochronology, palaeoclimate, and engineering geology. I share practical guides,
-      research write-ups, and tools (including TephraLink) aimed at making Earth science
-      clearer and more usable.
-    </p>
-  </div>
-</section>
-
-
+    <div class="container">
+      <p>
+        Fossils &amp; Futures is a geoscience site covering Quaternary science,
+        tephrochronology, palaeoclimate, and engineering geology. I share practical guides,
+        research write-ups, and tools (including TephraLink) aimed at making Earth science
+        clearer and more usable.
+      </p>
+    </div>
+  </section>
 
   <section class="links">
 
@@ -109,8 +116,14 @@
   </section>
 
   <footer>
-    &copy; 2025 Elliot. All rights reserved. | <a href="mailto:elliotmay73@gmail.com">Contact me</a>
+    <!-- FIX: Replaced static year string with a dynamic target element containing a fallback year -->
+    &copy; <span id="copyright-year">2026</span> Elliot. All rights reserved. | <a href="mailto:elliotmay73@gmail.com">Contact me</a>
   </footer>
+
+  <!-- FIX: Automated Copyright script that automatically increments every single January 1st -->
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>

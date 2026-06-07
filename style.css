@@ -1,14 +1,17 @@
 /* Import font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@import url('https://googleapis.com');
 
 :root {
-  --main-bg: #f4f7f9;
-  --dark-bg: #0a0a0a;
-  --accent: #0077ff;
+  --main-bg: #f8fafc;        /* Sophisticated cool slate white tint */
+  --dark-bg: #0f172a;        /* Deep, expensive midnight slate black */
+  --accent: #2563eb;         /* Refined royal indigo-blue */
+  --accent-light: #eff6ff;   /* Soft ambient highlight tint */
   --card-bg: #ffffff;
-  --text: #1a1a1a;
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --radius: 14px;
+  --text: #1e293b;           /* Premium soft ink charcoal (not stark black) */
+  --muted: #64748b;          /* Clean slate gray for secondary details */
+  --border: #e2e8f0;         /* Crisp, micro-thin modern border line */
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05); /* Modern fluid elevation */
+  --radius: 16px;            /* Sleek container roundness */
 }
 
 * {
@@ -17,225 +20,291 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--main-bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-/* ====================== HEADER ====================== */
+/* ====================== HEADER & NAVIGATION ====================== */
 
 header {
   background-color: var(--dark-bg);
-  color: white;
-  padding: 1rem 2rem;
-  box-shadow: var(--shadow);
+  padding: 1.25rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  background-color: rgba(15, 23, 42, 0.95); /* High-end translucent glass header */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 nav {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-nav a {
+nav div strong {
   color: white;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+nav div a {
+  color: #94a3b8;
   text-decoration: none;
-  margin-left: 1.5rem;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  margin-left: 1.75rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
 
-nav a:hover {
-  color: var(--accent);
+nav div a:hover {
+  color: white;
 }
 
-/* ====================== HERO ====================== */
+/* ====================== HERO SECTION ====================== */
 
 .hero {
   text-align: center;
-  padding: 5rem 2rem;
-  background: linear-gradient(to right, #0077ff, #00c8ff);
-  color: white;
+  padding: 6.5rem 2rem 5rem;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  background-image: radial-gradient(circle at top right, rgba(37, 99, 235, 0.03), transparent 40rem);
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Dynamic fluid sizing */
   font-weight: 800;
-  margin-bottom: 1rem;
+  color: var(--dark-bg);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  max-width: 650px;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  max-width: 700px;
   margin: 0 auto;
-  opacity: 0.9;
-  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 400;
+  line-height: 1.6;
 }
 
-.container{
-  max-width: 1100px;
+/* ====================== GENERAL CONTAINERS ====================== */
+
+.container {
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
-.intro{
-  padding: 18px 0 10px;
+.intro {
+  padding: 3rem 0 1rem;
 }
 
-.intro p{
+.intro .container p {
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
-  line-height: 1.6;
-  font-size: 1.05rem;
-  color: #111;
+  line-height: 1.75;
+  font-size: 1.15rem;
+  color: var(--text);
+  font-weight: 400;
 }
 
-
-/* ====================== HOMEPAGE CARDS ====================== */
+/* ====================== HOMEPAGE GRID CARDS ====================== */
 
 .links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  /* FIX: Clean CSS Grid locks cards into matching symmetrical tracks */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-  padding: 4rem 2rem;
-  max-width: 1200px;
+  padding: 3rem 2rem 6rem;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
 .card {
   background: var(--card-bg);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 2rem;
-  width: 300px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left; /* Premium layouts default left for natural parsing */
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.08);
 }
 
 .card a {
   font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--accent);
+  font-size: 1.2rem;
+  color: var(--dark-bg);
   text-decoration: none;
-  display: block;
-  margin-bottom: 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.card a:hover {
+  color: var(--accent);
 }
 
 .card p {
   font-size: 0.95rem;
-  color: #444;
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 /* ====================== FOOTER ====================== */
 
 footer {
-  background-color: #ececec;
+  background-color: var(--dark-bg);
+  color: #64748b;
   text-align: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
   font-size: 0.9rem;
-  color: #555;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 footer a {
-  color: var(--accent);
+  color: #f1f5f9;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-/* ======================
-   ABOUT + INFO PAGE LAYOUT
-   ====================== */
+footer a:hover {
+  color: var(--accent);
+}
+
+/* ====================== ABOUT + CONTENT PAGES ====================== */
 
 .about-page main,
 .info-page main,
 .content-page main {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 0 2rem 3rem;
+  max-width: 820px;
+  margin: 4rem auto;
+  padding: 0 2rem;
 }
 
-/* Sections as clean white cards */
+/* Clear white content blocks */
 .about-page main section,
 .info-page main section,
 .content-page main section {
   background: var(--card-bg);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 2rem 2.5rem;
-  margin-bottom: 2rem;
+  padding: 3rem 3.5rem;
+  margin-bottom: 2.5rem;
 }
 
 /* Section titles */
 .about-page main h2,
 .info-page main h2,
 .content-page main h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.75rem;
+  font-size: 2rem;
+  color: var(--dark-bg);
+  margin-bottom: 1.25rem;
   font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
-/* Paragraph text */
+/* Interior block text paragraphs */
 .about-page main p,
 .info-page main p,
 .content-page main p {
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.7;
-  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  color: #334155;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
 }
 
-/* Lists */
+/* Inner listings layout */
 .about-page main ul,
 .info-page main ul,
 .content-page main ul {
-  margin-left: 1.25rem;
-  margin-top: 0.75rem;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color: #334155;
 }
 
 .about-page main li,
 .info-page main li,
 .content-page main li {
-  margin-bottom: 0.4rem;
-  line-height: 1.6;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
 }
 
-/* Centered italic quote styling */
+/* Professional blockquote/italic styling block */
 .about-page main p[style*="italic"],
 .info-page main p[style*="italic"],
 .content-page main p[style*="italic"] {
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  background-color: var(--main-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-style: italic;
+  color: var(--dark-bg);
 }
 
-/* ======================
-   RESPONSIVE DESIGN
-   ====================== */
+/* ====================== RESPONSIVE MEDIA BREAKPOINTS ====================== */
 
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
+  header {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 4.5rem 1.25rem 3.5rem;
+  }
+
+  .links {
+    grid-template-columns: 1fr; /* Flattens to clean single list track cards on phone */
+    padding: 1.5rem 1.25rem 4rem;
+    gap: 1.25rem;
+  }
+  
+  .card {
+    padding: 1.75rem 1.5rem;
   }
 
   .about-page main,
   .info-page main,
   .content-page main {
-    padding: 0 1.5rem 2rem;
+    padding: 0 1.25rem;
+    margin: 2rem auto;
   }
 
   .about-page main section,
   .info-page main section,
   .content-page main section {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
+    margin-bottom: 1.5rem;
   }
 }
