@@ -51,7 +51,8 @@ header {
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  /* FIX: Lowered minimum sidebar floor from 280px to 240px to prevent horizontal scrolling on 320px screens */
+  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
   gap: 34px;
   align-items: stretch;
 }
@@ -387,7 +388,8 @@ footer a {
 
 @media (max-width: 860px) {
   header {
-    padding-top: 34px;
+    /* FIX: Reduced from 34px to 24px to clear visual spacing below the static home link element */
+    padding: 24px 24px 48px;
   }
 
   .hero {
@@ -461,6 +463,8 @@ footer a {
 @media (max-width: 860px) {
   .home-link {
     position: static;
-    margin: 14px 0 0 14px;
+    /* FIX: Converted to inline-block and added explicit vertical margins to prevent layout overlap with h1 elements */
+    display: inline-block;
+    margin: 24px 0 12px 24px;
   }
 }
