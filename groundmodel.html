@@ -4,969 +4,240 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Climate-Sensitive Ground Risk | Elliot May</title>
+  <title>Why Better Ground Models Start With Better Data Workflows</title>
+  <meta name="description" content="A technical insight on why reliable ground models depend on structured, traceable and well-governed ground investigation data workflows." />
 
-  <meta
-    name="description"
-    content="A technical briefing by Elliot May on climate-sensitive ground risk, environmental memory, ground models and infrastructure resilience."
-  />
-
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="groundmodels.css" />
 </head>
 
 <body>
-  <button class="mobile-menu-button" id="menuButton" type="button">
-    Sections
-  </button>
+  <a class="home-link" href="index.html">← Back to Fossils &amp; Futures</a>
+  <div class="progress" id="progress"></div>
 
-  <div class="page">
-    <aside id="sidebar" aria-label="Report navigation">
-      <div class="brand">
-        <p class="eyebrow">Technical Briefing</p>
-        <h1>Climate-Sensitive Ground Risk</h1>
-        <p>A better way to think about climate hazards, landscapes and infrastructure.</p>
+  <header>
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Fossils &amp; Futures — Release 2</div>
+
+        <h1>Why Better Ground Models Start With Better Data Workflows</h1>
+
+        <p class="subtitle">
+          Ground models are often treated as interpretive outputs, but their reliability depends on decisions made much earlier — in how factual data is captured, structured, checked and connected.
+        </p>
+
+        <div class="meta-row" aria-label="Article metadata">
+          <span class="pill">Technical insight</span>
+          <span class="pill">Ground models</span>
+          <span class="pill">AGS, QA/QC &amp; data workflows</span>
+          <span class="pill">By Elliot May</span>
+        </div>
       </div>
 
-      <p class="nav-title">Contents</p>
+      <aside class="side-card">
+        <div>
+          <h2>The central argument</h2>
+          <p class="thesis">
+            <strong>Better interpretation starts before interpretation.</strong> A ground model is only as reliable as the factual evidence used to construct it. If logs, samples, laboratory schedules, AGS files and reports are fragmented, then geological judgement has a weaker foundation.
+          </p>
+        </div>
 
-      <nav>
-        <ul>
-          <li><a href="#core-proposition">Core Proposition</a></li>
-          <li><a href="#who-this-is-for">Who This Is For</a></li>
-          <li><a href="#executive-summary">Executive Summary</a></li>
-          <li><a href="#why-this-matters">Why This Matters</a></li>
-          <li><a href="#short-climate-memory">1. Short Climate Memory</a></li>
-          <li><a href="#framework">2. Practical Framework</a></li>
-          <li><a href="#environmental-records">3. Environmental Memory</a></li>
-          <li><a href="#planning-assets-infrastructure">4. Planning & Infrastructure</a></li>
-          <li><a href="#hazard-to-consequence">5. Hazard to Consequence</a></li>
-          <li><a href="#case-study-lens">6. Case-study Lens</a></li>
-          <li><a href="#periglacial-slopes">Case 1. Periglacial Slopes</a></li>
-          <li><a href="#floodplains">Case 2. Floodplains</a></li>
-          <li><a href="#clay-rich-soils">Case 3. Clay-rich Soils</a></li>
-          <li><a href="#climate-sensitive-ground-models">7. Ground Models</a></li>
-          <li><a href="#due-diligence">8. Due Diligence</a></li>
-          <li><a href="#screening-questions">9. Screening Questions</a></li>
-          <li><a href="#evidence-base">10. Evidence Base</a></li>
-          <li><a href="#final-takeaway">Final Takeaway</a></li>
-          <li><a href="#about-author">About the Author</a></li>
-          <li><a href="#references">References</a></li>
-        </ul>
-      </nav>
+        <nav class="mini-nav" aria-label="Article sections">
+          <a href="#ground-model">The ground model begins early</a>
+          <a href="#fragmentation">Workflow fragmentation</a>
+          <a href="#small-errors">Why inconsistencies matter</a>
+          <a href="#ags">AGS, QA/QC and traceability</a>
+          <a href="#automation">Automation and data quality</a>
+          <a href="#better-workflows">Better workflows</a>
+        </nav>
+      </aside>
+    </section>
+  </header>
 
-      <div class="sidebar-footer">
-        <strong>Elliot May</strong><br />
-        MSc Quaternary Science | Engineering Geologist | Climate and Ground Risk Analysis
-      </div>
-    </aside>
-
-    <main>
+  <main>
+    <section class="article-shell">
       <article>
-        <header class="hero">
-          <p class="kicker">Technical Briefing</p>
+        <p class="lead">
+          A ground model is often treated as the interpretive stage of a ground investigation. It is where exploratory hole records, laboratory results, groundwater observations, geological mapping, historical information and professional judgement are brought together to form a coherent understanding of the ground.
+        </p>
 
-          <h2>Climate risk is not just about future hazards. It is about landscape response.</h2>
+        <p>
+          However, the reliability of a ground model is shaped long before the interpretive stage begins. It depends on the quality of the factual data, but also on how that data has been captured, transferred, checked, structured and preserved throughout the investigation.
+        </p>
 
-          <p class="subtitle">
-            A practical briefing on climate-sensitive ground risk, long-term environmental memory,
-            and why early-stage resilience planning should connect climate projections with geology,
-            geomorphology, groundwater, soils and infrastructure consequences.
-          </p>
+        <p>
+          Borehole logs, trial pit records, sample references, laboratory schedules, monitoring data, AGS files, drawings and factual report appendices are often treated as separate deliverables. In practice, they form a connected evidence base. If those connections are weak, the later interpretation becomes harder to support, even where the individual records appear complete.
+        </p>
 
-          <div class="meta">
-            <span class="pill">Climate risk</span>
-            <span class="pill">Ground models</span>
-            <span class="pill">Infrastructure resilience</span>
-            <span class="pill">Quaternary science</span>
-            <span class="pill">Due diligence</span>
-          </div>
-
-          <div class="author-block">
-            <p><strong>Author:</strong> Elliot May</p>
-            <p>
-              <strong>Background:</strong> MSc Quaternary Science | Engineering Geologist |
-              Climate and Ground Risk Analysis
-            </p>
-            <p><strong>Format:</strong> Professional insight briefing</p>
-            <p><strong>Version:</strong> Website edition</p>
-          </div>
-        </header>
-
-        <section id="core-proposition">
-          <span class="chapter-number">Core Proposition</span>
-          <h2>A Better Way to Think About Climate-sensitive Ground Risk</h2>
-
-          <p class="lead">
-            Climate-risk planning often asks: <strong>what hazard is projected?</strong>
-            This briefing argues that planners, consultants, developers and asset owners should also ask:
-            <strong>how will the landscape and ground respond?</strong>
-          </p>
-
+        <div class="callout">
+          <span class="label">Core principle</span>
           <p>
-            A flood is not only a water-depth problem. A drought is not only a water-resource
-            problem. A wet winter is not only a rainfall statistic. Each hazard interacts with
-            landform, geology, superficial deposits, groundwater, vegetation, drainage,
-            infrastructure and previous landscape history.
+            Better ground models do not simply come from collecting more data. They come from building workflows that allow factual data to remain connected, traceable and technically meaningful.
           </p>
+        </div>
 
+        <h2 id="ground-model">The ground model begins before interpretation</h2>
+
+        <p>
+          It is tempting to divide ground investigation into factual work on one side and interpretation on the other. That distinction is useful, but it can also hide how dependent interpretation is on the factual workflow that precedes it.
+        </p>
+
+        <p>
+          A ground model may rely on many different sources of information: exploratory hole logs, in-situ testing, laboratory results, groundwater observations, geological mapping, previous investigation data, site history and engineering constraints. Each dataset contributes something different, and each carries its own uncertainty. The interpretive task is not simply to collect these records, but to understand how they relate to one another.
+        </p>
+
+        <p>
+          That task becomes more difficult when factual data is fragmented. If laboratory results are not clearly linked to samples, if stratum names vary between logs and summary tables, or if groundwater observations are held separately from the rest of the dataset, then the interpreter must spend time reconstructing relationships that should already be clear within the workflow.
+        </p>
+
+        <p>
+          In that sense, data workflows are not only an administrative concern. They influence how efficiently and defensibly geological judgement can be applied.
+        </p>
+
+        <h2 id="fragmentation">Ground investigation is data-rich, but often workflow-fragmented</h2>
+
+        <p>
+          Ground investigation usually produces a considerable amount of information. Even a relatively small project can involve exploratory hole records, sample registers, laboratory schedules, geotechnical and chemical test results, groundwater monitoring, location plans, sections, photographs, AGS files and factual report appendices.
+        </p>
+
+        <p>
+          The difficulty is that this information often moves through several stages and formats before it is used for interpretation. A field description becomes a log. The log informs a laboratory schedule. Samples are linked to depths and exploratory hole references. Laboratory results are returned separately. AGS files are exported and validated. Drawings and appendices are assembled. A factual report is issued. Later, the same information may be used to develop a ground model and inform design assumptions.
+        </p>
+
+        <p>
+          Each of these transitions introduces the possibility of inconsistency. Sample references may differ between the log, schedule and laboratory certificate. Depth intervals may be copied incorrectly. The same material unit may be named slightly differently across exploratory holes or summary tables. AGS exports may not fully align with the final report. Revisions may be made in one part of the dataset without being reflected elsewhere.
+        </p>
+
+        <p>
+          None of these issues necessarily makes a project unusable. Many are small and can be resolved through review. The problem is that they create friction in the workflow and reduce confidence in the connections between records. A report can appear complete while still requiring significant technical reconciliation before the data can be used confidently for interpretation.
+        </p>
+
+        <h2 id="small-errors">Why small inconsistencies matter</h2>
+
+        <p>
+          In ground investigation, data inconsistencies are not always purely clerical. Some can affect how the ground is understood.
+        </p>
+
+        <p>
+          For example, if a laboratory result is linked to the wrong sample depth, it may be assigned to the wrong stratum. If the same geological unit is described using different names across a site, it may become harder to correlate confidently between exploratory holes. If groundwater observations are incomplete or separated from the main factual record, the interpretation of hydrogeological conditions may become less robust. If laboratory results are not clearly traceable back to the original field description, the relationship between observed material and tested material becomes harder to assess.
+        </p>
+
+        <div class="callout blue">
+          <span class="label">Technical consequence</span>
           <p>
-            This is the central argument: climate hazards become decision-relevant risks when they
-            interact with physical systems. Understanding that interaction requires more than modern
-            observations and future climate projections. It also requires longer environmental memory.
+            Strong data workflows do not replace professional judgement, but they make it easier to apply that judgement clearly and defendably.
           </p>
+        </div>
 
-          <div class="callout">
-            <strong>The useful shift</strong>
-            Move from “is this area exposed to a climate hazard?” to “what physical response should
-            we expect if that hazard intensifies?”
-          </div>
-        </section>
+        <p>
+          These are not necessarily dramatic errors, but they matter because ground models require simplification. A ground model takes variable and incomplete ground information and represents it in a form that can support engineering decisions. That process involves judgement about which units should be grouped, where boundaries are inferred, which test results are representative, and where uncertainty should remain visible.
+        </p>
 
-        <section id="who-this-is-for">
-          <span class="chapter-number">Audience</span>
-          <h2>Who This Briefing Is For</h2>
+        <p>
+          The quality of that judgement depends partly on the coherence of the factual evidence base. Strong data workflows do not replace professional judgement, but they make it easier to apply that judgement clearly and defendably.
+        </p>
 
+        <h2 id="ags">AGS, QA/QC and traceability</h2>
+
+        <p>
+          AGS is important because it provides a structured format for exchanging ground investigation data. It allows information to move beyond static documents and into a form that can be checked, transferred, interrogated and reused.
+        </p>
+
+        <p>
+          However, AGS should not be treated as a complete solution on its own. A dataset can be correctly formatted while still requiring technical review. Validation can identify whether data has been structured in the expected way, but it cannot fully determine whether the geological relationships represented by that data are reasonable.
+        </p>
+
+        <blockquote>
+          Validation can identify whether data has been structured in the expected way, but it cannot fully determine whether the geological relationships represented by that data are reasonable.
+        </blockquote>
+
+        <p>
+          This is where QA/QC and technical review remain essential. A good workflow should make it easier to identify inconsistencies before they become embedded in the issued project record. A laboratory result should be traceable to a sample, the sample should be traceable to an exploratory hole and depth, and that depth should be traceable to the logged material and wider factual record.
+        </p>
+
+        <p>
+          Traceability matters because interpretation often depends on being able to move backwards through the evidence. If a test result appears unusual, the reviewer should be able to identify where it came from, what material was logged, how the sample was described, what depth it was taken from and whether any uncertainty exists around that record.
+        </p>
+
+        <h2 id="automation">Why automation makes this more important</h2>
+
+        <p>
+          The increasing interest in AI and automation makes data workflows more important, not less.
+        </p>
+
+        <p>
+          Automated tools are only as useful as the datasets they interrogate. A tool that summarises laboratory results depends on those results being correctly linked to samples and strata. A tool that checks logging consistency depends on controlled terminology and structured records. A tool that supports factual reporting depends on the underlying data being traceable and internally consistent.
+        </p>
+
+        <p>
+          If automation is introduced into a fragmented workflow, it may help identify inconsistencies, but it may also reproduce them more efficiently if the underlying data structure is weak. This is why the discussion around AI in ground investigation should not begin with automation alone. It should begin with the quality of the factual workflow that automation would depend on.
+        </p>
+
+        <div class="callout green">
+          <span class="label">Digital principle</span>
           <p>
-            This briefing is written for professionals involved in early-stage site screening,
-            climate resilience, infrastructure planning, ground risk and environmental due diligence.
+            The organisations that gain most from digital tools are unlikely to be those that simply adopt them fastest. They are more likely to be those that have already invested in reliable data structures, clear review processes and consistent technical governance.
           </p>
+        </div>
 
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Audience</th>
-                  <th>Why it matters</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Consultants</td>
-                  <td>To make climate-risk recommendations more physically grounded and mechanism-led.</td>
-                </tr>
-                <tr>
-                  <td>Developers</td>
-                  <td>To identify water, ground, drainage and access constraints earlier in the project cycle.</td>
-                </tr>
-                <tr>
-                  <td>Asset owners</td>
-                  <td>To understand long-term exposure, maintenance burden and adaptation requirements.</td>
-                </tr>
-                <tr>
-                  <td>Planners</td>
-                  <td>To strengthen the evidence base for climate resilience, site allocation and spatial planning.</td>
-                </tr>
-                <tr>
-                  <td>Geoscientists and graduates</td>
-                  <td>To connect climate science, Quaternary history, geomorphology and practical ground-risk interpretation.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+        <h2 id="better-workflows">What better data workflows would look like</h2>
 
-        <section id="executive-summary">
-          <span class="chapter-number">Executive Summary</span>
-          <h2>Executive Summary</h2>
+        <p>
+          Improving data workflows does not necessarily mean collecting more data. In many cases, the priority is to make existing data more connected, traceable and reusable.
+        </p>
 
-          <p class="lead">
-            Climate resilience planning has a memory problem. Decisions about drought, flooding,
-            water resources, land use and infrastructure resilience are often made using recent
-            observations, current regulatory datasets and future climate projections.
-          </p>
+        <p>
+          Better workflows would place more emphasis on structured digital field capture, controlled terminology, consistent sample and test referencing, early validation, clear links between logs and laboratory results, defined QA/QC responsibilities, and visible audit trails. They would also preserve the value of ground investigation data beyond the issue of a factual report.
+        </p>
 
+        <p>
+          This is particularly important for ground modelling. A ground model benefits from data that can be interrogated, compared and traced. If exploratory hole records, laboratory results, groundwater observations and AGS data are connected clearly, the interpretive process becomes more efficient and more transparent.
+        </p>
+
+        <p>
+          The objective is not to make interpretation automatic. A ground model still requires geological understanding, engineering context and professional judgement. Better data workflows simply provide a stronger factual foundation for that judgement.
+        </p>
+
+        <h2>Conclusion</h2>
+
+        <p>
+          Better ground models start before the first interpreted section is drawn. They begin with the quality of the factual workflow: how data is captured, named, linked, checked, exported and preserved.
+        </p>
+
+        <p>
+          Ground investigation already produces large amounts of valuable information. The challenge is ensuring that this information remains connected and technically meaningful as it moves from site observation to factual reporting and, eventually, to interpretation.
+        </p>
+
+        <p>
+          As AI, automation and digital tools become more common in ground investigation, this will become increasingly important. New tools will only add value where the underlying data is reliable enough to support them.
+        </p>
+
+        <div class="closing-card">
           <p>
-            These are essential, but they do not always capture the longer environmental history
-            of a region. For physical climate risk, the instrumental record can be too short to
-            represent the full range of natural variability, recurrence, persistence and landscape
-            response.
+            The ground is complex enough.<br />
+            Our workflows should help us understand it more clearly.
           </p>
-
-          <p>
-            This matters because climate hazards are not only meteorological events. They interact
-            with catchments, soils, superficial deposits, groundwater, vegetation, slopes, drainage
-            systems and infrastructure.
-          </p>
-
-          <p>
-            Palaeoenvironmental and geomorphological records can help identify how landscapes have
-            responded to past droughts, wet phases, flooding, erosion, vegetation shifts,
-            hydrological stress and abrupt climatic transitions. Used carefully, this evidence can
-            complement climate projections and modern monitoring by extending the timescale over
-            which risk is understood.
-          </p>
-
-          <div class="callout">
-            <strong>Key message</strong>
-            The past is not a direct forecast, but it is a critical source of information about
-            variability, thresholds and landscape response.
-          </div>
-        </section>
-
-        <section id="why-this-matters">
-          <span class="chapter-number">Why This Matters</span>
-          <h2>Why This Is Relevant</h2>
-
-          <p>
-            Climate-risk work can become too abstract when it stops at hazard exposure. A site may
-            be exposed to hotter summers, wetter winters or more intense rainfall, but the practical
-            consequence depends on the ground and landscape those hazards act upon.
-          </p>
-
-          <p>
-            A clay-rich site may translate hotter, drier summers into shrink-swell movement. A
-            floodplain may translate repeated inundation into soft-ground constraints, shallow
-            groundwater, access disruption, scour or contaminant mobilisation. A relict periglacial
-            slope may translate wetter winters or drainage change into shallow instability.
-          </p>
-
-          <p>
-            The relevance is therefore practical. This briefing gives a framework for moving from
-            climate hazard to landscape response to planning, asset or construction consequence.
-          </p>
-        </section>
-
-        <section id="short-climate-memory">
-          <span class="chapter-number">Chapter 1</span>
-          <h2>The Problem with Short Climate Memory</h2>
-
-          <p>
-            Modern climate-risk assessment is often built around three main sources of evidence:
-            recent observations, regulatory datasets and future climate change projections. Each is
-            valuable. Recent observations show what has happened within living or institutional
-            memory. Regulatory datasets provide standardised information for decision-making.
-            Climate projections offer scenarios for future change.
-          </p>
-
-          <p>
-            However, these sources can still leave a gap. Many environmental systems operate over
-            timescales longer than the instrumental record. Inevitably, the recurrence and magnitude
-            of many environmental and climatic events are not fully captured by instrumental records.
-          </p>
-
-          <p>
-            A landscape may appear stable during the period for which modern observation exists,
-            while having a longer history of sensitivity to drought, water stress, flooding or abrupt
-            environmental change. Decisions based only on recent experience may underestimate the
-            range of conditions a system can experience.
-          </p>
-
-          <div class="callout">
-            <strong>Core question</strong>
-            How has this landscape responded to climatic stress before, and what does that imply for
-            future decisions?
-          </div>
-        </section>
-
-        <section id="framework">
-          <span class="chapter-number">Chapter 2</span>
-          <h2>The Practical Framework: Hazard, Landscape Response, Consequence</h2>
-
-          <p>
-            A climate-risk screen becomes more useful when it moves beyond hazard identification
-            and asks how the landscape will respond.
-          </p>
-
-          <h3>The three-step logic</h3>
-
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Step</th>
-                  <th>Question</th>
-                  <th>Example</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1. Climate hazard</td>
-                  <td>What climate pressure is relevant?</td>
-                  <td>Drought, wetter winters, intense rainfall, heat, flooding</td>
-                </tr>
-                <tr>
-                  <td>2. Landscape response</td>
-                  <td>How might the landscape or ground respond?</td>
-                  <td>Shrink-swell, erosion, softening, groundwater rise, slope movement</td>
-                </tr>
-                <tr>
-                  <td>3. Planning or construction consequence</td>
-                  <td>Why does this matter?</td>
-                  <td>Foundation movement, access disruption, drainage failure, settlement, scour</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
-            The logic is simple, but it changes the quality of early-stage risk screening. It shifts
-            the assessment from “is there a hazard?” to “what mechanism could turn this hazard into
-            a decision-relevant risk?”.
-          </p>
-
-          <div class="figure">
-            <div class="figure-placeholder">
-              Add pathway graphic here: climate hazard → landscape response → planning or construction consequence.
-            </div>
-            <p class="caption">
-              Suggested figure: example climate-ground pathways, such as drought to foundation risk
-              or floodplain inundation to development constraint.
-            </p>
-          </div>
-        </section>
-
-        <section id="environmental-records">
-          <span class="chapter-number">Chapter 3</span>
-          <h2>What Longer Environmental Memory Adds</h2>
-
-          <p>
-            Quaternary Science studies environmental change over the recent geological past,
-            including the timescales over which modern humans, landscapes and climate systems
-            evolved. Its value for climate-risk planning lies in its ability to extend environmental
-            memory.
-          </p>
-
-          <p>Palaeoenvironmental records can include:</p>
-
-          <ol>
-            <li>Lake and marine sediments</li>
-            <li>Peat bogs</li>
-            <li>Pollen microfossils</li>
-            <li>Charcoal and fire history evidence</li>
-            <li>Isotopic records including oxygen, deuterium and carbon</li>
-            <li>Cave deposits</li>
-            <li>River and slope deposits</li>
-            <li>Glacial and periglacial landforms</li>
-            <li>Sediments derived from volcanic eruptions</li>
-          </ol>
-
-          <p>
-            These records do not provide a one-to-one forecast of future conditions. Their value is
-            in revealing patterns, thresholds and sensitivities that may be difficult to identify
-            from instrumental records alone.
-          </p>
-
-          <p>
-            For climate resilience, the more useful question is not simply “what happened in the
-            past?”. It is “what does the past reveal about how this particular landscape responds
-            under stress?”.
-          </p>
-        </section>
-
-        <section id="planning-assets-infrastructure">
-          <span class="chapter-number">Chapter 4</span>
-          <h2>Why This Matters for Planning, Assets and Infrastructure</h2>
-
-          <p>
-            Planning decisions often treat climate hazards as external pressures: rainfall intensity,
-            drought, heat, sea-level rise or flood probability. In practice, the consequence of a
-            climate hazard depends heavily on the landscape it acts on.
-          </p>
-
-          <p>
-            The same rainfall event may produce different consequences depending on catchment shape,
-            soil permeability, urbanisation, drainage capacity, antecedent moisture and floodplain
-            storage. The same drought may have different implications depending on soil type, clay
-            mineralogy, vegetation, groundwater dependency and foundation sensitivity.
-          </p>
-
-          <p>
-            The same period of wetter winters may have different effects depending on slope angle,
-            superficial deposits, weathered rock, made ground and existing drainage pathways.
-          </p>
-
-          <div class="callout">
-            <strong>Better risk framing</strong>
-            The most useful climate-risk question is often not “is this area exposed?”, but “what
-            kind of physical response should we expect if this hazard intensifies?”
-          </div>
-        </section>
-
-        <section id="hazard-to-consequence">
-          <span class="chapter-number">Chapter 5</span>
-          <h2>From Climate Hazard to Ground and Planning Consequence</h2>
-
-          <p>
-            Climate hazards rarely act in isolation. They interact with ground conditions, land use
-            and infrastructure systems.
-          </p>
-
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Climate pressure</th>
-                  <th>Possible planning, land or asset implication</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Prolonged rainfall deficit</td>
-                  <td>Water-resource stress, vegetation stress, soil moisture deficit, land-use pressure</td>
-                </tr>
-                <tr>
-                  <td>Higher temperatures</td>
-                  <td>Increased evapotranspiration, heat stress, higher water demand, ecological pressure</td>
-                </tr>
-                <tr>
-                  <td>Soil moisture deficit</td>
-                  <td>Shrink-swell behaviour, ground movement, service and foundation sensitivity</td>
-                </tr>
-                <tr>
-                  <td>Wetter winters</td>
-                  <td>Higher groundwater, slope softening, reduced trafficability, earthworks constraints</td>
-                </tr>
-                <tr>
-                  <td>Intense rainfall</td>
-                  <td>Surface water flooding, erosion, drainage exceedance, sediment mobilisation</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
-            A drought can increase soil desiccation, weaken vegetation cover and harden ground
-            surfaces. Subsequent intense rainfall may then generate higher runoff, erosion or flash
-            flooding. In clay-rich areas, seasonal moisture change may contribute to ground movement.
-            On slopes, wetter winters may increase pore pressure and reduce shallow stability.
-          </p>
-
-          <p>
-            Planning therefore needs to ask not only whether a climate hazard is likely, but how the
-            ground and landscape may respond.
-          </p>
-        </section>
-
-        <section id="case-study-lens">
-          <span class="chapter-number">Chapter 6</span>
-          <h2>Climate-sensitive Landscapes Do Not All Evolve Equally</h2>
-
-          <p>
-            Different landscapes respond to climate pressures in different ways. Some systems may
-            become more unstable under warming or wetter conditions. Others may adjust, revegetate,
-            or partially stabilise over time. Some may alternate between stability and disruption
-            depending on thresholds, storm events, drought cycles or land-use change.
-          </p>
-
-          <p>
-            This matters for construction because ground risk is rarely static. Slope deposits,
-            floodplain alluvium, peat, clay-rich soils, made ground and weathered rock all have
-            histories. Their future behaviour depends on how climate pressures interact with those
-            histories.
-          </p>
-        </section>
-
-        <section id="periglacial-slopes">
-          <span class="chapter-number">Case Study 1</span>
-          <h2>Periglacial and Cold-region Slope Systems</h2>
-
-          <p class="lead">
-            Core issue: warming, thawing, intense rainfall and drainage change can destabilise
-            slopes with cold climate or relict periglacial histories.
-          </p>
-
-          <p>
-            Periglacial environments are shaped by cold-climate processes such as freeze-thaw,
-            ground ice, solifluction, frost heave and seasonal thawing. In active periglacial
-            terrain, warming can destabilise slopes by deepening the active layer, thawing ice-rich
-            ground, removing ice cement and increasing pore water pressures.
-          </p>
-
-          <p>
-            In formerly periglacial regions, including upland Britain, relict periglacial deposits
-            and landforms may still matter for ground models. Head deposits, solifluction sheets,
-            blocky slope deposits and weathered rock mantles can be variable, loose, poorly sorted
-            and sensitive to water movement.
-          </p>
-
-          <h3>Construction relevance</h3>
-
-          <ul>
-            <li>Variable slope deposits and uncertain ground models</li>
-            <li>Shallow instability in solifluction or head deposits</li>
-            <li>Rockfall or debris-flow hazard in steep terrain</li>
-            <li>Drainage sensitivity and erosion on access tracks</li>
-            <li>Uncertainty in founding conditions on relict slope deposits</li>
-            <li>Increased hazard where warming, intense rainfall or human disturbance interact</li>
-          </ul>
-
-          <div class="callout">
-            <strong>Screening question</strong>
-            Is this slope stable because it is inherently strong, or because current climate,
-            vegetation and drainage conditions are temporarily favourable?
-          </div>
-        </section>
-
-        <section id="floodplains">
-          <span class="chapter-number">Case Study 2</span>
-          <h2>Floodplains and Alluvial Landscapes</h2>
-
-          <p class="lead">
-            Core issue: floodplains are not just flood zones; they are active sedimentary and
-            groundwater systems.
-          </p>
-
-          <p>
-            Floodplains record previous phases of channel movement, inundation, overbank deposition,
-            wetland formation, erosion and groundwater fluctuation. Vegetation can stabilise banks
-            and surfaces in some settings, but increased flood magnitude, intense rainfall, sediment
-            supply, channel modification or development pressure can also increase erosion, scour,
-            deposition and drainage exceedance.
-          </p>
-
-          <p>
-            Floodplain stability is conditional. It depends on hydrology, sediment supply,
-            vegetation, flood frequency, channel geometry, groundwater, artificial drainage and land
-            use.
-          </p>
-
-          <h3>Construction relevance</h3>
-
-          <ul>
-            <li>Soft or compressible alluvium</li>
-            <li>Shallow groundwater</li>
-            <li>Organic soils or peat lenses</li>
-            <li>Buried channels and lateral variability</li>
-            <li>Flood inundation and access disruption</li>
-            <li>Erosion, scour and deposition</li>
-            <li>Contaminant mobilisation in urban or industrial floodplains</li>
-            <li>Drainage constraints where outfalls are affected by high water levels</li>
-          </ul>
-
-          <div class="callout">
-            <strong>Screening question</strong>
-            Is this floodplain being treated as a static area of mapped flood probability, or as an
-            active land system with sediment, groundwater and ground condition consequences?
-          </div>
-        </section>
-
-        <section id="clay-rich-soils">
-          <span class="chapter-number">Case Study 3</span>
-          <h2>Clay-rich Soils and Drought-sensitive Ground</h2>
-
-          <p class="lead">
-            Core issue: drought is often treated as a water-resource problem, but in clay-rich ground
-            it can become a ground-movement problem.
-          </p>
-
-          <p>
-            Clay-rich soils can shrink and swell as moisture content changes. Hotter, drier summers
-            may increase soil moisture deficits, while wetter winters may promote seasonal rewetting.
-            Vegetation, tree cover, impermeable surfaces, leaking services and drainage changes can
-            further influence the moisture regime.
-          </p>
-
-          <p>
-            For construction and asset management, this matters because ground movement can affect
-            foundations, roads, pavements, buried services, retaining structures and lightly loaded
-            buildings. The risk is not simply “drought” in a regional sense. It is drought acting on
-            a susceptible ground model.
-          </p>
-
-          <h3>Construction relevance</h3>
-
-          <ul>
-            <li>Seasonal foundation movement</li>
-            <li>Cracking or distortion in lightly loaded structures</li>
-            <li>Buried service movement or leakage</li>
-            <li>Pavement and road deformation</li>
-            <li>Vegetation-related moisture effects</li>
-            <li>Increased maintenance burden under hotter, drier summers</li>
-          </ul>
-
-          <div class="callout">
-            <strong>Screening question</strong>
-            Are drought and soil moisture being treated as climate variables only, or as drivers of
-            volume change, settlement and serviceability risk?
-          </div>
-        </section>
-
-        <section id="climate-sensitive-ground-models">
-          <span class="chapter-number">Chapter 7</span>
-          <h2>From Static Ground Models to Climate-sensitive Ground Models</h2>
-
-          <p>
-            Traditional ground models are central to geotechnical and geoenvironmental assessment.
-            They summarise expected ground conditions at a site, including geology, superficial
-            deposits, made ground, groundwater, geomorphology and geohazards.
-          </p>
-
-          <p>
-            However, climate resilience requires a further question: how might these ground
-            conditions respond under changing climatic pressures?
-          </p>
-
-          <p>
-            A climate-sensitive ground model does not replace conventional ground modelling. It
-            extends it. It asks how future rainfall, drought, heat, groundwater variability and
-            vegetation change could influence the behaviour of the ground over the design life or
-            planning horizon of an asset.
-          </p>
-
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Ground condition</th>
-                  <th>Conventional ground model question</th>
-                  <th>Climate-sensitive question</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Clay-rich soils</td>
-                  <td>Are they shrink-swell susceptible?</td>
-                  <td>Could hotter, drier summers increase seasonal movement?</td>
-                </tr>
-                <tr>
-                  <td>Relict periglacial deposits</td>
-                  <td>Are they variable or poorly sorted?</td>
-                  <td>Could rainfall, slope modification or drainage alteration reactivate movement?</td>
-                </tr>
-                <tr>
-                  <td>Peat and organic soils</td>
-                  <td>Are they compressible or degrading?</td>
-                  <td>Could drying, rewetting or drainage change alter volume, carbon loss or stability?</td>
-                </tr>
-                <tr>
-                  <td>Alluvium</td>
-                  <td>Is it soft, variable or compressible?</td>
-                  <td>Could flooding or groundwater change increase drainage, settlement or access risk?</td>
-                </tr>
-                <tr>
-                  <td>Made ground</td>
-                  <td>What is the thickness and composition?</td>
-                  <td>Could intense rainfall worsen infiltration, instability or contaminant mobilisation?</td>
-                </tr>
-                <tr>
-                  <td>Slopes</td>
-                  <td>Are they currently stable?</td>
-                  <td>Could wetter winters, drainage changes or vegetation loss increase shallow instability?</td>
-                </tr>
-                <tr>
-                  <td>Granular deposits</td>
-                  <td>Are they loose, running or erosion prone?</td>
-                  <td>Could extreme rainfall increase erosion, scour or groundwater movement?</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="callout">
-            <strong>Key shift</strong>
-            The key shift is from describing the ground as a static condition to understanding it as
-            a climate-sensitive system.
-          </div>
-        </section>
-
-        <section id="due-diligence">
-          <span class="chapter-number">Chapter 8</span>
-          <h2>How This Changes Early-stage Due Diligence</h2>
-
-          <p>
-            A typical early-stage environmental or ground-risk screen may identify flood zones,
-            geology, historical land use, made ground, mining risk, hydrogeology and environmental
-            receptors. These are essential. But climate-sensitive screening adds another layer: it
-            asks how those conditions could behave under future climate pressures.
-          </p>
-
-          <p>
-            This does not need to turn every desk study into a climate model. At early stage, the
-            value is in asking better scoping questions and identifying where further assessment may
-            be needed.
-          </p>
-
-          <h3>What changes in practice?</h3>
-
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Standard early-stage question</th>
-                  <th>Climate-sensitive question</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>What is the mapped flood risk?</td>
-                  <td>How could flood frequency, groundwater and alluvial ground conditions interact?</td>
-                </tr>
-                <tr>
-                  <td>What superficial deposits are present?</td>
-                  <td>Are they sensitive to wetting, drying, erosion, settlement or groundwater change?</td>
-                </tr>
-                <tr>
-                  <td>Is made ground present?</td>
-                  <td>Could intense rainfall increase infiltration, instability or contaminant mobilisation?</td>
-                </tr>
-                <tr>
-                  <td>Are slopes present?</td>
-                  <td>Could wetter winters or drainage alteration increase shallow instability?</td>
-                </tr>
-                <tr>
-                  <td>Are clay soils present?</td>
-                  <td>Could hotter, drier summers increase shrink-swell movement?</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
-            For developers and asset owners, this helps identify whether further work should include
-            drainage review, intrusive ground investigation, slope appraisal, flood-risk assessment,
-            foundation-depth review, groundwater monitoring, SuDS design, climate adaptation planning
-            or long-term maintenance allowances.
-          </p>
-
-          <p>
-            For consultants, it improves the quality of recommendations. Instead of saying only
-            “further assessment may be required,” the report can explain why a specific
-            climate-ground mechanism matters.
-          </p>
-        </section>
-
-        <section id="screening-questions">
-          <span class="chapter-number">Chapter 9</span>
-          <h2>Practical Questions for Climate-resilience Screening</h2>
-
-          <p>
-            A longer environmental memory does not need to make screening more complicated. It can
-            improve the quality of the questions asked at the start of a project.
-          </p>
-
-          <ol>
-            <li>Is the site, catchment or region already exposed to drought, flooding, erosion, groundwater stress or slope instability?</li>
-            <li>Does the wider landscape show evidence of past sensitivity to wet/dry shifts, flooding, vegetation change or erosion?</li>
-            <li>Are the soils or superficial deposits sensitive to moisture change?</li>
-            <li>Could drought, wetter winters or intense rainfall change ground behaviour?</li>
-            <li>Are current planning assumptions based mainly on recent observations?</li>
-            <li>Could climate hazards combine, for example drought followed by intense rainfall?</li>
-            <li>Are there land-use, ecological or infrastructure thresholds that may be crossed under future stress?</li>
-            <li>What further data would reduce uncertainty: monitoring, intrusive investigation, modelling, walkover survey or specialist assessment?</li>
-            <li>Has the ground model considered future climate pressures over the design life of the asset?</li>
-            <li>Are landscape history and geomorphology being used to inform climate-risk interpretation?</li>
-          </ol>
-
-          <p>
-            These questions do not replace formal assessments. They help frame them better.
-          </p>
-        </section>
-
-        <section id="evidence-base">
-          <span class="chapter-number">Chapter 10</span>
-          <h2>Not a Replacement for Models — A Deeper Evidence Base</h2>
-
-          <p>
-            Palaeoenvironmental evidence should not be oversold. It is not a replacement for climate
-            projections, hydrological modelling, engineering design, environmental regulation, site
-            investigation or local monitoring.
-          </p>
-
-          <p>Its role is complementary.</p>
-
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Evidence type</th>
-                  <th>Strength</th>
-                  <th>Limitation</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Instrumental climate records</td>
-                  <td>Measured, precise, recent</td>
-                  <td>Often short relative to environmental variability</td>
-                </tr>
-                <tr>
-                  <td>Climate projections</td>
-                  <td>Future-facing, scenario-based</td>
-                  <td>Uncertainty, resolution limits, model assumptions</td>
-                </tr>
-                <tr>
-                  <td>Palaeoenvironmental records</td>
-                  <td>Long-term variability, thresholds, system response</td>
-                  <td>Indirect, proxy-based, interpretive uncertainty</td>
-                </tr>
-                <tr>
-                  <td>Site-specific data</td>
-                  <td>Local and practical</td>
-                  <td>Often limited in time and spatial coverage</td>
-                </tr>
-                <tr>
-                  <td>Policy/regulatory datasets</td>
-                  <td>Standardised and accessible</td>
-                  <td>May simplify complex local conditions</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
-            The strongest climate-risk decisions are not based on one evidence type alone. They
-            combine modern observations, projections, local data, professional judgement and
-            long-term environmental context.
-          </p>
-        </section>
-
-        <section id="final-takeaway">
-          <span class="chapter-number">Final Takeaway</span>
-          <h2>Final Takeaway</h2>
-
-          <p class="lead">
-            Climate resilience is not only about modelling future hazards. It is also about
-            understanding how landscapes have behaved under past stress.
-          </p>
-
-          <p>
-            Quaternary Science provides a longer environmental memory. It helps planners,
-            consultants and asset owners avoid treating recent decades as the full range of possible
-            conditions. Used carefully, palaeoenvironmental evidence can strengthen climate-risk
-            screening by revealing variability, thresholds and landscape sensitivity.
-          </p>
-
-          <p>
-            The past is not a simple forecast. But it is evidence. For physical climate risk,
-            ignoring that evidence leaves modern planning with a memory problem.
-          </p>
-
-          <p>
-            The next step for climate-resilience practice is not to replace existing models or
-            assessments. It is to connect them better: future climate projections, modern monitoring,
-            ground models, geomorphology and long-term environmental evidence should be read
-            together.
-          </p>
-
-          <div class="callout">
-            <strong>Closing thought</strong>
-            That is how climate risk becomes more than a map of hazards. It becomes an
-            understanding of landscape response.
-          </div>
-        </section>
-
-        <section id="about-author">
-          <span class="chapter-number">About the Author</span>
-          <h2>About the Author</h2>
-
-          <p>
-            Elliot May is an engineering geologist with a Distinction in MSc Quaternary Science from
-            Royal Holloway, University of London and a First Class BSc in Physical Geography from the
-            University of Southampton. His academic work explored the role of machine learning in
-            advancing methodologies for geochemical classification within geological records. His
-            professional experience includes ground investigation, geological logging, ground
-            condition assessment and environmental reporting support.
-          </p>
-        </section>
-
-        <section id="references">
-          <span class="chapter-number">References</span>
-          <h2>References</h2>
-
-          <h3>Official climate and adaptation sources</h3>
-
-          <ul class="references">
-            <li>Climate Change Committee. (2025). <em>Progress in adapting to climate change: 2025 report to Parliament.</em> Climate Change Committee, London.</li>
-            <li>Climate Change Committee. (2026). <em>A Well-Adapted UK.</em> Climate Change Committee, London.</li>
-            <li>Environment Agency. (2024). <em>Flood risk assessments: climate change allowances.</em> UK Government guidance.</li>
-            <li>Met Office. (2018 onwards). <em>UK Climate Projections 2018 (UKCP18).</em> Met Office Hadley Centre, Exeter.</li>
-            <li>Met Office. (2024–2025). <em>UKCP Local 2.2 km and Regional 12 km climate projection guidance and updates.</em> Met Office Hadley Centre, Exeter.</li>
-            <li>Scottish Environment Protection Agency. (2024). <em>Flood maps and future flood maps.</em> SEPA, Stirling.</li>
-          </ul>
-
-          <h3>Geological and geohazard sources</h3>
-
-          <ul class="references">
-            <li>British Geological Survey. (2020). <em>GeoClimate: clay shrink-swell user guide.</em> British Geological Survey Open Report OR/19/064.</li>
-            <li>British Geological Survey. (2024). <em>Climate change and geohazards.</em> BGS research briefing, Keyworth.</li>
-            <li>British Geological Survey. (n.d.). <em>Swelling and shrinking soils.</em> BGS shallow geohazards guidance.</li>
-            <li>British Geological Survey. (n.d.). <em>Landslides and rainfall.</em> BGS landslide research guidance.</li>
-            <li>British Geological Survey. (n.d.). <em>National Landslide Database.</em> BGS landslide research and GeoIndex resource.</li>
-            <li>Harrison, A. M., Lee, K. A., & Jones, L. D. (2020). <em>GeoClimate: clay shrink-swell user guide.</em> British Geological Survey Open Report OR/19/064.</li>
-            <li>Pennington, C., Freeborough, K., Dashwood, C., Dijkstra, T., & Lawrie, K. (2015). The National Landslide Database of Great Britain: acquisition, communication and the role of social media. <em>Geomorphology, 249</em>, 44–51.</li>
-          </ul>
-
-          <h3>Palaeoenvironmental and long-term climate context</h3>
-
-          <ul class="references">
-            <li>Cook, B. I., Anchukaitis, K. J., Touchan, R., Meko, D. M., & Cook, E. R. (2016). Spatiotemporal drought variability in the Mediterranean over the last 900 years. <em>Journal of Geophysical Research: Atmospheres, 121</em>(5), 2063–2074.</li>
-            <li>McCarroll, D. (2010). Future climate change and the British Quaternary research community. <em>Quaternary Science Reviews, 29</em>(13–14), 1667–1673.</li>
-            <li>Vicente-Serrano, S. M., Domínguez-Castro, F., Murphy, C., Hannaford, J., Reig, F., Peña-Angulo, D., Tramblay, Y., Trigo, R. M., Mac Donald, N., Luna, M. Y., McCarthy, M., Van der Schrier, G., Turco, M., Camuffo, D., Noguera, I., García-Herrera, R., Becherini, F., Della Valle, A., Tomas-Burguera, M., & El Kenawy, A. (2021). Long-term variability and trends in meteorological droughts in Western Europe. <em>International Journal of Climatology, 41</em>(S1), E690–E717.</li>
-            <li>Hänsel, S., Ustrnul, Z., Łupikasza, E., & Skalak, P. (2022). Record summers in Europe: variations in drought and heavy precipitation during 1901–2018. <em>International Journal of Climatology, 42</em>(11), 5903–5923.</li>
-          </ul>
-
-          <h3>Slope, periglacial and cryosphere-related instability</h3>
-
-          <ul class="references">
-            <li>Stoffel, M., Corona, C., Ballesteros-Cánovas, J. A., & others. (2024). Rockfall from an increasingly unstable mountain slope driven by climate warming. <em>Nature Geoscience, 17</em>, 219–225.</li>
-            <li>Tetteh, F. K., Abbey, S. J., Booth, C. A., & Nukah, P. D. (2025). Current understanding and uncertainties associated with climate change and the impact on slope stability: A systematic literature review. <em>Natural Hazards Research, 5</em>(1), 100185.</li>
-            <li>Haeberli, W., Whiteman, C., & Shroder, J. F. (eds.). (2021). <em>Snow and Ice-Related Hazards, Risks, and Disasters.</em> Elsevier.</li>
-          </ul>
-
-          <h3>Floodplain, river-channel and geomorphological response</h3>
-
-          <ul class="references">
-            <li>Environment Agency. (2021). <em>Understanding how river channels change: literature review.</em> Environment Agency, Bristol.</li>
-            <li>O’Brien, G. R., & Wheaton, J. M. (2015). <em>River styles report and guidance on assessing river sensitivity to geomorphic change.</em> Utah State University / river geomorphology guidance.</li>
-            <li>Brierley, G. J., & Fryirs, K. A. (2013). <em>Geomorphology and River Management: Applications of the River Styles Framework.</em> Wiley-Blackwell.</li>
-            <li>Hudson, P. F., & Middelkoop, H. (2015). Flood management along the Lower Mississippi and Rhine Rivers: The role of floodplain geomorphology. <em>Geomorphology, 101</em>(1–2), 209–221.</li>
-          </ul>
-
-          <h3>Planning, due diligence and professional context</h3>
-
-          <ul class="references">
-            <li>Ministry of Housing, Communities and Local Government. (2024). <em>National Planning Policy Framework.</em> UK Government.</li>
-            <li>Planning Practice Guidance. (2024). <em>Flood risk and coastal change.</em> UK Government.</li>
-            <li>CIRIA. (2001). <em>C552: Contaminated land risk assessment — a guide to good practice.</em> Construction Industry Research and Information Association, London.</li>
-            <li>CIRIA. (2015). <em>C753: The SuDS Manual.</em> Construction Industry Research and Information Association, London.</li>
-            <li>Environment Agency. (2023). <em>Land contamination risk management (LCRM).</em> UK Government guidance.</li>
-          </ul>
-        </section>
+        </div>
       </article>
-    </main>
-  </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© Elliot May — Fossils &amp; Futures Insight Release Programme</span>
+    <span>Release 2: Data workflows and ground models</span>
+  </footer>
 
   <script>
-    const sidebar = document.getElementById("sidebar");
-    const menuButton = document.getElementById("menuButton");
-    const navLinks = Array.from(document.querySelectorAll("nav a"));
+    const progress = document.getElementById("progress");
 
-    const sections = navLinks
-      .map((link) => document.querySelector(link.getAttribute("href")))
-      .filter(Boolean);
+    function updateProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percentage = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progress.style.width = `${percentage}%`;
+    }
 
-    menuButton.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-    });
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        sidebar.classList.remove("open");
-      });
-    });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute("id");
-
-            navLinks.forEach((link) => {
-              link.classList.toggle(
-                "active",
-                link.getAttribute("href") === `#${id}`
-              );
-            });
-          }
-        });
-      },
-      {
-        rootMargin: "-35% 0px -55% 0px",
-        threshold: 0,
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
   </script>
 </body>
 </html>
