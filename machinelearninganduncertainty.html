@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Machine Learning Revealed About Tephra Classification</title>
+
+  <meta name="description"
+    content="A technical insight into how ensemble machine learning behaves on tephra geochemical data, focusing on class overlap, probabilistic structure, and compositional constraints." />
+
+  <link rel="stylesheet" href="aiandgeology.css" />
+</head>
+
+<body>
+
+<a class="home-link" href="index.html">← Back to Fossils &amp; Futures</a>
+<div class="progress" id="progress"></div>
+
+<header>
+<section class="hero">
+
+<div class="hero-card">
+
+<div class="eyebrow">
+Machine Learning in Geoscience
+</div>
+
+<h1>
+What Machine Learning Revealed About Tephra Classification
+</h1>
+
+<p class="subtitle">
+A technical insight into how ensemble classifiers behave on volcanic geochemical datasets and what this reveals about feature separability in Earth systems.
+</p>
+
+<div class="meta-row">
+
+<span class="pill">Technical insight</span>
+<span class="pill">Tephra geochemistry</span>
+<span class="pill">Ensemble learning</span>
+<span class="pill">Compositional data</span>
+<span class="pill">By Elliot May</span>
+
+</div>
+
+</div>
+
+<aside class="side-card">
+
+<div>
+
+<h2>Core insight</h2>
+
+<p class="thesis">
+
+Ensemble machine learning applied to tephra geochemistry shows that predictive uncertainty is primarily controlled by overlap in feature space between volcanic sources.
+
+Algorithm choice influences stability, but does not override the constraints imposed by the underlying geochemical distributions.
+
+</p>
+
+</div>
+
+<nav class="mini-nav">
+
+<a href="#background">Background</a>
+<a href="#pattern">Key patterns</a>
+<a href="#probabilities">Probability structure</a>
+<a href="#overlap">Feature overlap</a>
+<a href="#transforms">Compositional effects</a>
+
+</nav>
+
+</aside>
+
+</section>
+</header>
+
+<main>
+
+<section class="article-shell">
+
+<article>
+
+<h2 id="background">
+Background and study context
+</h2>
+
+
+<p>
+
+Tephra deposits preserve geochemical signatures used to infer volcanic source regions and correlate stratigraphic units.
+
+However, distinguishing between sources is often non-trivial because multiple volcanic systems can produce chemically similar deposits, particularly in major oxide and trace element space.
+
+This results in partially overlapping class distributions rather than clearly separable categories.
+
+</p>
+
+
+<p>
+
+Traditional correlation approaches rely on expert interpretation of geochemical similarity alongside stratigraphic context.
+
+While effective, these approaches become less stable when dealing with high-dimensional datasets or chemically similar volcanic systems.
+
+</p>
+
+
+<p>
+
+Statistical learning methods provide a framework for modelling class membership probabilistically based on observed geochemical feature distributions.
+
+In this setting, the goal is not deterministic classification, but estimation of separability within feature space.
+
+</p>
+
+
+
+<div class="callout">
+
+<span class="label">Scope</span>
+
+<p>
+
+This analysis focuses on how supervised learning models behave on compositional tephra data, particularly in regions of overlapping geochemical structure and limited class separability.
+
+</p>
+
+</div>
+
+
+
+<h2 id="pattern">
+Key predictive patterns
+</h2>
+
+
+<p>
+
+Across ensemble models, prediction confidence was strongly structured by feature space geometry.
+
+Well-separated volcanic sources produced stable, high-confidence predictions, while overlapping geochemical regions produced distributed probability outputs.
+
+</p>
+
+
+<p>
+
+These patterns were consistent across Random Forest, XGBoost, and Flexible Discriminant Analysis (FDA), indicating that uncertainty is primarily driven by data structure rather than model selection.
+
+</p>
+
+
+
+<h2 id="probabilities">
+Probability structure in ensemble models
+</h2>
+
+
+<p>
+
+Combining models through probability averaging reduced variance in predictions and reduced extreme confidence assignments.
+
+However, ensemble outputs still reflected multi-modal probability distributions in regions of strong class overlap.
+
+</p>
+
+
+<p>
+
+This indicates that ensemble methods stabilise predictions but do not remove ambiguity inherent in the feature space.
+
+</p>
+
+
+
+<h2 id="overlap">
+Geochemical overlap as the primary constraint
+</h2>
+
+
+<p>
+
+Misclassification patterns were consistently associated with overlap in geochemical signatures between volcanic sources.
+
+</p>
+
+
+<p>
+
+This overlap arises due to:
+
+</p>
+
+
+<div class="technical-list">
+
+<div><strong>Similar magma chemistry</strong>Different volcanic systems producing comparable oxide signatures.</div>
+
+<div><strong>Post-depositional alteration</strong>Modification of original geochemical signals after deposition.</div>
+
+<div><strong>Limited separability</strong>Intrinsic similarity between some volcanic sources in measured feature space.</div>
+
+</div>
+
+
+<p>
+
+These constraints define an upper limit on classification performance independent of model complexity.
+
+</p>
+
+
+
+<h2 id="transforms">
+Effect of compositional data treatment
+</h2>
+
+
+<p>
+
+Centred log-ratio (CLR) transformation was used to account for the compositional nature of geochemical data.
+
+</p>
+
+
+<p>
+
+CLR improved representation of variance structure in some cases, particularly where closure effects distorted feature relationships.
+
+However, its impact was variable across classes, indicating that transformation cannot resolve fundamental overlap between similar geochemical populations.
+
+</p>
+
+
+
+<div class="closing-card">
+
+<p>
+
+Overall, results indicate that tephra classification performance is primarily limited by feature space structure rather than model selection.
+
+<br><br>
+
+Machine learning provides a quantitative framework for identifying where geochemical similarity constrains predictive separability.
+
+</p>
+
+</div>
+
+
+</article>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<span>© Elliot May — Technical geoscience machine learning insight</span>
+<span>Fossils & Futures | GitHub portfolio</span>
+
+</footer>
+
+
+<script>
+
+const progress=document.getElementById("progress");
+
+function updateProgress(){
+
+const scrollTop=window.scrollY||document.documentElement.scrollTop;
+
+const docHeight=document.documentElement.scrollHeight-window.innerHeight;
+
+const percentage=docHeight>0?(scrollTop/docHeight)*100:0;
+
+progress.style.width=`${percentage}%`;
+
+}
+
+window.addEventListener("scroll",updateProgress,{passive:true});
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
