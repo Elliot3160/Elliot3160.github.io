@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Why Better Ground Models Start With Better Data Workflows</title>
+  <meta name="description" content="A technical insight on why reliable ground models depend on structured, traceable and well-governed ground investigation data workflows." />
+
+  <link rel="stylesheet" href="groundmodels.css" />
+</head>
+
+<body>
+  <a class="home-link" href="index.html">← Back to Fossils &amp; Futures</a>
+  <div class="progress" id="progress"></div>
+
+  <header>
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Fossils &amp; Futures — Release 2</div>
+        <h1>Why Better Ground Models Start With Better Data Workflows</h1>
+        <p class="subtitle">
+          Ground models are often treated as interpretive outputs, but their reliability depends on decisions made much earlier — in how factual data is captured, structured, checked and connected.
+        </p>
+        <div class="meta-row" aria-label="Article metadata">
+          <span class="pill">Technical insight</span>
+          <span class="pill">Ground models</span>
+          <span class="pill">AGS, QA/QC &amp; data workflows</span>
+          <span class="pill">By Elliot May</span>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <div>
+          <h2>The central argument</h2>
+          <p class="thesis">
+            <strong>Better interpretation starts before interpretation.</strong> A ground model is only as reliable as the factual evidence used to construct it. If logs, samples, laboratory schedules, AGS files and reports are fragmented, then geological judgement has a weaker foundation.
+          </p>
+        </div>
+
+        <nav class="mini-nav" aria-label="Article sections">
+          <a href="#ground-model">The ground model begins early</a>
+          <a href="#fragmentation">Where fragmentation enters</a>
+          <a href="#small-errors">Why small issues matter</a>
+          <a href="#ags">AGS, QA/QC and traceability</a>
+          <a href="#automation">Why automation raises the stakes</a>
+          <a href="#better-workflows">What better workflows look like</a>
+        </nav>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <section class="article-shell">
+      <article>
+        <p class="lead">
+          A ground model is often thought of as an interpretive output. It is the stage where factual ground investigation data is brought together, geological units are correlated, uncertainties are considered and the behaviour of the ground is assessed in relation to a proposed development or engineering problem.
+        </p>
+
+        <p>
+          However, the reliability of a ground model does not begin at the interpretation stage. It begins much earlier, with the way ground investigation data is captured, transferred, validated, structured and preserved.
+        </p>
+
+        <p>
+          Borehole logs, trial pit records, in-situ testing, sample references, laboratory schedules, groundwater observations, monitoring data, photographs, AGS files, drawings and factual report appendices are not isolated administrative outputs. They are connected pieces of technical evidence.
+        </p>
+
+        <div class="callout">
+          <span class="label">Core principle</span>
+          <p>
+            Better ground models do not simply come from collecting more data. They come from building workflows that allow factual data to remain connected, traceable and technically meaningful.
+          </p>
+        </div>
+
+        <h2 id="ground-model">The ground model begins before interpretation</h2>
+
+        <p>
+          It is tempting to separate ground investigation into two distinct stages: factual data collection and later interpretation. In practice, the boundary is not always so clean. The quality of the interpretation depends heavily on the structure and reliability of the factual record.
+        </p>
+
+        <p>
+          A ground model may draw on exploratory hole logs, laboratory test results, groundwater observations, geological mapping, historical records, site photographs, topographic data and previous investigation information. Each dataset contributes something different. Each also carries uncertainty.
+        </p>
+
+        <p>
+          If those datasets are difficult to connect, inconsistently named, poorly referenced or weakly validated, the interpreter must spend more time reconciling information and less time thinking critically about the ground.
+        </p>
+
+        <blockquote>
+          The value of a ground investigation is not only in the data collected, but in how reliably each part of the dataset connects to the rest.
+        </blockquote>
+
+        <p>
+          This is why data workflows matter. They are not just a digital or administrative concern. They shape the quality of the technical evidence available for interpretation.
+        </p>
+
+        <h2 id="fragmentation">Ground investigation is data-rich, but often workflow-fragmented</h2>
+
+        <p>
+          Ground investigation does not lack data. Even a relatively small project can produce a large number of records: exploratory hole logs, sample registers, laboratory schedules, geotechnical test results, contamination testing, groundwater monitoring, location plans, sections, photographs, AGS files and report appendices.
+        </p>
+
+        <p>
+          The problem is what happens as that data moves through the project workflow.
+        </p>
+
+        <p>
+          A field description becomes a log. A log informs a laboratory schedule. A sample reference is linked to a depth interval. Laboratory results are returned separately. AGS files are exported and validated. Drawings are produced. Appendices are assembled. A factual report is issued. Later, the same information may be used to develop a ground model and derive design assumptions.
+        </p>
+
+        <p>
+          At every stage, there is potential for fragmentation.
+        </p>
+
+        <div class="technical-list" aria-label="Common fragmentation points">
+          <div><strong>Sample referencing</strong>Sample IDs, depths or exploratory hole references may become inconsistent between logs, schedules, laboratory certificates and AGS files.</div>
+          <div><strong>Stratum naming</strong>The same unit may be described or labelled differently across exploratory holes, drawings, summaries and later interpretation.</div>
+          <div><strong>Manual transfer</strong>Data may be copied between field records, spreadsheets, logging software, report tables and appendices.</div>
+          <div><strong>Late-stage checking</strong>QA/QC may occur near the end of reporting, when inconsistencies are harder to trace back through the workflow.</div>
+          <div><strong>Version control</strong>Updates to logs, schedules, laboratory results or AGS exports may not always be obvious from the final issued output.</div>
+        </div>
+
+        <p>
+          A report can look complete while the underlying dataset still contains small inconsistencies. Those inconsistencies may not always be critical, but they create friction, reduce confidence and make later interpretation more difficult.
+        </p>
+
+        <h2 id="small-errors">Why small data issues can affect geological interpretation</h2>
+
+        <p>
+          In ground investigation, a data issue is not always just a clerical issue. Sometimes it affects how the ground is understood.
+        </p>
+
+        <p>
+          A mismatched sample reference may affect which stratum a laboratory result is assigned to. A copied depth error may shift a test result across a material boundary. An inconsistent stratum name may influence how units are grouped. A missing groundwater observation may alter the understanding of site conditions. A laboratory result that is not clearly linked back to the original field description may be harder to interpret confidently.
+        </p>
+
+        <div class="callout blue">
+          <span class="label">Technical consequence</span>
+          <p>
+            Data quality is not separate from geological judgement. It is one of the conditions that makes geological judgement defensible.
+          </p>
+        </div>
+
+        <p>
+          Ground models require simplification. They take complex, variable ground conditions and represent them in a form that can support engineering decisions. That process depends on judgement: which units should be grouped, where boundaries are inferred, which test results are representative, and where uncertainty should be carried forward.
+        </p>
+
+        <p>
+          If the factual dataset is fragmented, the judgement becomes harder to defend. Not because the geologist or engineer lacks competence, but because the evidence base is less coherent than it should be.
+        </p>
+
+        <p>
+          This matters because ground models may inform foundation design, retaining wall design, slope stability assessment, earthworks strategy, contamination risk assessment, groundwater control, material reuse and construction methodology. Weaknesses in the factual workflow can therefore propagate downstream into design and risk decisions.
+        </p>
+
+        <h2 id="ags">AGS, QA/QC and traceability</h2>
+
+        <p>
+          AGS is essential because it provides a structured format for exchanging ground investigation data. It helps move information away from static documents and towards data that can be checked, transferred, interrogated and reused.
+        </p>
+
+        <p>
+          However, AGS is not magic. A structured data format does not automatically guarantee a reliable dataset. A file can be correctly formatted while still containing information that requires technical review.
+        </p>
+
+        <blockquote>
+          Validation can confirm that data is formatted correctly. It cannot, by itself, confirm that the ground has been understood correctly.
+        </blockquote>
+
+        <p>
+          This is why AGS, QA/QC and technical review need to work together. A good data workflow should make inconsistencies easier to identify before they become embedded in the issued project record.
+        </p>
+
+        <p>
+          Traceability is central to this. A laboratory result should be traceable to a sample, the sample should be traceable to an exploratory hole and depth, the depth should be traceable to the logged material, and the logged material should be traceable to the factual record used in interpretation.
+        </p>
+
+        <p>
+          The aim is not to remove professional judgement. The aim is to make sure that judgement is being applied to a dataset that is coherent, structured and transparent.
+        </p>
+
+        <h2 id="automation">Why automation raises the stakes</h2>
+
+        <p>
+          The growing interest in AI and automation makes data workflows even more important.
+        </p>
+
+        <p>
+          AI tools are only as useful as the data they are allowed to interrogate. If the underlying dataset is fragmented, inconsistent or poorly linked, automation may not solve the problem. It may simply reproduce confusion more efficiently.
+        </p>
+
+        <p>
+          A tool that summarises laboratory results is useful only if those results are correctly linked to samples and strata. A tool that checks logging consistency is useful only if logging terms and data structures are controlled. A tool that supports factual reporting is useful only if the underlying records are traceable.
+        </p>
+
+        <div class="callout green">
+          <span class="label">Digital principle</span>
+          <p>
+            AI does not remove the need for data governance. It increases the need for it.
+          </p>
+        </div>
+
+        <p>
+          This is the natural sequel to the debate around AI in ground investigation. Before the industry asks how much can be automated, it needs to ask whether the factual data workflow is strong enough for automation to support it safely.
+        </p>
+
+        <h2 id="better-workflows">What better data workflows look like</h2>
+
+        <p>
+          Better ground models require better-connected factual data. This does not necessarily mean collecting more information. It means improving how information is captured, checked and linked.
+        </p>
+
+        <p>
+          Better workflows would prioritise structured digital field capture, controlled terminology, consistent sample and test referencing, early AGS validation, clear links between logs and laboratory results, defined QA/QC responsibilities, audit trails and version control.
+        </p>
+
+        <div class="technical-list" aria-label="Better data workflow principles">
+          <div><strong>Structured capture</strong>Field records should be captured in a way that supports later validation, export and reuse.</div>
+          <div><strong>Controlled terminology</strong>Logging terminology and stratum naming should be consistent enough to support comparison and interpretation.</div>
+          <div><strong>Reliable linking</strong>Samples, tests, depths, exploratory holes and laboratory results should remain connected throughout the workflow.</div>
+          <div><strong>Early validation</strong>Data checks should be built into the process rather than left until report issue.</div>
+          <div><strong>Audit trails</strong>Changes should be traceable, with the original record and later revisions clearly distinguishable.</div>
+          <div><strong>Reusable datasets</strong>Ground investigation data should retain value after the factual report is issued.</div>
+        </div>
+
+        <p>
+          These improvements do not make interpretation automatic. They make interpretation better supported.
+        </p>
+
+        <p>
+          A ground model still requires geological understanding, engineering context and judgement. But better data workflows allow that judgement to be applied more efficiently and more defensibly.
+        </p>
+
+        <h2>Conclusion</h2>
+
+        <p>
+          Better ground models start before the first interpreted section is drawn. They start with the quality of the factual workflow: how data is captured, named, linked, checked, exported and preserved.
+        </p>
+
+        <p>
+          Ground investigation does not simply need more data. It needs better-connected data.
+        </p>
+
+        <p>
+          As AI, automation and digital tools become more common in ground investigation, this will only become more important. The organisations that gain the most from new technology will not simply be those that adopt it fastest. They will be those with the strongest data foundations.
+        </p>
+
+        <div class="closing-card">
+          <p>
+            The ground may be complex.<br />
+            Our data workflows should not make it harder to understand.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>© Elliot May — Fossils &amp; Futures Insight Release Programme</span>
+    <span>Release 2: Data workflows and ground models</span>
+  </footer>
+
+  <script>
+    const progress = document.getElementById("progress");
+
+    function updateProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percentage = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progress.style.width = `${percentage}%`;
+    }
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+  </script>
+</body>
+</html>

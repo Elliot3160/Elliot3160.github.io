@@ -1,12 +1,17 @@
-/* Import font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+/* Import fonts */
+@import url('https://googleapis.com');
 
 :root {
-  --main-bg: #f4f7f9;
-  --dark-bg: #0a0a0a;
-  --accent: #0077ff;
-  --text: #1a1a1a;
-  --radius: 14px;
+  --main-bg: #f5f2eb;        /* Rich, expensive cream/parchment background */
+  --dark-bg: #1c2321;        /* Deep organic obsidian/slate-green ink */
+  --accent: #8b5e34;         /* Rich terracotta / geological earth-toned bronze */
+  --accent-soft: #efe7da;    /* Soft warm highlight tint */
+  --card-bg: #faf8f5;        /* Ultra-clean warm paper white */
+  --text: #2b302e;           /* Deep readable charcoal ink */
+  --muted: #5e6662;          /* Muted volcanic gray for secondary details */
+  --border: #dfdacb;         /* Soft sand-colored micro-border line */
+  --shadow: 0 4px 20px -4px rgba(43, 48, 46, 0.06); /* Invisible organic elevation */
+  --radius: 12px;            /* Classic crisp structural geometry */
 }
 
 * {
@@ -15,180 +20,260 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--main-bg);
   color: var(--text);
-  line-height: 1.7;
+  line-height: 1.75; /* Boosted slightly for easier reading on long articles */
 }
 
-/* ========== HEADER (same as Style.css for brand consistency) ========== */
+/* ========== HEADER (Shared brand consistency) ========== */
 
 header {
   background-color: var(--dark-bg);
-  color: white;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(223, 218, 203, 0.1);
 }
 
 nav {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-nav a {
-  color: white;
+nav div strong {
+  font-family: 'Playfair Display', serif;
+  color: #faf8f5;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+nav div a {
+  color: #a0a7a4;
   text-decoration: none;
-  margin-left: 1.5rem;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  margin-left: 1.75rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
 
-nav a:hover {
-  color: var(--accent);
+nav div a:hover {
+  color: #faf8f5;
 }
 
-/* ========== HERO BANNER (same modern gradient) ========== */
+/* ========== HERO BANNER ========== */
 
 .hero {
   text-align: center;
-  padding: 5rem 2rem;
-  background: linear-gradient(to right, #0077ff, #00c8ff);
-  color: white;
+  padding: 7rem 2rem 5.5rem;
+  background-color: #faf8f5;
+  border-bottom: 1px solid var(--border);
+  background-image: radial-gradient(circle at 10% 10%, rgba(139, 94, 52, 0.03), transparent 45rem);
 }
 
 .hero h1 {
-  font-size: 3.2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
   font-weight: 800;
-  margin-bottom: 1rem;
+  color: var(--dark-bg);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  margin-bottom: 1.25rem;
 }
 
 .hero p {
-  font-size: 1.25rem;
-  max-width: 700px;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  max-width: 720px;
   margin: 0 auto;
-  opacity: 0.95;
+  color: var(--muted);
+  font-weight: 400;
+  line-height: 1.65;
 }
 
-/* ========== MAIN CONTENT (clean academic layout) ========== */
+/* ========== MAIN CONTENT (Clean academic layout) ========== */
 
 main {
-  max-width: 850px;             /* narrower for readability */
-  margin: 3rem auto 4rem auto;  /* center the column */
-  padding: 0 2rem;              /* mobile padding */
+  max-width: 800px;             /* Perfectly scaled for optimal typographic line-length */
+  margin: 4rem auto 6rem auto;  
+  padding: 0 2rem;              
 }
 
 main section {
-  margin-bottom: 3rem;
+  background: var(--card-bg);   /* Frames blog sections into elegant paper sheets */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 3.5rem 4rem;
+  margin-bottom: 3.5rem;
 }
 
 main h2 {
-  font-size: 2rem;
-  margin-bottom: 0.8rem;
-  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.15rem;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
   color: var(--dark-bg);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 main p {
-  font-size: 1.05rem;
-  margin-bottom: 1.2rem;
-  color: #333;
+  font-size: 1.08rem;
+  margin-bottom: 1.5rem;
+  color: #38423f;
+  font-weight: 400;
 }
 
 main ul {
-  margin-left: 1.25rem;
-  margin-bottom: 1.2rem;
+  margin-left: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #38423f;
 }
 
 main li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.08rem;
 }
 
-/* Quote/italic line styling */
+/* Professional Blockquote/Italic intercept handling */
 main p[style*="italic"] {
-  font-size: 1.15rem !important;
-  opacity: 0.9;
-  max-width: 650px;
-  margin-left: auto;
-  margin-right: auto;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem !important;
+  color: var(--dark-bg);
+  line-height: 1.6;
+  max-width: 100%;
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  background-color: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* ========== MEDIA & IMAGES ========== */
+
+main figure {
+  margin: 2.5rem 0;
+  background: var(--main-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+main img {
+  max-width: 100%;      
+  height: auto;
+  display: block;
+  margin: 0 auto;       
+  border-radius: calc(var(--radius) - 4px);   
+}
+
+.caption {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0.75rem;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+/* ========== DYNAMIC PAYPAL BUTTON ELEMENT ========== */
+
+.donate-box {
+  text-align: center; 
+  margin: 3.5rem 0 1.5rem;
+  padding: 2rem;
+  background-color: var(--accent-soft);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.donate-button {
+  display: inline-block; 
+  padding: 0.85rem 2.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111;
+  background-color: #ffc439; /* Retains verified high-trust PayPal Gold */
+  border-radius: 50px;
+  text-decoration: none; 
+  box-shadow: 0 4px 12px rgba(219, 155, 14, 0.15);
+  transition: all 0.2s ease;
+}
+
+.donate-button:hover {
+  background-color: #ffb020;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(219, 155, 14, 0.25);
 }
 
 /* ========== FOOTER ========== */
 
 footer {
-  background-color: #ececec;
+  background-color: var(--dark-bg);
+  color: #798581;
   text-align: center;
-  padding: 2rem;
+  padding: 4rem 2rem;
   font-size: 0.9rem;
-  color: #555;
+  border-top: 1px solid rgba(223, 218, 203, 0.05);
 }
 
 footer a {
-  color: var(--accent);
+  color: #faf8f5;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(250, 248, 245, 0.2);
+  transition: all 0.2s ease;
 }
 
 footer a:hover {
-  text-decoration: underline;
+  color: var(--accent);
+  border-color: var(--accent);
+  text-decoration: none;
 }
 
 /* ========== RESPONSIVE DESIGN ========== */
 
 @media (max-width: 768px) {
+  header {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 5rem 1.25rem 4rem;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
   main {
     margin: 2rem auto;
     padding: 0 1.25rem;
   }
 
-  .hero h1 {
-    font-size: 2.4rem;
+  main section {
+    padding: 2.5rem 1.75rem;
+    margin-bottom: 2rem;
   }
-}
+  
+  main p[style*="italic"] {
+    padding: 1.25rem 1.5rem;
+    font-size: 1.1rem !important;
+  }
 
-/* Blog / article media */
-main figure {
-  margin: 2rem 0;
-}
-
-main img {
-  max-width: 100%;      /* never wider than the text column */
-  height: auto;
-  display: block;
-  margin: 0 auto;       /* centre inside the column */
-  border-radius: 8px;   /* optional: soften corners */
-}
-
-.caption {
-  font-size: 0.9rem;
-  color: #666;
-  text-align: center;
-  margin-top: 0.5rem;
-  line-height: 1.4;
-}
-
-.donate-box {
-    text-align: center; /* Centers the button */
-    margin: 2rem 0;
-}
-
-.donate-button {
-    display: inline-block; /* Required to make the background + padding work */
-    padding: 0.9rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #111;
-    background-color: #FFC439; /* PayPal Gold */
-    border-radius: 50px;
-    text-decoration: none; /* Removes underline from link */
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.donate-button:hover {
-    background-color: #FFB020;
-    transform: translateY(-2px);
+  .donate-box {
+    padding: 1.5rem 1rem;
+  }
 }
