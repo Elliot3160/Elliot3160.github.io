@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Can Machine Learning Help Us Unlock Earth's Geological Past? | Fossils & Futures</title>
+
+  <meta name="description" content="Discover how researchers are using machine learning and volcanic ash chemistry to identify ancient eruptions and reconstruct Earth's geological history.">
+
+  <meta name="author" content="Elliot May">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://elliot3160.github.io/article-machine-learning.html">
+
+  <meta property="og:title" content="Can Machine Learning Help Us Unlock Earth's Geological Past?">
+  <meta property="og:description" content="How machine learning is helping scientists identify ancient volcanic eruptions through the chemical fingerprints preserved in volcanic ash.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://elliot3160.github.io/article-machine-learning.html">
+  <meta property="og:site_name" content="Fossils & Futures">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./writing.css">
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div><strong>Fossils & Futures</strong></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="writing.html">Scientific Writing</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero article-hero">
+  <span class="section-label">EARTH SCIENCE · MACHINE LEARNING</span>
+
+  <h1>Can Machine Learning Help Us Unlock Earth's Geological Past?</h1>
+
+  <p>
+    How artificial intelligence is helping scientists interpret volcanic
+    ash deposits, identify ancient eruptions and reconstruct Earth's
+    geological history.
+  </p>
+
+  <div class="article-byline">
+    <span>By Elliot May</span>
+    <span>10 November 2026</span>
+    <span>Approximately 7 minute read</span>
+  </div>
+</section>
+
+<main class="article-main">
+
+  <section class="article-body">
+
+    <p class="article-lead">
+      Imagine discovering a microscopic fragment of volcanic glass
+      buried within a sediment core recovered from the ocean floor.
+      It may be only a few hundred micrometres across, yet its chemical
+      composition could hold clues to an eruption that occurred hundreds
+      of thousands of years ago.
+    </p>
+
+    <p>
+      The challenge is working out where it came from. Which volcano
+      produced it? When did the eruption occur? And can it be matched
+      to deposits found elsewhere?
+    </p>
+
+    <p>
+      These are questions that scientists have been investigating for
+      decades. Now, machine learning is providing new ways to approach
+      them, helping researchers recognise complex chemical patterns
+      and investigate geological records that might otherwise remain
+      difficult to interpret.
+    </p>
+
+    <h2>A geological fingerprint hidden in volcanic ash</h2>
+
+    <p>
+      Explosive volcanic eruptions can eject enormous quantities of
+      fragmented material into the atmosphere. This material, known
+      as <strong>tephra</strong>, can travel considerable distances
+      before settling across landscapes, lakes and oceans.
+    </p>
+
+    <p>
+      Over time, these deposits become preserved within sedimentary
+      sequences. Individual layers can provide valuable chronological
+      markers, allowing scientists to compare records from different
+      locations and establish the relative timing of environmental
+      events.
+    </p>
+
+    <p>
+      This is the basis of <strong>tephrochronology</strong>: the use
+      of volcanic ash layers to investigate and correlate geological,
+      archaeological and environmental records.
+    </p>
+
+    <p>
+      However, identifying an ash deposit is not simply a matter of
+      recognising its colour or appearance. Two deposits may look
+      almost identical while originating from entirely different
+      volcanoes.
+    </p>
+
+    <p>
+      Instead, scientists often examine the chemical composition of
+      volcanic glass. The glass preserves information about the magma
+      from which it formed, including the relative abundance of
+      different chemical elements.
+    </p>
+
+    <blockquote>
+      A volcanic ash deposit can carry a chemical fingerprint that
+      helps distinguish it from deposits produced by other eruptions.
+    </blockquote>
+
+    <p>
+      Major elements such as silicon, aluminium and iron provide
+      important information about magma composition. Trace elements,
+      present in much smaller concentrations, can provide additional
+      distinctions between volcanic sources that might otherwise
+      appear chemically similar.
+    </p>
+
+    <p>
+      The difficulty is that these chemical fingerprints are
+      multidimensional. Comparing just two elements at a time can
+      overlook important differences hidden elsewhere in the dataset.
+      As the number of measurements increases, interpreting the
+      relationships between samples becomes increasingly challenging.
+    </p>
+
+    <h2>Teaching computers to recognise volcanic sources</h2>
+
+    <p>
+      This is where machine learning becomes useful.
+    </p>
+
+    <p>
+      Rather than relying entirely on manually comparing individual
+      chemical measurements, supervised machine learning algorithms
+      can be trained using examples of volcanic ash whose origins
+      are already known.
+    </p>
+
+    <p>
+      Each sample is described by a collection of geochemical
+      measurements. These measurements form the input data, while
+      the known volcanic source provides the answer the model is
+      being trained to recognise.
+    </p>
+
+    <p>
+      During training, the algorithm learns patterns that distinguish
+      one volcanic source from another. Once trained, it can examine
+      an unfamiliar sample and estimate which known volcanic source
+      is most consistent with its chemical composition.
+    </p>
+
+    <p>
+      Importantly, this is not one single approach. Different
+      algorithms identify patterns in different ways. Decision-tree
+      methods, random forests, neural networks and other classifiers
+      can each capture different relationships within complex data.
+    </p>
+
+    <p>
+      Combining several algorithms into an <strong>ensemble</strong>
+      allows their predictions to contribute to a shared result.
+      Rather than relying on the judgement of one model, the ensemble
+      can draw on several different ways of interpreting the same
+      geochemical evidence.
+    </p>
+
+    <h2>From thousands of measurements to ancient eruptions</h2>
+
+    <p>
+      Research in Alaska has provided an important demonstration
+      of how these techniques can be applied to real geological
+      problems.
+    </p>
+
+    <p>
+      In a 2019 study published in the
+      <em>Journal of Quaternary Science</em>, Bolton and colleagues
+      evaluated 11 supervised machine learning algorithms using
+      nearly 2,000 electron microprobe measurements of volcanic
+      glass. Their dataset represented 10 volcanic sources across
+      Alaska.
+    </p>
+
+    <p>
+      Artificial neural networks and random forests performed
+      particularly well, achieving accuracy and kappa scores
+      greater than 0.96 in their evaluation. The researchers also
+      found that combining these approaches into an ensemble
+      improved performance.
+    </p>
+
+    <p>
+      When applied to volcanic ash deposits from Eklutna Lake
+      in south-central Alaska, the combined model produced
+      predictions consistent with traditional methods, helping
+      narrow down the likely volcanic origins of the deposits.
+    </p>
+
+    <p>
+      The research demonstrated that machine learning could
+      accelerate the process of comparing volcanic glass
+      compositions, while supporting rather than replacing
+      established geological interpretation.
+    </p>
+
+    <p>
+      Building on this work, Lubbers and colleagues published
+      a study in 2023 in <em>Geochemistry, Geophysics, Geosystems</em>.
+      Their approach used an ensemble of six different machine
+      learning algorithms to investigate the origins of large
+      tephra-producing eruptions across the Alaska-Aleutian arc.
+    </p>
+
+    <p>
+      One important development was the inclusion of trace-element
+      information and elemental ratios. The researchers showed
+      that these additional chemical features could help distinguish
+      volcanic sources that appeared more similar when only major
+      element concentrations were considered.
+    </p>
+
+    <p>
+      This matters because different volcanoes can produce magmas
+      with overlapping major-element compositions. Without the
+      additional information, a model might confidently assign
+      an ash deposit to the wrong source.
+    </p>
+
+    <p>
+      By incorporating trace-element ratios, the researchers
+      improved the ability of their models to distinguish between
+      certain volcanic sources and to produce more informative
+      predictions for unfamiliar deposits.
+    </p>
+
+    <h2>Looking back one million years</h2>
+
+    <p>
+      The potential of this approach becomes particularly interesting
+      when researchers investigate geological records extending
+      far beyond the period of reliable preservation on land.
+    </p>
+
+    <p>
+      In July 2026, Lubbers, Loewen and Wallace published a follow-up
+      study investigating explosive volcanism in the Gulf of Alaska.
+      The research used volcanic ash recovered from marine sediment
+      cores, combining geochemical analysis, compositional data
+      methods and machine learning to investigate the region's
+      volcanic history.
+    </p>
+
+    <p>
+      The researchers examined 70 marine-core tephra samples and
+      identified 37 distinct eruptive events across eight cores,
+      extending the investigated record to approximately one
+      million years.
+    </p>
+
+    <p>
+      Their analysis identified Mount Katmai as the most probable
+      source for 15 of these events. Emmons Lake volcanic centre
+      and Fisher Caldera were also identified as important
+      potential sources.
+    </p>
+
+    <p>
+      These findings are significant because the geological record
+      preserved close to volcanoes is not always complete.
+      Glaciation, erosion and other processes can remove or obscure
+      older deposits, making it difficult to reconstruct the full
+      history of explosive volcanism from land-based evidence alone.
+    </p>
+
+    <p>
+      Marine sediment cores offer another perspective. They can
+      preserve ash deposited far from its volcanic source, providing
+      researchers with an additional archive of past eruptions.
+    </p>
+
+    <p>
+      By linking these distant deposits to likely volcanic sources,
+      machine learning can help researchers investigate how
+      volcanic systems have behaved over much longer timescales.
+    </p>
+
+    <h2>When the computer gets it wrong</h2>
+
+    <p>
+      Despite these promising results, machine learning is not
+      a substitute for geological expertise. In fact, some of
+      the most important findings from this research concern
+      the limitations of automated classification.
+    </p>
+
+    <p>
+      A model can only learn from the examples available to it.
+      If a volcanic source is poorly represented in the training
+      data, or if an unfamiliar deposit comes from a source that
+      has never been included, the model may struggle to identify
+      it correctly.
+    </p>
+
+    <p>
+      There is also a risk of confusing confidence with correctness.
+      A classifier may assign a high probability to a particular
+      volcano even when the true source is not represented in its
+      training dataset.
+    </p>
+
+    <p>
+      The 2026 study addresses this problem through the use of
+      <strong>conformal prediction</strong>. Rather than always
+      returning one definitive answer, this approach can produce
+      a set of possible volcanic sources. Under the method's
+      assumptions, the prediction sets are designed to include
+      the correct known source at a specified confidence level.
+    </p>
+
+    <p>
+      This is an important distinction. A prediction containing
+      several possible volcanoes is not necessarily a failed
+      result. It may be a more honest representation of what
+      the available evidence can establish.
+    </p>
+
+    <p>
+      The researchers also highlight examples where chemical
+      similarities between volcanic sources make confident
+      identification difficult. In one case, a sample's rare
+      earth element profile differed sufficiently from the
+      expected composition that the researchers considered
+      whether it might represent a previously unrecognised
+      compositional class.
+    </p>
+
+    <p>
+      This is where geological judgement becomes essential.
+      Stratigraphy, mineralogy, petrology, field observations
+      and knowledge of regional volcanic systems all provide
+      context that a classification algorithm cannot
+      independently replace.
+    </p>
+
+    <h2>A new tool for understanding Earth's history</h2>
+
+    <p>
+      The application of machine learning to tephrochronology
+      illustrates a broader development across the Earth sciences.
+      Researchers increasingly have access to large, complex
+      datasets that are difficult to interpret using traditional
+      approaches alone.
+    </p>
+
+    <p>
+      Machine learning offers a way to investigate patterns
+      across many variables simultaneously, helping scientists
+      identify relationships that might be difficult to recognise
+      through manual comparison.
+    </p>
+
+    <p>
+      For palaeoclimate research, the implications are particularly
+      interesting. Volcanic ash layers can provide chronological
+      reference points within sedimentary records, helping
+      researchers compare environmental changes across different
+      locations.
+    </p>
+
+    <p>
+      More reliable correlations could therefore strengthen
+      the chronological frameworks used to investigate past
+      climate variability, environmental change and the
+      development of Earth's landscapes.
+    </p>
+
+    <p>
+      But the real achievement is not that computers can now
+      identify ancient volcanoes independently. It is that
+      researchers can combine geochemical evidence, statistical
+      methods and geological expertise to investigate questions
+      that were previously much more difficult to answer.
+    </p>
+
+    <blockquote>
+      Machine learning does not replace the geologist. It gives
+      researchers another way to interrogate the evidence
+      preserved within Earth's geological record.
+    </blockquote>
+
+    <p>
+      As analytical techniques improve and geological datasets
+      continue to expand, these methods may become increasingly
+      valuable across volcanology, palaeoenvironmental
+      reconstruction and the wider Earth sciences.
+    </p>
+
+    <p>
+      The fragments of volcanic glass preserved within ancient
+      sediments may be microscopic, but the stories they help
+      reveal are anything but.
+    </p>
+
+    <hr>
+
+    <h2>References and Further Reading</h2>
+
+    <ol class="references">
+
+      <li>
+        Bolton, M. S. M., Jensen, B. J. L., Wallace, K.,
+        Praet, N., Fortin, D., Kaufman, D. S. and De Batist, M.
+        (2020). Machine learning classifiers for attributing
+        tephra to source volcanoes: an evaluation of methods
+        for Alaska tephras. <em>Journal of Quaternary Science</em>,
+        35, 81–92.
+        <a href="https://doi.org/10.1002/jqs.3170" target="_blank" rel="noopener">
+          https://doi.org/10.1002/jqs.3170
+        </a>
+      </li>
+
+      <li>
+        Lubbers, J., Loewen, M., Wallace, K., Coombs, M.
+        and Addison, J. (2023). Probabilistic source
+        classification of large tephra producing eruptions
+        using supervised machine learning: an example from
+        the Alaska-Aleutian arc.
+        <em>Geochemistry, Geophysics, Geosystems</em>.
+        <a href="https://doi.org/10.1029/2023GC011037" target="_blank" rel="noopener">
+          https://doi.org/10.1029/2023GC011037
+        </a>
+      </li>
+
+      <li>
+        Lubbers, J., Loewen, M. and Wallace, K. (2026).
+        Constraining sources of mid-Pleistocene to present
+        explosive volcanism in the Gulf of Alaska using
+        machine learning and compositional data analysis.
+        <em>Geochemistry, Geophysics, Geosystems</em>, 27,
+        e2026GC013096.
+        <a href="https://doi.org/10.1029/2026GC013096" target="_blank" rel="noopener">
+          https://doi.org/10.1029/2026GC013096
+        </a>
+      </li>
+
+    </ol>
+
+    <div class="article-disclaimer">
+      <strong>About this article:</strong> This is an independent
+      science communication article based on the published
+      research cited above. It is intended for general
+      educational purposes and does not replace the original
+      scientific publications.
+    </div>
+
+    <a href="writing.html" class="text-link">
+      ← Back to Scientific Writing
+    </a>
+
+  </section>
+
+</main>
+
+<footer>
+  © <span id="copyright-year">2026</span> Elliot May. All Rights Reserved. |
+  <a href="mailto:elliotmay73@gmail.com">Contact me</a>
+</footer>
+
+<script>
+  document.getElementById('copyright-year').textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
