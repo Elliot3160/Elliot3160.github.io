@@ -402,3 +402,145 @@ footer a:hover {
     gap: 0.5rem;
   }
 }
+
+
+/* ========== SCIENTIFIC ARTICLE PAGE ========== */
+
+.article-hero h1 {
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article-hero .section-label {
+  margin-bottom: 1.5rem;
+}
+
+.article-byline {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.article-main {
+  max-width: 850px;
+}
+
+.article-body {
+  padding: 4rem 4.5rem;
+}
+
+.article-body p {
+  font-size: 1.06rem;
+  line-height: 1.85;
+  margin-bottom: 1.6rem;
+}
+
+.article-body .article-lead {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  line-height: 1.7;
+  color: var(--dark-bg);
+}
+
+.article-body h2 {
+  font-size: 2rem;
+  margin-top: 3.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.article-body blockquote {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--dark-bg);
+  line-height: 1.65;
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  background-color: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.article-body hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 3rem 0;
+}
+
+.article-body .references {
+  margin-left: 1.5rem;
+  color: #38423f;
+}
+
+.article-body .references li {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  padding-left: 0.5rem;
+  margin-bottom: 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.article-body .references a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.article-body .references a:hover {
+  text-decoration: underline;
+}
+
+.article-disclaimer {
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* ARTICLE MOBILE LAYOUT */
+
+@media (max-width: 768px) {
+
+  .article-hero {
+    padding: 4rem 1.25rem;
+  }
+
+  .article-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .article-byline {
+    gap: 0.6rem 1rem;
+  }
+
+  .article-body {
+    padding: 2rem 1.5rem;
+  }
+
+  .article-body h2 {
+    font-size: 1.7rem;
+    margin-top: 2.5rem;
+  }
+
+  .article-body p {
+    font-size: 1rem;
+  }
+
+  .article-body .article-lead {
+    font-size: 1.2rem;
+  }
+
+  .article-body blockquote {
+    font-size: 1.1rem;
+    padding: 1.25rem 1.5rem;
+  }
+}
