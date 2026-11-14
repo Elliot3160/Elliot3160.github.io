@@ -1,0 +1,3234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore Quaternary geology, archaeology, palaeoclimate, glaciation and environmental research across the world.">
+<title>Quaternary World Atlas | Fossils & Futures</title>
+
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://tile.openstreetmap.org">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<style>
+:root {
+  --paper:#f4f0e7;
+  --card:#fffdf8;
+  --ink:#252923;
+  --muted:#6c7068;
+  --line:#ded8cb;
+  --terra:#b65e43;
+  --sage:#647765;
+  --gold:#c99b4b;
+  --shadow:0 12px 34px #29271f12;
+}
+
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;
+  line-height:1.55;
+}
+
+a {
+  color:#98503b;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+
+a:hover { color:#713b2c; }
+
+button,input,select { font:inherit; }
+
+header {
+  padding:22px clamp(18px,5vw,72px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+  gap:20px;
+}
+
+.brand {
+  font-family:Georgia,serif;
+  font-size:20px;
+  letter-spacing:.02em;
+}
+
+.brand span { color:var(--terra); }
+
+nav {
+  display:flex;
+  gap:22px;
+  flex-wrap:wrap;
+  font-size:13px;
+}
+
+nav a {
+  color:var(--muted);
+  text-decoration:none;
+}
+
+.hero {
+  padding:66px clamp(18px,7vw,100px) 45px;
+  max-width:1440px;
+  margin:auto;
+}
+
+.eyebrow {
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:11px;
+  font-weight:700;
+  color:var(--terra);
+}
+
+h1,h2,h3 {
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:500;
+  line-height:1.12;
+}
+
+h1 {
+  font-size:clamp(42px,6vw,76px);
+  max-width:850px;
+  margin:12px 0 18px;
+  letter-spacing:-.035em;
+}
+
+h1 em { color:var(--terra); }
+
+.lede {
+  max-width:760px;
+  font-size:18px;
+  color:#5e625b;
+}
+
+.hero-meta {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+
+.pill {
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:6px 11px;
+  font-size:12px;
+  color:var(--muted);
+  background:#ffffff70;
+}
+
+main {
+  max-width:1440px;
+  margin:auto;
+  padding:0 clamp(18px,4vw,58px) 70px;
+}
+
+.explorer {
+  display:grid;
+  grid-template-columns:minmax(0,1.65fr) minmax(330px,.8fr);
+  gap:18px;
+  align-items:start;
+}
+
+.map-shell,.panel,.intro-card {
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:17px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.map-head {
+  padding:17px 19px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:center;
+}
+
+.map-head h2 {
+  font-size:22px;
+  margin:0;
+}
+
+.map-head p {
+  margin:3px 0 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+#map {
+  height:590px;
+  min-height:420px;
+  background:#e7e4d9;
+}
+
+.map-foot {
+  padding:12px 17px;
+  color:var(--muted);
+  font-size:11px;
+  border-top:1px solid var(--line);
+}
+
+.panel {
+  display:flex;
+  flex-direction:column;
+  min-height:650px;
+}
+
+.panel-top {
+  padding:20px 21px 14px;
+  border-bottom:1px solid var(--line);
+}
+
+.panel-top h2 {
+  font-size:28px;
+  margin:5px 0;
+}
+
+.panel-top p {
+  color:var(--muted);
+  font-size:13px;
+  margin:0;
+}
+
+.filters {
+  padding:16px 19px;
+  display:grid;
+  gap:12px;
+  border-bottom:1px solid var(--line);
+}
+
+input,select {
+  width:100%;
+  border:1px solid var(--line);
+  background:#fffefa;
+  color:var(--ink);
+  padding:10px 12px;
+  border-radius:9px;
+  font:inherit;
+  font-size:13px;
+  min-width:0;
+}
+
+input:focus,select:focus {
+  outline:2px solid #b65e4350;
+  border-color:var(--terra);
+}
+
+.filter-label {
+  display:block;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  font-weight:700;
+  margin-bottom:5px;
+}
+
+.filter-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.filter-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.action-button {
+  border:0;
+  border-radius:8px;
+  padding:10px 13px;
+  background:var(--terra);
+  color:white;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:650;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.action-button:hover { background:#8e4934; }
+
+.action-button.secondary {
+  background:#eeece4;
+  color:var(--ink);
+}
+
+.action-button.secondary:hover {
+  background:#ded8cb;
+}
+
+.results {
+  padding:15px 19px;
+  overflow:auto;
+  max-height:300px;
+  scrollbar-width:thin;
+  scrollbar-color:#b7a998 #eee9df;
+}
+
+.results::-webkit-scrollbar,
+.paper-list::-webkit-scrollbar {
+  width:9px;
+}
+
+.results::-webkit-scrollbar-track,
+.paper-list::-webkit-scrollbar-track {
+  background:#eee9df;
+  border-radius:9px;
+}
+
+.results::-webkit-scrollbar-thumb,
+.paper-list::-webkit-scrollbar-thumb {
+  background:#b7a998;
+  border-radius:9px;
+  border:2px solid #eee9df;
+}
+
+.result-count {
+  font-size:11px;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+
+.region-button {
+  display:block;
+  width:100%;
+  text-align:left;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#fffefa;
+  padding:13px;
+  margin-bottom:9px;
+  cursor:pointer;
+  color:var(--ink);
+}
+
+.region-button:hover,.region-button.active {
+  border-color:var(--terra);
+  background:#fbf3ed;
+}
+
+.region-button strong {
+  display:block;
+  font-family:Georgia,serif;
+  font-size:18px;
+  font-weight:500;
+}
+
+.region-button small {
+  display:block;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+.tagrow {
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+
+.tag {
+  display:inline-block;
+  font-size:10px;
+  border-radius:99px;
+  background:#eeece4;
+  color:#66695f;
+  padding:3px 7px;
+}
+
+.detail {
+  padding:20px 21px;
+  border-top:1px solid var(--line);
+  background:#faf7f0;
+  min-height:0;
+}
+
+.detail h3 {
+  font-size:27px;
+  margin:5px 0 8px;
+}
+
+.detail p {
+  font-size:13px;
+  color:#5d625b;
+}
+
+.detail h4 {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--terra);
+  margin:22px 0 8px;
+}
+
+.detail-intro {
+  font-size:14px!important;
+  line-height:1.7;
+}
+
+/* INDEPENDENT PUBLICATION SCROLL AREA */
+
+.paper-list {
+  max-height:390px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior:contain;
+  padding:0 12px 0 0;
+  scrollbar-width:thin;
+  scrollbar-color:#b7a998 #eee9df;
+}
+
+.paper-list .paper:first-child {
+  border-top:1px solid var(--line);
+}
+
+.paper-count {
+  font-size:11px!important;
+  color:var(--muted)!important;
+  margin:0 0 9px!important;
+}
+
+.paper {
+  padding:14px 0;
+  border-top:1px solid var(--line);
+  font-size:12px;
+}
+
+.paper strong {
+  display:block;
+  font-size:14px;
+  font-weight:650;
+  line-height:1.45;
+}
+
+.paper .metadata {
+  display:block;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.paper p {
+  margin:7px 0;
+  font-size:12px;
+}
+
+.paper a {
+  display:inline-block;
+  margin-top:7px;
+}
+
+.paper-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:8px;
+}
+
+.paper-tags span {
+  font-size:9px;
+  border:1px solid var(--line);
+  padding:3px 6px;
+  border-radius:4px;
+  color:#676a61;
+}
+
+.empty {
+  padding:22px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.notice {
+  border-left:3px solid var(--gold);
+  padding:11px 13px;
+  background:#f8f2e5;
+  color:#68604f;
+  font-size:12px;
+  margin-top:17px;
+}
+
+.below {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:22px;
+}
+
+.intro-card { padding:23px; }
+
+.intro-card h2 {
+  font-size:26px;
+  margin:0 0 9px;
+}
+
+.intro-card p {
+  font-size:13px;
+  color:var(--muted);
+  margin:0;
+}
+
+footer {
+  padding:26px clamp(18px,5vw,72px);
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background:#fffdf8;
+  color:var(--ink);
+}
+
+.leaflet-popup-content {
+  font:13px/1.4 system-ui;
+}
+
+.leaflet-popup-content strong {
+  font-family:Georgia,serif;
+  font-size:17px;
+  font-weight:500;
+}
+
+@media(max-width:900px) {
+  .explorer { grid-template-columns:1fr; }
+  .panel { min-height:unset; }
+  .results { max-height:300px; }
+  .paper-list { max-height:420px; }
+  #map { height:470px; }
+  .below { grid-template-columns:1fr; }
+}
+
+@media(max-width:560px) {
+  header {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .hero { padding-top:42px; }
+
+  .map-head {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  #map {
+    height:390px;
+    min-height:350px;
+  }
+
+  .filter-grid { grid-template-columns:1fr; }
+
+  .paper-list { max-height:360px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">FOSSILS <span>&</span> FUTURES</div>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../index.html">Knowledge library</a>
+    <a href="#atlas">World atlas</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">A global research explorer</div>
+
+  <h1>The Quaternary, <em>mapped.</em></h1>
+
+  <p class="lede">
+    Explore the geological stories of the last 2.58 million years
+    through regional landscapes, archaeological evidence,
+    palaeoclimate archives and the research that helps us understand them.
+  </p>
+
+  <div class="hero-meta">
+    <span class="pill">2.58 million years to present</span>
+    <span class="pill">Six regional research profiles</span>
+    <span class="pill">Curated academic literature</span>
+    <span class="pill" id="paper-count">Research records</span>
+  </div>
+</section>
+
+<main id="atlas">
+
+<div class="explorer">
+
+  <section class="map-shell">
+    <div class="map-head">
+      <div>
+        <h2>Explore the world</h2>
+        <p>Select a marker to open a regional Quaternary profile.</p>
+      </div>
+      <span class="pill">Research locations · Prototype</span>
+    </div>
+
+    <div id="map"
+      role="application"
+      aria-label="Interactive map of Quaternary research regions">
+    </div>
+
+    <div class="map-foot">
+      Map tiles © OpenStreetMap contributors.
+      Markers represent regional profiles, not individual research sites.
+    </div>
+  </section>
+
+  <aside class="panel">
+
+    <div class="panel-top">
+      <div class="eyebrow">Regional directory</div>
+      <h2>Research regions</h2>
+      <p>Search publications and combine filters to explore the literature.</p>
+    </div>
+
+    <div class="filters">
+
+      <input
+        id="search"
+        type="search"
+        placeholder="Search titles, authors, subjects, journals..."
+        aria-label="Search the literature database">
+
+      <div class="filter-grid">
+
+        <label>
+          <span class="filter-label">Location</span>
+          <select id="location">
+            <option value="">All locations</option>
+            <option value="scotland">Scotland & the British Isles</option>
+            <option value="east-africa">East African Rift</option>
+            <option value="patagonia">Patagonia & Tierra del Fuego</option>
+            <option value="iceland">Iceland</option>
+            <option value="greenland">Greenland</option>
+            <option value="new-zealand">Southern Alps, New Zealand</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="filter-label">Research discipline</span>
+          <select id="discipline">
+            <option value="">All disciplines</option>
+            <option>Archaeology</option>
+            <option>Palaeoanthropology</option>
+            <option>Quaternary geology</option>
+            <option>Glacial geomorphology</option>
+            <option>Palaeoclimatology</option>
+            <option>Palaeoecology</option>
+            <option>Sedimentology</option>
+            <option>Tephrochronology</option>
+            <option>Sea-level research</option>
+            <option>Geochronology</option>
+            <option>Marine geology</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="filter-label">Research theme</span>
+          <select id="theme">
+            <option value="">All themes</option>
+            <option>Glaciation</option>
+            <option>Palaeoclimate</option>
+            <option>Human evolution</option>
+            <option>Human occupation</option>
+            <option>Tephrochronology</option>
+            <option>Vegetation change</option>
+            <option>Sea-level change</option>
+            <option>Landscape evolution</option>
+            <option>Volcanism</option>
+            <option>Colonisation</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="filter-label">Evidence archive</span>
+          <select id="archive">
+            <option value="">All evidence archives</option>
+            <option>Lake sediments</option>
+            <option>Ice cores</option>
+            <option>Glacial landforms</option>
+            <option>Marine sediments</option>
+            <option>Peat and soils</option>
+            <option>Archaeological sites</option>
+            <option>Volcanic deposits</option>
+            <option>Raised shorelines</option>
+            <option>Fossil records</option>
+            <option>Loess</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="filter-label">Dating / chronology</span>
+          <select id="method">
+            <option value="">All methods</option>
+            <option>Radiocarbon</option>
+            <option>Cosmogenic nuclides</option>
+            <option>Luminescence</option>
+            <option>Tephrochronology</option>
+            <option>Uranium-series</option>
+            <option>Varve chronology</option>
+            <option>Ice-core chronology</option>
+            <option>Palaeomagnetism</option>
+            <option>Stratigraphic correlation</option>
+            <option>Argon-argon dating</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="filter-label">Time interval</span>
+          <select id="period">
+            <option value="">All intervals</option>
+            <option>Early Pleistocene</option>
+            <option>Middle Pleistocene</option>
+            <option>Late Pleistocene</option>
+            <option>Pleistocene</option>
+            <option>Last Glacial Maximum</option>
+            <option>Late Glacial</option>
+            <option>Holocene</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="filter-label">Sort publications</span>
+          <select id="sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="title">Title A–Z</option>
+          </select>
+        </label>
+
+      </div>
+
+      <div class="filter-actions">
+        <button class="action-button secondary" id="reset-filters" type="button">
+          Clear filters
+        </button>
+
+        <button class="action-button" id="export-csv" type="button">
+          Export CSV
+        </button>
+      </div>
+
+    </div>
+
+    <div class="results" id="results" aria-live="polite">
+      <div class="result-count" id="result-count"></div>
+      <div id="region-list"></div>
+    </div>
+
+    <div class="detail" id="detail">
+      <div class="eyebrow">Selected region</div>
+      <h3>Choose a place to begin</h3>
+      <p>
+        Click a map marker or choose a region from the directory
+        to explore its Quaternary history and selected academic literature.
+      </p>
+    </div>
+
+  </aside>
+</div>
+
+<div class="below" id="about">
+
+  <section class="intro-card">
+    <div class="eyebrow">How to use the atlas</div>
+    <h2>Geography meets the literature</h2>
+    <p>
+      Each regional profile connects geological context with selected
+      research papers. Search by location, discipline, theme,
+      evidence archive, dating method or geological time interval.
+    </p>
+  </section>
+
+  <section class="intro-card">
+    <div class="eyebrow">Editorial standard</div>
+    <h2>Curated, not just scraped</h2>
+    <p>
+      Research records should be checked for geographic relevance,
+      Quaternary scope and bibliographic accuracy. A paper mentioning
+      a place is not automatically evidence about that region's
+      Quaternary history.
+    </p>
+    <div class="notice">
+      This is a developing collection of selected references,
+      not a comprehensive systematic bibliography. Some metadata
+      and classifications require further editorial verification.
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <span>Fossils & Futures · Quaternary World Atlas</span>
+  <span>Independent educational project · Publication links lead to original sources</span>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+// ======================================================
+// QUATERNARY WORLD ATLAS
+// REGIONAL DATA AND PUBLICATION DATABASE
+// ======================================================
+
+const regions = [
+
+{
+  id:"scotland",
+  name:"Scotland & the British Isles",
+  coords:[56.7,-4.2],
+  period:"Late Pleistocene–Holocene",
+
+  summary:"Scotland and the wider British Isles preserve a rich Quaternary record of ice-sheet expansion and retreat, Younger Dryas glacier readvance, raised shorelines, lake sediments, peat sequences and archaeological landscapes. The region is particularly important for understanding the British-Irish Ice Sheet, the Loch Lomond Stadial and postglacial environmental change.",
+
+  topics:[
+    "British-Irish Ice Sheet",
+    "Loch Lomond Stadial",
+    "Younger Dryas",
+    "Glacial geomorphology",
+    "Mesolithic archaeology",
+    "Submerged landscapes",
+    "Palaeoecology",
+    "Relative sea-level change",
+    "Tephrochronology"
+  ],
+
+  papers:[
+
+    {
+      title:"The glacial geomorphology of the Loch Lomond (Younger Dryas) Stadial in Britain: a review",
+      authors:"Bickerdike et al.",
+      year:2018,
+      journal:"Journal of Quaternary Science",
+      doi:"10.1002/jqs.3010",
+      url:"https://doi.org/10.1002/jqs.3010",
+      disciplines:["Quaternary geology","Glacial geomorphology"],
+      themes:["Glaciation","Palaeoclimate"],
+      archives:["Glacial landforms"],
+      methods:["Stratigraphic correlation"],
+      periods:["Late Glacial"],
+      note:"A major review of Younger Dryas glacial geomorphology across Britain."
+    },
+
+    {
+      title:"A revised chronology for the growth and demise of Loch Lomond Readvance ice lobes in the Lochaber area, Scotland",
+      authors:"Palmer et al.",
+      year:2020,
+      journal:"Quaternary Science Reviews",
+      doi:"10.1016/j.quascirev.2020.106548",
+      url:"https://doi.org/10.1016/j.quascirev.2020.106548",
+      disciplines:["Quaternary geology","Geochronology"],
+      themes:["Glaciation","Tephrochronology"],
+      archives:["Glacial landforms","Lake sediments"],
+      methods:["Radiocarbon","Tephrochronology","Varve chronology"],
+      periods:["Late Glacial"],
+      note:"Chronological reconstruction of Loch Lomond Readvance ice lobes."
+    },
+
+    {
+      title:"Reconstruction and palaeoclimatic implications of Loch Lomond Readvance glaciers in the Southeast Grampians, Scotland",
+      authors:"Spicer",
+      year:2025,
+      journal:"Journal of Quaternary Science",
+      doi:"10.1002/jqs.3709",
+      url:"https://doi.org/10.1002/jqs.3709",
+      disciplines:["Quaternary geology","Glacial geomorphology"],
+      themes:["Glaciation","Palaeoclimate"],
+      archives:["Glacial landforms"],
+      methods:["Stratigraphic correlation"],
+      periods:["Late Glacial"],
+      note:"Reconstructs glacier extent and considers the palaeoclimatic implications."
+    },
+
+    {
+      title:"Rapidly changing worlds. Finding the earliest human occupations on Scotland's north-west coastline",
+      authors:"Hardy, Ballin & Bicket",
+      year:2021,
+      journal:"Quaternary International",
+      doi:"10.1016/j.quaint.2020.10.060",
+      url:"https://doi.org/10.1016/j.quaint.2020.10.060",
+      disciplines:["Archaeology","Quaternary geology"],
+      themes:["Human occupation","Landscape evolution"],
+      archives:["Archaeological sites"],
+      methods:["Radiocarbon","Stratigraphic correlation"],
+      periods:["Late Glacial","Holocene"],
+      note:"Investigates evidence for Late Glacial and Early Holocene human occupation along Scotland's north-west coastline."
+    }
+,
+
+    {
+      "title": "Pattern and timing of retreat of the last British-Irish Ice Sheet",
+      "authors": "Clark, Hughes, Greenwood, Jordan & Sejrup",
+      "year": 2012,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2010.07.019",
+      "url": "https://doi.org/10.1016/j.quascirev.2010.07.019",
+      "disciplines": [
+            "Quaternary geology",
+            "Glacial geomorphology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Glacial landforms",
+            "Marine sediments"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Cosmogenic nuclides",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Last Glacial Maximum"
+      ],
+      "note": "A major ice-sheet-wide reconstruction combining geomorphological mapping and chronological evidence to describe retreat of the last British-Irish Ice Sheet from its maximum extent."
+},
+
+    {
+      "title": "Growth and retreat of the last British-Irish Ice Sheet, 31 000 to 15 000 years ago: the BRITICE-CHRONO reconstruction",
+      "authors": "Clark et al.",
+      "year": 2022,
+      "journal": "Boreas",
+      "doi": "10.1111/bor.12594",
+      "url": "https://doi.org/10.1111/bor.12594",
+      "disciplines": [
+            "Quaternary geology",
+            "Glacial geomorphology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Glacial landforms",
+            "Marine sediments"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Cosmogenic nuclides",
+            "Luminescence"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Last Glacial Maximum"
+      ],
+      "note": "Ice-sheet-scale synthesis of the BRITICE-CHRONO dating programme, integrating 690 new geochronometric ages with land and marine evidence."
+},
+
+    {
+      "title": "Pattern, style and timing of British-Irish Ice Sheet advance and retreat over the last 45 000 years: evidence from NW Scotland and the adjacent continental shelf",
+      "authors": "Bradwell et al.",
+      "year": 2021,
+      "journal": "Journal of Quaternary Science",
+      "doi": "10.1002/jqs.3296",
+      "url": "https://doi.org/10.1002/jqs.3296",
+      "disciplines": [
+            "Quaternary geology",
+            "Glacial geomorphology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Glacial landforms",
+            "Marine sediments"
+      ],
+      "methods": [
+            "Cosmogenic nuclides",
+            "Radiocarbon",
+            "Luminescence"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Last Glacial Maximum",
+            "Late Glacial"
+      ],
+      "note": "Combines terrestrial and offshore geomorphology, stratigraphy and Bayesian age modelling to reconstruct ice-sheet behaviour around northwest Scotland."
+},
+
+    {
+      "title": "A revised chronology for the growth and demise of Loch Lomond Readvance (Younger Dryas) ice lobes in the Lochaber area, Scotland",
+      "authors": "Palmer, Matthews, Lowe, MacLeod & Grant",
+      "year": 2020,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2020.106548",
+      "url": "https://doi.org/10.1016/j.quascirev.2020.106548",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Tephrochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms",
+            "Lake sediments",
+            "Volcanic deposits"
+      ],
+      "methods": [
+            "Varve chronology",
+            "Tephrochronology",
+            "Radiocarbon"
+      ],
+      "periods": [
+            "Late Glacial"
+      ],
+      "note": "Presents a revised master varve chronology for ice-dammed lakes in Lochaber, anchored by the Vedde Ash, and constrains the timing of Loch Lomond Readvance glacier fluctuations."
+},
+
+    {
+      "title": "Chronology of glaciation and deglaciation during the Loch Lomond (Younger Dryas) Stade in the Scottish Highlands: implications of recalibrated 10Be exposure ages",
+      "authors": "Ballantyne",
+      "year": 2012,
+      "journal": "Boreas",
+      "doi": "10.1111/j.1502-3885.2012.00253.x",
+      "url": "https://doi.org/10.1111/j.1502-3885.2012.00253.x",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Late Glacial"
+      ],
+      "note": "Reassesses cosmogenic exposure ages from Scottish Highland moraines and discusses the timing of glacier maxima and retreat during the Loch Lomond Stade."
+},
+
+    {
+      "title": "Timing of glacier response to Younger Dryas climatic cooling in Scotland",
+      "authors": "Matthews et al.",
+      "year": 2011,
+      "journal": "Global and Planetary Change",
+      "doi": "10.1016/j.gloplacha.2010.07.006",
+      "url": "https://doi.org/10.1016/j.gloplacha.2010.07.006",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms",
+            "Lake sediments"
+      ],
+      "methods": [
+            "Varve chronology",
+            "Radiocarbon"
+      ],
+      "periods": [
+            "Late Glacial"
+      ],
+      "note": "Uses varve and radiocarbon evidence from Loch Lomond to constrain the timing of glacier response to Younger Dryas cooling."
+},
+
+    {
+      "title": "Late Devensian to Holocene environmental change, Loch Lomond, UK: A seismic sedimentary record of deglaciation, paraglacial and postglacial landscape evolution",
+      "authors": "Dakin, Finlayson, Carter & Cooper",
+      "year": 2024,
+      "journal": "Proceedings of the Geologists’ Association",
+      "doi": "10.1016/j.pgeola.2023.09.005",
+      "url": "https://doi.org/10.1016/j.pgeola.2023.09.005",
+      "disciplines": [
+            "Quaternary geology",
+            "Sedimentology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Lake sediments"
+      ],
+      "methods": [
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Late Glacial",
+            "Holocene"
+      ],
+      "note": "Uses sub-bottom seismic profiles to investigate sediment infill and landscape evolution in Loch Lomond from deglaciation through the Holocene."
+},
+
+    {
+      "title": "The timing and magnitude of the British-Irish Ice Sheet between Marine Isotope Stages 5d and 2: implications for glacio-isostatic adjustment, high relative sea levels and giant erratic emplacement",
+      "authors": "作者 et al.",
+      "year": 2024,
+      "journal": "Journal of Quaternary Science",
+      "doi": "10.1002/jqs.3611",
+      "url": "https://doi.org/10.1002/jqs.3611",
+      "disciplines": [
+            "Quaternary geology",
+            "Glacial geomorphology",
+            "Sea-level research"
+      ],
+      "themes": [
+            "Glaciation",
+            "Sea-level change"
+      ],
+      "archives": [
+            "Glacial landforms",
+            "Raised shorelines"
+      ],
+      "methods": [
+            "Cosmogenic nuclides",
+            "Luminescence",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Pleistocene"
+      ],
+      "note": "Reviews evidence for pre-LGM British-Irish Ice Sheet glaciation and its implications for ice history, glacio-isostatic adjustment and relative sea level."
+},
+
+    {
+      "title": "A new tephrochronological record of a raised bog in eastern lowland Scotland",
+      "authors": "Wang, Roucoux, Davies, Zhang, Sun, Streeter, Hutchison & Lawson",
+      "year": 2025,
+      "journal": "Quaternary Geochronology",
+      "doi": "10.1016/j.quageo.2024.101647",
+      "url": "https://doi.org/10.1016/j.quageo.2024.101647",
+      "disciplines": [
+            "Tephrochronology",
+            "Palaeoecology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Tephrochronology",
+            "Volcanism",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Peat and soils",
+            "Volcanic deposits"
+      ],
+      "methods": [
+            "Tephrochronology"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Identifies six cryptotephras in replicate raised-bog cores, including Askja 1875, and demonstrates the value of cryptotephra records for Scottish environmental chronologies."
+},
+
+    {
+      "title": "Reconstruction and palaeoclimatic implications of Loch Lomond Readvance glaciers in the Southeast Grampians, Scotland",
+      "authors": "Spicer",
+      "year": 2025,
+      "journal": "Journal of Quaternary Science",
+      "doi": "10.1002/jqs.3709",
+      "url": "https://doi.org/10.1002/jqs.3709",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Late Glacial"
+      ],
+      "note": "Maps and models a Loch Lomond Stadial icefield on the Mounth Plateau, refining the extent and inferred thermal regime of Southeast Grampians glaciers."
+}
+  ]
+},
+
+{
+  id:"east-africa",
+  name:"East African Rift",
+  coords:[-1.5,36.2],
+  period:"Pleistocene–Holocene",
+
+  summary:"The East African Rift contains important sedimentary basins, lake archives, fossil-bearing deposits and archaeological sites. These records are central to understanding environmental variability, hominin evolution, human dispersal and the relationship between climate and landscape change.",
+
+  topics:[
+    "Hominin evolution",
+    "Early human archaeology",
+    "Lake Turkana",
+    "Lake Chala",
+    "Palaeolake fluctuations",
+    "Rift basin sedimentation",
+    "Tephrochronology",
+    "Palaeoecology",
+    "Stable isotopes"
+  ],
+
+  papers:[
+
+    {
+      title:"East African climate pulses and early human evolution",
+      authors:"Maslin et al.",
+      year:2014,
+      journal:"Quaternary Science Reviews",
+      doi:"10.1016/j.quascirev.2014.06.012",
+      url:"https://doi.org/10.1016/j.quascirev.2014.06.012",
+      disciplines:["Palaeoclimatology","Palaeoanthropology"],
+      themes:["Palaeoclimate","Human evolution"],
+      archives:["Lake sediments","Fossil records"],
+      methods:["Stratigraphic correlation"],
+      periods:["Pleistocene"],
+      note:"Reviews the relationship between climate variability and early human evolution."
+    },
+
+    {
+      title:"Reconstructing the Environmental Context of Human Origins in Eastern Africa Through Scientific Drilling",
+      authors:"Cohen et al.",
+      year:2022,
+      journal:"Annual Review of Earth and Planetary Sciences",
+      doi:"10.1146/annurev-earth-031920-081947",
+      url:"https://doi.org/10.1146/annurev-earth-031920-081947",
+      disciplines:["Palaeoanthropology","Palaeoclimatology","Sedimentology","Archaeology"],
+      themes:["Human evolution","Palaeoclimate"],
+      archives:["Lake sediments","Fossil records","Archaeological sites"],
+      methods:["Stratigraphic correlation"],
+      periods:["Pleistocene"],
+      note:"Reviews scientific drilling and environmental records from important East African hominin landscapes."
+    },
+
+    {
+      title:"Eastern African environmental variation and its role in the evolution and cultural change of Homo over the last 1 million years",
+      authors:"Lupien et al.",
+      year:2021,
+      journal:"Journal of Human Evolution",
+      doi:"10.1016/j.jhevol.2021.103028",
+      url:"https://doi.org/10.1016/j.jhevol.2021.103028",
+      disciplines:["Palaeoanthropology","Palaeoecology","Archaeology"],
+      themes:["Human evolution","Palaeoclimate","Human occupation"],
+      archives:["Lake sediments","Fossil records","Archaeological sites"],
+      methods:["Stratigraphic correlation"],
+      periods:["Pleistocene"],
+      note:"Investigates environmental variation and its relationship with Homo evolution and cultural change."
+    },
+
+    {
+      title:"The >250-kyr Lake Chala record: A tephrostratotype correlating archaeological, palaeoenvironmental and volcanic sequences across eastern Africa",
+      authors:"Martin-Jones et al.",
+      year:2024,
+      journal:"Quaternary Science Reviews",
+      doi:"10.1016/j.quascirev.2023.108476",
+      url:"https://doi.org/10.1016/j.quascirev.2023.108476",
+      disciplines:["Tephrochronology","Archaeology","Palaeoclimatology"],
+      themes:["Tephrochronology","Human occupation","Palaeoclimate","Volcanism"],
+      archives:["Lake sediments","Volcanic deposits","Archaeological sites"],
+      methods:["Tephrochronology","Radiocarbon","Stratigraphic correlation"],
+      periods:["Pleistocene","Holocene"],
+      note:"Lake Chala record linking archaeological, volcanic and environmental sequences."
+    },
+
+    {
+      title:"A century of research reconstructing Quaternary environments in East and North Africa and its global legacy",
+      authors:"Review article",
+      year:2023,
+      journal:"Journal of African Earth Sciences",
+      doi:"10.1016/j.jafrearsci.2023.105071",
+      url:"https://doi.org/10.1016/j.jafrearsci.2023.105071",
+      disciplines:["Quaternary geology","Palaeoclimatology","Palaeoecology"],
+      themes:["Palaeoclimate","Landscape evolution"],
+      archives:["Lake sediments"],
+      methods:["Radiocarbon","Stratigraphic correlation"],
+      periods:["Pleistocene","Holocene"],
+      note:"Reviews the development of Quaternary environmental research across East and North Africa."
+    }
+,
+
+    {
+      "title": "Early Pleistocene lake formation and hominin origins in the Turkana-Omo rift",
+      "authors": "Lepre",
+      "year": 2014,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2014.08.012",
+      "url": "https://doi.org/10.1016/j.quascirev.2014.08.012",
+      "disciplines": [
+            "Quaternary geology",
+            "Palaeoanthropology",
+            "Sedimentology"
+      ],
+      "themes": [
+            "Human evolution",
+            "Palaeoclimate",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Fossil records"
+      ],
+      "methods": [
+            "Palaeomagnetism",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Early Pleistocene"
+      ],
+      "note": "Uses magnetostratigraphic and sedimentary evidence to examine diachronous expansion of Palaeo-Lake Lorenyang and the tectonic context of early hominin landscapes."
+},
+
+    {
+      "title": "Aridity, availability of drinking water and freshwater foods, and hominin and archaeological sites during the Late Pliocene-Early Pleistocene in the western region of the Turkana Basin (Kenya): A review",
+      "authors": "Boës et al.",
+      "year": 2024,
+      "journal": "Journal of Human Evolution",
+      "doi": "10.1016/j.jhevol.2023.103466",
+      "url": "https://doi.org/10.1016/j.jhevol.2023.103466",
+      "disciplines": [
+            "Palaeoanthropology",
+            "Archaeology",
+            "Palaeoecology"
+      ],
+      "themes": [
+            "Human evolution",
+            "Human occupation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Fossil records",
+            "Archaeological sites"
+      ],
+      "methods": [
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Early Pleistocene"
+      ],
+      "note": "Reviews freshwater environments and resource availability in the western Turkana Basin and their relationship to hominin and archaeological occurrences."
+},
+
+    {
+      "title": "Pleistocene record of a dynamic, fluctuating lacustrine margin from the Turkana Basin, Kenya",
+      "authors": "Beck, Feibel, van der Lubbe, Lupien, Alexander, Campisano & Cohen",
+      "year": 2026,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2026.110097",
+      "url": "https://doi.org/10.1016/j.quascirev.2026.110097",
+      "disciplines": [
+            "Quaternary geology",
+            "Sedimentology",
+            "Palaeoanthropology"
+      ],
+      "themes": [
+            "Palaeoclimate",
+            "Human evolution",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Fossil records"
+      ],
+      "methods": [
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Early Pleistocene"
+      ],
+      "note": "Documents fluctuating Palaeo-Lake Lorenyang margins between about 1.9 and 1.4 Ma, providing environmental context for hominins in the Turkana Basin."
+},
+
+    {
+      "title": "The Hominin Sites and Paleolakes Drilling Project: A new research initiative to investigate the environmental context of human evolution in East Africa",
+      "authors": "Cohen et al.",
+      "year": 2016,
+      "journal": "Scientific Drilling",
+      "doi": "10.5194/sd-21-1-2016",
+      "url": "https://doi.org/10.5194/sd-21-1-2016",
+      "disciplines": [
+            "Palaeoanthropology",
+            "Palaeoclimatology",
+            "Sedimentology"
+      ],
+      "themes": [
+            "Human evolution",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Fossil records"
+      ],
+      "methods": [
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Pleistocene"
+      ],
+      "note": "Introduces the Hominin Sites and Paleolakes Drilling Project and its strategy for recovering high-resolution environmental archives near important fossil and archaeological localities."
+}
+  ]
+},
+
+{
+  id:"patagonia",
+  name:"Patagonia & Tierra del Fuego",
+  coords:[-49.5,-72.0],
+  period:"Pleistocene–Holocene",
+
+  summary:"Patagonia and Tierra del Fuego preserve extensive evidence of former Patagonian Ice Sheet expansion and retreat. Moraines, glacial lakes, peatlands, pollen records, archaeological sites and marine deposits provide important evidence for Southern Hemisphere climate, human occupation and environmental change.",
+
+  topics:[
+    "Patagonian Ice Sheet",
+    "Last Glacial Maximum",
+    "Glacial geomorphology",
+    "Cosmogenic exposure dating",
+    "Palaeovegetation",
+    "Tierra del Fuego",
+    "Human occupation",
+    "Glacial lake systems",
+    "Southern Westerly Winds"
+  ],
+
+  papers:[
+
+    {
+      title:"The last glacial cycle in southernmost Patagonia: A review",
+      authors:"Huynh et al.",
+      year:2024,
+      journal:"Quaternary Science Reviews",
+      doi:"10.1016/j.quascirev.2024.108972",
+      url:"https://doi.org/10.1016/j.quascirev.2024.108972",
+      disciplines:["Quaternary geology","Glacial geomorphology"],
+      themes:["Glaciation","Palaeoclimate"],
+      archives:["Glacial landforms"],
+      methods:["Cosmogenic nuclides","Radiocarbon"],
+      periods:["Late Pleistocene","Last Glacial Maximum","Late Glacial"],
+      note:"Synthesis of glacial and chronological evidence from southernmost Patagonia."
+    },
+
+    {
+      title:"Geomorphology and 10Be chronology of the Last Glacial Maximum and deglaciation in northeastern Patagonia",
+      authors:"Leger et al.",
+      year:2021,
+      journal:"Quaternary Science Reviews",
+      doi:"10.1016/j.quascirev.2021.107194",
+      url:"https://doi.org/10.1016/j.quascirev.2021.107194",
+      disciplines:["Glacial geomorphology","Geochronology"],
+      themes:["Glaciation","Landscape evolution"],
+      archives:["Glacial landforms"],
+      methods:["Cosmogenic nuclides"],
+      periods:["Late Pleistocene","Last Glacial Maximum"],
+      note:"Uses geomorphology and cosmogenic exposure dating to reconstruct glacier advances and retreat."
+    },
+
+    {
+      title:"Glaciations in Patagonia and Tierra del Fuego during the Ensenadan Stage/Age",
+      authors:"Rabassa & Coronato",
+      year:2009,
+      journal:"Quaternary International",
+      doi:"10.1016/j.quaint.2009.06.019",
+      url:"https://doi.org/10.1016/j.quaint.2009.06.019",
+      disciplines:["Quaternary geology","Glacial geomorphology"],
+      themes:["Glaciation","Landscape evolution"],
+      archives:["Glacial landforms"],
+      methods:["Stratigraphic correlation"],
+      periods:["Early Pleistocene","Middle Pleistocene"],
+      note:"Reviews the evidence for Early to earliest Middle Pleistocene glaciation."
+    },
+
+    {
+      title:"The human occupation of northwestern Patagonia (Argentina): Paleoecological and chronological trends",
+      authors:"Barberena, Prates & de Porras",
+      year:2015,
+      journal:"Quaternary International",
+      doi:"10.1016/j.quaint.2014.09.055",
+      url:"https://doi.org/10.1016/j.quaint.2014.09.055",
+      disciplines:["Archaeology","Palaeoecology","Geochronology"],
+      themes:["Human occupation","Palaeoclimate","Landscape evolution"],
+      archives:["Archaeological sites","Peat and soils"],
+      methods:["Radiocarbon"],
+      periods:["Late Pleistocene","Holocene"],
+      note:"Compiles archaeological radiocarbon dates and palaeoecological information to investigate human occupation and environmental change."
+    },
+
+    {
+      title:"Palaeoenvironment and early human occupation of southernmost South America (South Patagonia, Argentina)",
+      authors:"Mancini, Franco & Brook",
+      year:2013,
+      journal:"Quaternary International",
+      doi:"10.1016/j.quaint.2012.08.2056",
+      url:"https://doi.org/10.1016/j.quaint.2012.08.2056",
+      disciplines:["Archaeology","Palaeoecology","Palaeoclimatology"],
+      themes:["Human occupation","Vegetation change","Palaeoclimate"],
+      archives:["Archaeological sites","Peat and soils"],
+      methods:["Radiocarbon"],
+      periods:["Late Pleistocene","Late Glacial"],
+      note:"Combines pollen and archaeological records to investigate climate and early human movements in southern Patagonia."
+    },
+
+    {
+      title:"Peopling time, spatial occupation and demography of Late Pleistocene–Holocene human population from Patagonia",
+      authors:"Pérez et al.",
+      year:2016,
+      journal:"Quaternary International",
+      doi:"10.1016/j.quaint.2016.05.004",
+      url:"https://doi.org/10.1016/j.quaint.2016.05.004",
+      disciplines:["Archaeology","Geochronology"],
+      themes:["Human occupation","Landscape evolution"],
+      archives:["Archaeological sites"],
+      methods:["Radiocarbon"],
+      periods:["Late Pleistocene","Holocene"],
+      note:"Examines the timing and spatial patterns of human settlement and demographic change in Patagonia."
+    }
+,
+
+    {
+      "title": "Late Cenozoic glaciations in Patagonia and Tierra del Fuego: an updated review",
+      "authors": "Rabassa, Coronato & Martínez",
+      "year": 2011,
+      "journal": "Biological Journal of the Linnean Society",
+      "doi": "10.1111/j.1095-8312.2011.01681.x",
+      "url": "https://doi.org/10.1111/j.1095-8312.2011.01681.x",
+      "disciplines": [
+            "Quaternary geology",
+            "Glacial geomorphology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Pleistocene"
+      ],
+      "note": "Reviews the long-term development of Patagonian glaciation and the major Pleistocene ice advances that shaped the southern Andes and Tierra del Fuego."
+},
+
+    {
+      "title": "A review of Glacial and Holocene paleoclimate records from southernmost Patagonia (49-55°S)",
+      "authors": "Kilian & Lamy",
+      "year": 2012,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2012.07.017",
+      "url": "https://doi.org/10.1016/j.quascirev.2012.07.017",
+      "disciplines": [
+            "Palaeoclimatology",
+            "Glacial geomorphology",
+            "Palaeoecology"
+      ],
+      "themes": [
+            "Palaeoclimate",
+            "Glaciation",
+            "Vegetation change"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Peat and soils",
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Late Glacial",
+            "Holocene"
+      ],
+      "note": "Synthesises glacial and Holocene climate archives from southernmost Patagonia, highlighting the region’s importance for Southern Westerly Wind and Southern Ocean reconstructions."
+},
+
+    {
+      "title": "Relative sea level changes and glacio-isostatic modelling in the Beagle Channel, Tierra del Fuego, Chile: Glacial and tectonic implications",
+      "authors": "Björck et al.",
+      "year": 2021,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2020.106657",
+      "url": "https://doi.org/10.1016/j.quascirev.2020.106657",
+      "disciplines": [
+            "Sea-level research",
+            "Quaternary geology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Sea-level change",
+            "Glaciation",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Raised shorelines",
+            "Marine sediments"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Holocene"
+      ],
+      "note": "Combines raised-beach evidence and glacio-isostatic modelling to reconstruct relative sea-level change in the Beagle Channel and assess glacial and tectonic influences."
+},
+
+    {
+      "title": "Review of the palaeoenvironmental reconstruction of Late Quaternary marine sequences, Tierra del Fuego (Argentina)",
+      "authors": "Candel & Borromei",
+      "year": 2017,
+      "journal": "Publicación Electrónica de la Asociación Paleontológica Argentina",
+      "doi": "10.5710/PEAPA.16.08.2016.112",
+      "url": "https://doi.org/10.5710/PEAPA.16.08.2016.112",
+      "disciplines": [
+            "Marine geology",
+            "Palaeoecology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Palaeoclimate",
+            "Sea-level change",
+            "Vegetation change"
+      ],
+      "archives": [
+            "Marine sediments",
+            "Fossil records"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Holocene"
+      ],
+      "note": "Reviews Late Quaternary marine sequences and environmental change associated with the Holocene marine transgression and subsequent regression in Tierra del Fuego."
+},
+
+    {
+      "title": "Palaeoenvironmental change in Southern Patagonia during the Lateglacial and Holocene: Implications for forest refugia and climate reconstructions",
+      "authors": "Moreno et al.",
+      "year": 2016,
+      "journal": "Palaeogeography, Palaeoclimatology, Palaeoecology",
+      "doi": "10.1016/j.palaeo.2016.01.041",
+      "url": "https://doi.org/10.1016/j.palaeo.2016.01.041",
+      "disciplines": [
+            "Palaeoecology",
+            "Palaeoclimatology",
+            "Tephrochronology"
+      ],
+      "themes": [
+            "Vegetation change",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Peat and soils",
+            "Lake sediments",
+            "Volcanic deposits"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Tephrochronology"
+      ],
+      "periods": [
+            "Late Glacial",
+            "Holocene"
+      ],
+      "note": "Presents a high-resolution pollen and tephrochronological reconstruction from Punta Yartou, Tierra del Fuego, spanning the last glacial-interglacial transition and Holocene."
+},
+
+    {
+      "title": "Chronology of bathymetric variations of the Pueyrredón-Posadas-Salitroso lacustrine system during the Late Pleistocene to Early Holocene",
+      "authors": "Authors et al.",
+      "year": 2015,
+      "journal": "Quaternary International",
+      "doi": "10.1016/j.quaint.2014.12.069",
+      "url": "https://doi.org/10.1016/j.quaint.2014.12.069",
+      "disciplines": [
+            "Quaternary geology",
+            "Sedimentology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Landscape evolution",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Holocene"
+      ],
+      "note": "Reconstructs the changing bathymetry and palaeogeography of a proglacial lake system in Andean Patagonia between about 23.6 and 5.2 ka."
+},
+
+    {
+      "title": "The last glacial cycle in southernmost Patagonia: A review",
+      "authors": "Huynh, Hein, McCulloch & Bingham",
+      "year": 2024,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2024.108972",
+      "url": "https://doi.org/10.1016/j.quascirev.2024.108972",
+      "disciplines": [
+            "Quaternary geology",
+            "Glacial geomorphology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Glacial landforms",
+            "Marine sediments"
+      ],
+      "methods": [
+            "Cosmogenic nuclides",
+            "Radiocarbon"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Last Glacial Maximum",
+            "Late Glacial"
+      ],
+      "note": "Systematically reviews geomorphological and geochronological evidence for the last glacial cycle south of 52°S and provides an updated Patagonian Ice Sheet reconstruction."
+}
+  ]
+},
+
+{
+  id:"iceland",
+  name:"Iceland",
+  coords:[64.9,-19.0],
+  period:"Pleistocene–Holocene",
+
+  summary:"Iceland is a natural laboratory for examining interactions between volcanism, glaciers, North Atlantic climate and human settlement. Tephra layers provide valuable isochrons for correlating terrestrial, lake, marine and archaeological sequences.",
+
+  topics:[
+    "Tephrochronology",
+    "Volcanic ash stratigraphy",
+    "Glacier fluctuations",
+    "Holocene environmental change",
+    "Landnám and Norse settlement",
+    "Lake sediment archives",
+    "Jökulhlaups",
+    "North Atlantic climate"
+  ],
+
+  papers:[
+
+    {
+      title:"Marker tephra in Haukadalsvatn lake sediment: A key to the Holocene tephra stratigraphy of northwest Iceland",
+      authors:"Harning et al.",
+      year:2019,
+      journal:"Quaternary Science Reviews",
+      doi:"10.1016/j.quascirev.2019.07.019",
+      url:"https://doi.org/10.1016/j.quascirev.2019.07.019",
+      disciplines:["Tephrochronology","Palaeoclimatology"],
+      themes:["Tephrochronology","Volcanism","Palaeoclimate"],
+      archives:["Lake sediments","Volcanic deposits"],
+      methods:["Tephrochronology","Radiocarbon"],
+      periods:["Holocene"],
+      note:"Identifies marker tephra layers in a lake sediment sequence, supporting regional chronological correlation."
+    },
+
+    {
+      title:"A new high-resolution Holocene tephra stratigraphy in eastern Iceland: Improving the Icelandic and North Atlantic tephrochronology",
+      authors:"Gudmundsdóttir, Larsen, Björck, Ingólfsson & Striberger",
+      year:2016,
+      journal:"Quaternary Science Reviews",
+      doi:"10.1016/j.quascirev.2016.08.011",
+      url:"https://doi.org/10.1016/j.quascirev.2016.08.011",
+      disciplines:["Tephrochronology","Geochronology","Quaternary geology"],
+      themes:["Tephrochronology","Volcanism","Palaeoclimate"],
+      archives:["Lake sediments","Volcanic deposits"],
+      methods:["Tephrochronology","Stratigraphic correlation"],
+      periods:["Holocene"],
+      note:"Develops a high-resolution Holocene tephra framework from Lake Lögurinn in eastern Iceland. The sequence contains 157 tephra layers and provides marker horizons for regional and North Atlantic correlation."
+    },
+
+    {
+      title:"Tephra isochrons and chronologies of colonisation",
+      authors:"Schmid, Dugmore, Vésteinsson & Newton",
+      year:2017,
+      journal:"Quaternary Geochronology",
+      doi:"10.1016/j.quageo.2016.08.002",
+      url:"https://doi.org/10.1016/j.quageo.2016.08.002",
+      disciplines:["Archaeology","Tephrochronology","Geochronology"],
+      themes:["Human occupation","Tephrochronology","Colonisation"],
+      archives:["Archaeological sites","Volcanic deposits"],
+      methods:["Tephrochronology"],
+      periods:["Holocene"],
+      note:"Uses Icelandic tephra isochrons to establish chronological relationships across 253 archaeological sites and investigate the timing of colonisation."
+    },
+
+    {
+      title:"Jökulhlaups circa landnám: mid- to late first millennium AD floods in south Iceland and their implications for landscapes of settlement",
+      authors:"Smith & Dugmore",
+      year:2006,
+      journal:"Geografiska Annaler: Series A, Physical Geography",
+      doi:"10.1111/j.0435-3676.2006.00292.x",
+      url:"https://doi.org/10.1111/j.0435-3676.2006.00292.x",
+      disciplines:["Quaternary geology","Sedimentology","Archaeology"],
+      themes:["Glaciation","Human occupation","Landscape evolution"],
+      archives:["Glacial landforms","Archaeological sites"],
+      methods:["Tephrochronology","Radiocarbon"],
+      periods:["Holocene"],
+      note:"Examines glacial outburst flood evidence around the time of Norse settlement and its implications for settlement landscapes."
+    },
+
+    {
+      title:"ICEland-1: A comprehensive Holocene tephra dataset for Iceland",
+      authors:"Harning et al.",
+      year:2026,
+      journal:"Earth System Science Data",
+      doi:"10.5194/essd-18-3367-2026",
+      url:"https://doi.org/10.5194/essd-18-3367-2026",
+      disciplines:["Tephrochronology","Geochronology","Quaternary geology"],
+      themes:["Tephrochronology","Volcanism","Palaeoclimate"],
+      archives:["Volcanic deposits","Lake sediments"],
+      methods:["Tephrochronology","Stratigraphic correlation"],
+      periods:["Holocene"],
+      note:"A curated Icelandic tephra dataset supporting regional correlation and chronological research."
+    }
+,
+
+    {
+      "title": "Holocene history of landscape instability in Iceland: Can we deconvolve the impacts of climate, volcanism and human activity?",
+      "authors": "Geirsdóttir, Harning, Miller, Andrews, Zhong & Caseldine",
+      "year": 2020,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2020.106633",
+      "url": "https://doi.org/10.1016/j.quascirev.2020.106633",
+      "disciplines": [
+            "Palaeoclimatology",
+            "Palaeoecology",
+            "Quaternary geology"
+      ],
+      "themes": [
+            "Palaeoclimate",
+            "Volcanism",
+            "Human occupation",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Peat and soils",
+            "Volcanic deposits"
+      ],
+      "methods": [
+            "Tephrochronology",
+            "Radiocarbon"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Reviews lake-sediment evidence for Holocene soil erosion and landscape instability, assessing climate, volcanic activity and human impacts in Iceland."
+},
+
+    {
+      "title": "Recurrent outburst floods and explosive volcanism during the Younger Dryas-Early Holocene deglaciation in south Iceland: evidence from a lacustrine record",
+      "authors": "Geirsdóttir, Miller, Harning, Hannesdóttir, Thordarson & Jónsdóttir",
+      "year": 2022,
+      "journal": "Journal of Quaternary Science",
+      "doi": "10.1002/jqs.3344",
+      "url": "https://doi.org/10.1002/jqs.3344",
+      "disciplines": [
+            "Sedimentology",
+            "Quaternary geology",
+            "Tephrochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Volcanism",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Volcanic deposits"
+      ],
+      "methods": [
+            "Tephrochronology",
+            "Radiocarbon"
+      ],
+      "periods": [
+            "Late Glacial",
+            "Holocene"
+      ],
+      "note": "Uses the Hestvatn lake record to identify flood deposits and volcanic material associated with deglaciation and jökulhlaups in south Iceland."
+},
+
+    {
+      "title": "Non-linear Holocene climate evolution in the North Atlantic: A high-resolution, multi-proxy record of glacier activity and environmental change from Hvítárvatn, central Iceland",
+      "authors": "Larsen, Miller, Geirsdóttir & Ólafsdóttir",
+      "year": 2012,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2011.11.009",
+      "url": "https://doi.org/10.1016/j.quascirev.2011.11.009",
+      "disciplines": [
+            "Palaeoclimatology",
+            "Glacial geomorphology",
+            "Sedimentology"
+      ],
+      "themes": [
+            "Palaeoclimate",
+            "Glaciation"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Varve chronology",
+            "Tephrochronology",
+            "Palaeomagnetism"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Presents a high-resolution lake-sediment record from Hvítárvatn documenting environmental change and Langjökull ice-cap development through the Holocene."
+},
+
+    {
+      "title": "A 3000-year varved record of glacier activity and climate change from the proglacial lake Hvítárvatn, Iceland",
+      "authors": "Larsen, Miller, Geirsdóttir & Thórðarson",
+      "year": 2011,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2011.04.005",
+      "url": "https://doi.org/10.1016/j.quascirev.2011.04.005",
+      "disciplines": [
+            "Palaeoclimatology",
+            "Sedimentology",
+            "Glacial geomorphology"
+      ],
+      "themes": [
+            "Palaeoclimate",
+            "Glaciation"
+      ],
+      "archives": [
+            "Lake sediments"
+      ],
+      "methods": [
+            "Varve chronology",
+            "Tephrochronology"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Uses annually laminated lake sediments and tephrostratigraphy to reconstruct glacier activity and climate variability over the last three millennia."
+},
+
+    {
+      "title": "High-resolution Holocene record based on detailed tephrochronology from Torfdalsvatn, north Iceland, reveals natural and anthropogenic impacts on terrestrial and aquatic environments",
+      "authors": "Authors et al.",
+      "year": 2025,
+      "journal": "Climate of the Past",
+      "doi": "10.5194/cp-21-795-2025",
+      "url": "https://doi.org/10.5194/cp-21-795-2025",
+      "disciplines": [
+            "Tephrochronology",
+            "Palaeoecology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Tephrochronology",
+            "Volcanism",
+            "Vegetation change",
+            "Human occupation"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Volcanic deposits"
+      ],
+      "methods": [
+            "Tephrochronology",
+            "Radiocarbon"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Presents a high-resolution tephrochronologically constrained lake record from north Iceland and investigates environmental responses to natural and anthropogenic drivers."
+}
+  ]
+},
+
+{
+  id:"greenland",
+  name:"Greenland",
+  coords:[72.0,-40.0],
+  period:"Pleistocene–Holocene",
+
+  summary:"Greenland preserves exceptionally important records of Quaternary climate and ice-sheet evolution. Ice cores, marine and lake sediments, cosmogenic exposure ages, glacial landforms and archaeological sites help reconstruct environmental change and the history of human occupation.",
+
+  topics:[
+    "Greenland Ice Sheet",
+    "Ice-core records",
+    "Abrupt climate change",
+    "Norse settlement",
+    "Inuit archaeology",
+    "Holocene glacier fluctuations",
+    "Cosmogenic exposure dating",
+    "Relative sea-level change",
+    "Pollen records"
+  ],
+
+  papers:[
+
+    {
+      title:"The Greenland ice core record: a unique 20th century perspective on past climate change",
+      authors:"Mayewski et al.",
+      year:2014,
+      journal:"Journal of Quaternary Science",
+      doi:"10.1002/jqs.2684",
+      url:"https://doi.org/10.1002/jqs.2684",
+      disciplines:["Palaeoclimatology","Quaternary geology"],
+      themes:["Palaeoclimate","Glaciation"],
+      archives:["Ice cores"],
+      methods:["Ice-core chronology","Stratigraphic correlation"],
+      periods:["Holocene"],
+      note:"Discusses the Greenland ice-core record and its importance for understanding abrupt climate variability."
+    },
+
+    {
+      title:"Palynology supports ‘Old Norse’ introductions to the flora of Greenland",
+      authors:"Fredskild et al.",
+      year:2013,
+      journal:"Journal of Biogeography",
+      doi:"10.1111/jbi.12067",
+      url:"https://doi.org/10.1111/jbi.12067",
+      disciplines:["Archaeology","Palaeoecology"],
+      themes:["Human occupation","Vegetation change"],
+      archives:["Lake sediments","Peat and soils"],
+      methods:["Radiocarbon"],
+      periods:["Holocene"],
+      note:"Uses pollen evidence from southern Greenland to investigate plant introductions associated with Norse colonisation."
+    },
+
+    {
+      title:"Norse–Inuit interaction and landscape change in southern Greenland? A geochronological, pedological, and palynological investigation",
+      authors:"Golding, Simpson, Schofield & Edwards",
+      year:2011,
+      journal:"Geoarchaeology",
+      doi:"10.1002/gea.20351",
+      url:"https://doi.org/10.1002/gea.20351",
+      disciplines:["Archaeology","Palaeoecology","Sedimentology","Geochronology"],
+      themes:["Human occupation","Vegetation change","Landscape evolution"],
+      archives:["Archaeological sites","Peat and soils"],
+      methods:["Radiocarbon","Stratigraphic correlation"],
+      periods:["Holocene"],
+      note:"Investigates Norse and Inuit settlement landscapes through soil, pollen and chronological evidence."
+    },
+
+    {
+      title:"A multiple profile approach to the palynological reconstruction of Norse landscapes in Greenland's Eastern Settlement",
+      authors:"Authors et al.",
+      year:2014,
+      journal:"Quaternary Research",
+      doi:"10.1016/j.yqres.2014.04.003",
+      url:"https://doi.org/10.1016/j.yqres.2014.04.003",
+      disciplines:["Archaeology","Palaeoecology"],
+      themes:["Human occupation","Vegetation change","Landscape evolution"],
+      archives:["Peat and soils","Archaeological sites"],
+      methods:["Radiocarbon","Stratigraphic correlation"],
+      periods:["Holocene"],
+      note:"Uses multiple pollen profiles from Vatnahverfi in the Eastern Settlement to examine the development of Norse cultural landscapes and the relationship between vegetation records and proximity to farms."
+    },
+
+    {
+      title:"Pushing the limits: palynological investigations at the margin of the Greenland Ice Sheet in the Norse Western Settlement",
+      authors:"Schofield et al.",
+      year:2022,
+      journal:"Environmental Archaeology",
+      doi:"10.1080/14614103.2019.1677075",
+      url:"https://doi.org/10.1080/14614103.2019.1677075",
+      disciplines:["Archaeology","Palaeoecology"],
+      themes:["Human occupation","Vegetation change","Palaeoclimate"],
+      archives:["Peat and soils","Archaeological sites"],
+      methods:["Radiocarbon"],
+      periods:["Holocene"],
+      note:"Uses high-resolution pollen records to investigate Norse impacts on vegetation and landscape near the ice-sheet margin."
+    },
+
+    {
+      title:"The steady loss – Palynological investigation into the main triggers of changes in vegetation and pastoral activity during the Norse period in southern Greenland",
+      authors:"Krüger et al.",
+      year:2024,
+      journal:"Quaternary Environments and Humans",
+      doi:"10.1016/j.qeh.2024.100018",
+      url:"https://doi.org/10.1016/j.qeh.2024.100018",
+      disciplines:["Archaeology","Palaeoecology","Palaeoclimatology"],
+      themes:["Human occupation","Vegetation change","Palaeoclimate"],
+      archives:["Lake sediments","Archaeological sites"],
+      methods:["Radiocarbon"],
+      periods:["Holocene"],
+      note:"Uses lake sediment palynology to investigate vegetation, pastoral activity and environmental change during the Norse period."
+    },
+
+    {
+      title:"Ice and fire: Norse farming at the edge of the ice cap of the Western settlement in Greenland",
+      authors:"Roulé et al.",
+      year:2025,
+      journal:"Quaternary Science Reviews",
+      doi:"10.1016/j.quascirev.2024.109156",
+      url:"https://doi.org/10.1016/j.quascirev.2024.109156",
+      disciplines:["Archaeology","Palaeoecology","Palaeoclimatology"],
+      themes:["Human occupation","Vegetation change","Palaeoclimate"],
+      archives:["Peat and soils","Archaeological sites"],
+      methods:["Radiocarbon","Stratigraphic correlation"],
+      periods:["Holocene"],
+      note:"Investigates vegetation, fire activity and Norse farming at the margin of the Greenland Ice Sheet."
+    }
+,
+
+    {
+      "title": "Holocene glacier and ice cap fluctuations in southwest Greenland inferred from two lake records",
+      "authors": "Larocca, Axford, Woodroffe, Lasher & Gawin",
+      "year": 2020,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2020.106529",
+      "url": "https://doi.org/10.1016/j.quascirev.2020.106529",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Palaeoclimatology",
+            "Sedimentology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Uses two lake-sediment records to reconstruct Holocene fluctuations of local glaciers and ice caps in southwest Greenland."
+},
+
+    {
+      "title": "East Greenland ice core dust record reveals timing of Greenland ice sheet advance and retreat",
+      "authors": "Kjær et al.",
+      "year": 2019,
+      "journal": "Nature Communications",
+      "doi": "10.1038/s41467-019-12546-2",
+      "url": "https://doi.org/10.1038/s41467-019-12546-2",
+      "disciplines": [
+            "Palaeoclimatology",
+            "Glacial geomorphology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Ice cores"
+      ],
+      "methods": [
+            "Ice-core chronology",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Holocene"
+      ],
+      "note": "Uses the Renland ice-core dust record to infer changes in the East Greenland ice-sheet margin through the last glacial cycle and deglaciation."
+},
+
+    {
+      "title": "Calibrated relative sea levels constrain isostatic adjustment and ice history in northwest Greenland",
+      "authors": "Glueder et al.",
+      "year": 2022,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2022.107700",
+      "url": "https://doi.org/10.1016/j.quascirev.2022.107700",
+      "disciplines": [
+            "Sea-level research",
+            "Quaternary geology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Sea-level change",
+            "Glaciation"
+      ],
+      "archives": [
+            "Marine sediments",
+            "Raised shorelines"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Uses relative sea-level indicators near Petermann Glacier and glacio-isostatic modelling to constrain past ice-mass changes in northwest Greenland."
+},
+
+    {
+      "title": "Glacial history of the Greenland Ice Sheet and a local ice cap in Qaanaaq, northwest Greenland",
+      "authors": "Authors et al.",
+      "year": 2019,
+      "journal": "Journal of Quaternary Science",
+      "doi": "10.1002/jqs.3139",
+      "url": "https://doi.org/10.1002/jqs.3139",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms",
+            "Lake sediments",
+            "Marine sediments"
+      ],
+      "methods": [
+            "Cosmogenic nuclides",
+            "Radiocarbon"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Holocene"
+      ],
+      "note": "Combines geomorphological mapping, 10Be exposure dating, lake cores and radiocarbon evidence to reconstruct ice history around Qaanaaq."
+},
+
+    {
+      "title": "Late glacial and Holocene glaciation history of North and Northeast Greenland",
+      "authors": "Bjørke, Khan & Olseng",
+      "year": 2022,
+      "journal": "Arctic, Antarctic, and Alpine Research",
+      "doi": "10.1080/15230430.2022.2094607",
+      "url": "https://doi.org/10.1080/15230430.2022.2094607",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Holocene"
+      ],
+      "note": "Presents new 10Be exposure ages and a regional synthesis of ice-sheet retreat and Holocene margin fluctuations in North and Northeast Greenland."
+},
+
+    {
+      "title": "Coeval fluctuations of the Greenland ice sheet and a local glacier, central East Greenland, during late glacial and early Holocene time",
+      "authors": "Authors et al.",
+      "year": 2016,
+      "journal": "Geophysical Research Letters",
+      "doi": "10.1002/2015GL067108",
+      "url": "https://doi.org/10.1002/2015GL067108",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Late Glacial",
+            "Holocene"
+      ],
+      "note": "Uses 10Be moraine chronologies to compare outlet-glacier and local ice-cap fluctuations in central East Greenland."
+},
+
+    {
+      "title": "Assessing ice margin fluctuations on differing timescales: Chronological constraints from Sermeq Kujatdleq and Nordenskiöld Gletscher, central West Greenland",
+      "authors": "Kelley, Briner & O’Hara",
+      "year": 2018,
+      "journal": "The Holocene",
+      "doi": "10.1177/0959683618761541",
+      "url": "https://doi.org/10.1177/0959683618761541",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Sedimentology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Uses radiocarbon-dated proglacial lake sediments to reconstruct middle- and late-Holocene ice-margin fluctuations at two central West Greenland locations."
+},
+
+    {
+      "title": "Middle to late Holocene chronology of the western margin of the Greenland Ice Sheet: A comparison with Holocene temperature and precipitation records",
+      "authors": "Levy, Kelly, Applegate & Howley",
+      "year": 2018,
+      "journal": "Arctic, Antarctic, and Alpine Research",
+      "doi": "10.1080/15230430.2017.1414477",
+      "url": "https://doi.org/10.1080/15230430.2017.1414477",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Presents 10Be moraine ages from the Kangerlussuaq region and compares ice-margin changes with nearby Holocene climate records."
+},
+
+    {
+      "title": "Relative sea-level changes and evidence for a Holocene low stand in southern Greenland",
+      "authors": "Luetzenburg et al.",
+      "year": 2026,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2025.109787",
+      "url": "https://doi.org/10.1016/j.quascirev.2025.109787",
+      "disciplines": [
+            "Sea-level research",
+            "Quaternary geology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Sea-level change",
+            "Glaciation"
+      ],
+      "archives": [
+            "Lake sediments",
+            "Marine sediments"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Presents a 10,000-year relative sea-level reconstruction from Isortoq Fjord, documenting rapid early-Holocene isostatic rebound and a middle-Holocene low stand."
+}
+  ]
+},
+
+{
+  id:"new-zealand",
+  name:"Southern Alps, New Zealand",
+  coords:[-43.5,170.2],
+  period:"Pleistocene–Holocene",
+
+  summary:"The Southern Alps preserve extensive glacial landforms and sedimentary archives that record changes in mountain glaciers, precipitation and Southern Hemisphere atmospheric circulation. Moraine sequences, loess and lake sediments provide important evidence for Quaternary environmental change.",
+
+  topics:[
+    "Southern Alps glaciation",
+    "Moraine chronologies",
+    "Last Glacial Maximum",
+    "Holocene glacier fluctuations",
+    "Loess deposits",
+    "Southern Westerly Winds",
+    "Glacial geomorphology",
+    "Palaeoclimate reconstruction"
+  ],
+
+  papers:[
+
+    {
+      title:"Holocene glacier chronology of the Southern Alps/New Zealand - challenges, new results, and implications",
+      authors:"Winkler et al.",
+      year:2026,
+      journal:"Geomorphology",
+      doi:"10.1016/j.geomorph.2026.110309",
+      url:"https://doi.org/10.1016/j.geomorph.2026.110309",
+      disciplines:["Glacial geomorphology","Palaeoclimatology","Geochronology"],
+      themes:["Glaciation","Palaeoclimate"],
+      archives:["Glacial landforms"],
+      methods:["Cosmogenic nuclides","Radiocarbon"],
+      periods:["Holocene"],
+      note:"Reviews Holocene glacier chronology and presents new evidence for glacier fluctuations in the Southern Alps."
+    }
+,
+
+    {
+      "title": "High-frequency Holocene glacier fluctuations in New Zealand differ from the northern signature",
+      "authors": "Schaefer et al.",
+      "year": 2009,
+      "journal": "Science",
+      "doi": "10.1126/science.1169312",
+      "url": "https://doi.org/10.1126/science.1169312",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Palaeoclimatology",
+            "Geochronology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "Presents a high-resolution 10Be chronology of Southern Alps glacier fluctuations over the last 7,000 years and highlights differences from Northern Hemisphere glacier histories."
+},
+
+    {
+      "title": "The Last Glacial Maximum at 44°S documented by a 10Be moraine chronology at Lake Ohau, Southern Alps of New Zealand",
+      "authors": "Putnam et al.",
+      "year": 2013,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2012.10.034",
+      "url": "https://doi.org/10.1016/j.quascirev.2012.10.034",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Last Glacial Maximum"
+      ],
+      "note": "Uses 10Be exposure dating and geomorphological mapping to reconstruct multiple glacier advances and retreat in the Lake Ohau valley."
+},
+
+    {
+      "title": "A beryllium-10 chronology of late-glacial moraines in the upper Rakaia valley, Southern Alps, New Zealand supports Southern-Hemisphere warming during the Younger Dryas",
+      "authors": "Koffman et al.",
+      "year": 2017,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2017.06.012",
+      "url": "https://doi.org/10.1016/j.quascirev.2017.06.012",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Late Glacial"
+      ],
+      "note": "Uses 10Be moraine ages from the upper Rakaia valley to assess glacier behaviour during the Antarctic Cold Reversal and Younger Dryas interval."
+},
+
+    {
+      "title": "Early glacier advance in New Zealand during the Antarctic Cold Reversal",
+      "authors": "Authors et al.",
+      "year": 2023,
+      "journal": "Journal of Quaternary Science",
+      "doi": "10.1002/jqs.3495",
+      "url": "https://doi.org/10.1002/jqs.3495",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Late Glacial"
+      ],
+      "note": "Combines 10Be exposure ages and snowline reconstructions from the Ahuriri catchment to investigate glacier fluctuations during the Antarctic Cold Reversal."
+},
+
+    {
+      "title": "Holocene glacier variations in New Zealand: A review",
+      "authors": "Gellatly, Chinn & Röthlisberger",
+      "year": 1988,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/0277-3791(88)90008-X",
+      "url": "https://doi.org/10.1016/0277-3791(88)90008-X",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms",
+            "Peat and soils"
+      ],
+      "methods": [
+            "Radiocarbon",
+            "Stratigraphic correlation"
+      ],
+      "periods": [
+            "Holocene"
+      ],
+      "note": "A foundational synthesis of Holocene glacier variations in New Zealand, comparing chronology and regional differences between eastern and western Southern Alps."
+},
+
+    {
+      "title": "Tracking rapid ice recession in a major Southern Alps valley during the last glacial termination",
+      "authors": "Strand, Putnam, Schaefer, Denton & Barrell",
+      "year": 2024,
+      "journal": "Quaternary Science Reviews",
+      "doi": "10.1016/j.quascirev.2024.108737",
+      "url": "https://doi.org/10.1016/j.quascirev.2024.108737",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate",
+            "Landscape evolution"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Late Pleistocene",
+            "Late Glacial"
+      ],
+      "note": "Combines 10Be surface-exposure dating and former equilibrium-line altitudes to reconstruct rapid ice recession in a major Southern Alps valley during the last glacial termination."
+},
+
+    {
+      "title": "Glacier advance in southern middle-latitudes during the Antarctic Cold Reversal",
+      "authors": "Putnam et al.",
+      "year": 2010,
+      "journal": "Nature Geoscience",
+      "doi": "10.1038/ngeo962",
+      "url": "https://doi.org/10.1038/ngeo962",
+      "disciplines": [
+            "Glacial geomorphology",
+            "Geochronology",
+            "Palaeoclimatology"
+      ],
+      "themes": [
+            "Glaciation",
+            "Palaeoclimate"
+      ],
+      "archives": [
+            "Glacial landforms"
+      ],
+      "methods": [
+            "Cosmogenic nuclides"
+      ],
+      "periods": [
+            "Late Glacial"
+      ],
+      "note": "Uses moraine chronologies from southern mid-latitudes, including New Zealand, to investigate glacier advances during the Antarctic Cold Reversal."
+}
+  ]
+}
+
+];
+
+
+// ======================================================
+// MAP INITIALISATION
+// ======================================================
+
+const map = L.map("map", {
+  scrollWheelZoom:false
+}).setView([14,8],2);
+
+L.tileLayer(
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    maxZoom:10,
+    attribution:"&copy; OpenStreetMap contributors"
+  }
+).addTo(map);
+
+const markers = {};
+let selected = null;
+
+regions.forEach(region => {
+
+  const marker = L.marker(region.coords)
+    .addTo(map)
+    .bindPopup(
+      `<strong>${region.name}</strong><br>${region.period}`
+    );
+
+  markers[region.id] = marker;
+
+  marker.on("click", () => {
+    selectRegion(region.id,false);
+  });
+
+});
+
+
+// ======================================================
+// ELEMENT REFERENCES
+// ======================================================
+
+const searchInput = document.getElementById("search");
+const locationInput = document.getElementById("location");
+const disciplineInput = document.getElementById("discipline");
+const themeInput = document.getElementById("theme");
+const archiveInput = document.getElementById("archive");
+const methodInput = document.getElementById("method");
+const periodInput = document.getElementById("period");
+const sortInput = document.getElementById("sort");
+
+const regionList = document.getElementById("region-list");
+const detail = document.getElementById("detail");
+const resultCount = document.getElementById("result-count");
+
+
+// ======================================================
+// FILTER ENGINE
+// All filters operate on individual publications.
+// Location is applied at the regional level.
+// ======================================================
+
+function getFilteredPapers(region) {
+
+  const query = searchInput.value.toLowerCase().trim();
+
+  const discipline = disciplineInput.value;
+  const theme = themeInput.value;
+  const archive = archiveInput.value;
+  const method = methodInput.value;
+  const period = periodInput.value;
+
+  return region.papers.filter(paper => {
+
+    const searchableText = [
+      paper.title,
+      paper.authors,
+      paper.journal,
+      paper.note,
+      paper.year,
+      paper.doi,
+      region.name,
+      ...paper.disciplines,
+      ...paper.themes,
+      ...paper.archives,
+      ...paper.methods,
+      ...paper.periods
+    ].join(" ").toLowerCase();
+
+    const matchesSearch =
+      !query || searchableText.includes(query);
+
+    const matchesDiscipline =
+      !discipline || paper.disciplines.includes(discipline);
+
+    const matchesTheme =
+      !theme || paper.themes.includes(theme);
+
+    const matchesArchive =
+      !archive || paper.archives.includes(archive);
+
+    const matchesMethod =
+      !method || paper.methods.includes(method);
+
+    const matchesPeriod =
+      !period || paper.periods.includes(period);
+
+    return (
+      matchesSearch &&
+      matchesDiscipline &&
+      matchesTheme &&
+      matchesArchive &&
+      matchesMethod &&
+      matchesPeriod
+    );
+
+  });
+
+}
+
+
+// ======================================================
+// LOCATION FILTER
+// ======================================================
+
+function getLocationFilteredRegions() {
+
+  const location = locationInput.value;
+
+  if (!location) return regions;
+
+  return regions.filter(region => region.id === location);
+
+}
+
+
+// ======================================================
+// SORTING
+// ======================================================
+
+function sortPapers(papers) {
+
+  const sorted = [...papers];
+  const sort = sortInput.value;
+
+  if (sort === "newest") {
+    sorted.sort((a,b) => b.year-a.year);
+  }
+
+  if (sort === "oldest") {
+    sorted.sort((a,b) => a.year-b.year);
+  }
+
+  if (sort === "title") {
+    sorted.sort((a,b) =>
+      a.title.localeCompare(b.title)
+    );
+  }
+
+  return sorted;
+
+}
+
+
+// ======================================================
+// PUBLICATION DISPLAY
+// ======================================================
+
+function renderPaper(paper) {
+
+  const link = paper.url
+    ? `<a href="${paper.url}" target="_blank" rel="noopener noreferrer">View publication / DOI ↗</a>`
+    : `<span>Bibliographic link requires verification</span>`;
+
+  return `
+    <article class="paper">
+
+      <strong>${paper.title}</strong>
+
+      <span class="metadata">
+        ${paper.authors} · ${paper.year} · ${paper.journal}
+      </span>
+
+      <p>${paper.note}</p>
+
+      <div class="paper-tags">
+        ${paper.disciplines.map(x =>
+          `<span>${x}</span>`
+        ).join("")}
+      </div>
+
+      <div class="paper-tags">
+        ${paper.themes.map(x =>
+          `<span>${x}</span>`
+        ).join("")}
+      </div>
+
+      <div class="paper-tags">
+        ${paper.archives.map(x =>
+          `<span>${x}</span>`
+        ).join("")}
+      </div>
+
+      <div class="paper-tags">
+        ${paper.methods.map(x =>
+          `<span>${x}</span>`
+        ).join("")}
+      </div>
+
+      <div class="paper-tags">
+        ${paper.periods.map(x =>
+          `<span>${x}</span>`
+        ).join("")}
+      </div>
+
+      ${link}
+
+    </article>
+  `;
+
+}
+
+
+// ======================================================
+// REGIONAL PROFILE DISPLAY
+// ======================================================
+
+function renderDetail(region) {
+
+  const papers = sortPapers(getFilteredPapers(region));
+
+  const disciplines = [
+    ...new Set(region.papers.flatMap(p => p.disciplines))
+  ];
+
+  detail.innerHTML = `
+
+    <div class="eyebrow">
+      Regional profile · ${region.period}
+    </div>
+
+    <h3>${region.name}</h3>
+
+    <p class="detail-intro">${region.summary}</p>
+
+    <h4>Research topics</h4>
+
+    <div class="tagrow">
+      ${region.topics.map(topic =>
+        `<span class="tag">${topic}</span>`
+      ).join("")}
+    </div>
+
+    <h4>Research disciplines</h4>
+
+    <div class="tagrow">
+      ${disciplines.map(x =>
+        `<span class="tag">${x}</span>`
+      ).join("")}
+    </div>
+
+    <h4>
+      Matching academic publications (${papers.length})
+    </h4>
+
+    <p class="paper-count">
+      ${papers.length} matching publications.
+      Scroll within the bibliography below to browse the papers.
+    </p>
+
+    <div class="paper-list" tabindex="0" aria-label="Scrollable academic publication list">
+
+      ${
+        papers.length
+          ? papers.map(renderPaper).join("")
+          : `<div class="empty">No publications from this region match the current filters. Try removing one or more filters.</div>`
+      }
+
+    </div>
+
+    <div class="notice">
+      Coverage note: this is a curated starter bibliography,
+      not a complete inventory of research. Bibliographic metadata
+      and regional relevance should be checked against original
+      publications before final inclusion.
+    </div>
+
+  `;
+
+}
+
+
+// ======================================================
+// REGION SELECTION
+// ======================================================
+
+function selectRegion(id,fly=true) {
+
+  const region = regions.find(r => r.id===id);
+
+  if (!region) return;
+
+  selected = id;
+
+  // Keep the location dropdown synchronised with the map.
+  locationInput.value = region.id;
+
+  if (fly) {
+    map.flyTo(
+      region.coords,
+      Math.max(map.getZoom(),4),
+      {duration:0.7}
+    );
+  }
+
+  renderList();
+  renderDetail(region);
+
+}
+
+
+// ======================================================
+// DIRECTORY RENDERING
+// ======================================================
+
+function renderList() {
+
+  const locationRegions = getLocationFilteredRegions();
+
+  const matchingRegions = locationRegions.filter(region =>
+    getFilteredPapers(region).length>0
+  );
+
+  regionList.innerHTML = "";
+
+  if (!matchingRegions.length) {
+
+    regionList.innerHTML = `
+      <div class="empty">
+        No publications match those filters.
+        Try removing one or more filters.
+      </div>
+    `;
+
+  }
+
+  matchingRegions.forEach(region => {
+
+    const papers = getFilteredPapers(region);
+
+    const button = document.createElement("button");
+
+    button.className =
+      "region-button" +
+      (selected===region.id ? " active" : "");
+
+    button.innerHTML = `
+
+      <strong>${region.name}</strong>
+
+      <small>
+        ${region.period} · ${papers.length} matching publications
+      </small>
+
+      <span class="tagrow">
+        ${region.topics.slice(0,3).map(topic =>
+          `<span class="tag">${topic}</span>`
+        ).join("")}
+      </span>
+
+    `;
+
+    button.addEventListener("click",() => {
+      selectRegion(region.id,true);
+    });
+
+    regionList.appendChild(button);
+
+  });
+
+
+  const totalMatchingPapers = matchingRegions.reduce(
+    (sum,region) => sum+getFilteredPapers(region).length,
+    0
+  );
+
+  resultCount.textContent =
+    `${matchingRegions.length} regions · ${totalMatchingPapers} matching publications`;
+
+
+  // Fade map markers which do not match the active location/filter set.
+  Object.entries(markers).forEach(([id,marker]) => {
+
+    const visible = matchingRegions.some(
+      region => region.id===id
+    );
+
+    marker.setOpacity(visible ? 1 : 0.2);
+
+  });
+
+
+  // If a location has been selected, automatically display its profile.
+  if (locationInput.value) {
+
+    const selectedLocation = regions.find(
+      region => region.id===locationInput.value
+    );
+
+    if (selectedLocation) {
+
+      selected = selectedLocation.id;
+
+      if (getFilteredPapers(selectedLocation).length || !matchingRegions.length) {
+        renderDetail(selectedLocation);
+      }
+
+    }
+
+    return;
+
+  }
+
+
+  if (selected) {
+
+    const selectedRegion = regions.find(
+      r => r.id===selected
+    );
+
+    if (selectedRegion) {
+      renderDetail(selectedRegion);
+    }
+
+  }
+
+}
+
+
+// ======================================================
+// FILTER EVENT LISTENERS
+// ======================================================
+
+[
+  searchInput,
+  locationInput,
+  disciplineInput,
+  themeInput,
+  archiveInput,
+  methodInput,
+  periodInput,
+  sortInput
+].forEach(element => {
+
+  element.addEventListener("input",renderList);
+  element.addEventListener("change",renderList);
+
+});
+
+
+// ======================================================
+// RESET FILTERS
+// ======================================================
+
+document.getElementById("reset-filters")
+  .addEventListener("click",() => {
+
+    searchInput.value = "";
+    locationInput.value = "";
+    disciplineInput.value = "";
+    themeInput.value = "";
+    archiveInput.value = "";
+    methodInput.value = "";
+    periodInput.value = "";
+    sortInput.value = "newest";
+
+    selected = null;
+
+    detail.innerHTML = `
+      <div class="eyebrow">Selected region</div>
+      <h3>Choose a place to begin</h3>
+      <p>
+        Click a map marker or choose a region from the directory
+        to explore its Quaternary history and selected academic literature.
+      </p>
+    `;
+
+    map.setView([14,8],2);
+
+    renderList();
+
+  });
+
+
+// ======================================================
+// CSV EXPORT
+// Exports publications matching all active filters,
+// including the selected location.
+// ======================================================
+
+document.getElementById("export-csv")
+  .addEventListener("click",() => {
+
+    const rows = [[
+      "Region",
+      "Publication title",
+      "Authors",
+      "Year",
+      "Journal",
+      "Disciplines",
+      "Themes",
+      "Evidence archives",
+      "Dating methods",
+      "Time periods",
+      "DOI",
+      "URL"
+    ]];
+
+    getLocationFilteredRegions().forEach(region => {
+
+      getFilteredPapers(region).forEach(paper => {
+
+        rows.push([
+
+          region.name,
+          paper.title,
+          paper.authors,
+          paper.year,
+          paper.journal,
+          paper.disciplines.join("; "),
+          paper.themes.join("; "),
+          paper.archives.join("; "),
+          paper.methods.join("; "),
+          paper.periods.join("; "),
+          paper.doi,
+          paper.url
+
+        ]);
+
+      });
+
+    });
+
+
+    const csv = rows.map(row =>
+      row.map(value =>
+        `"${String(value ?? "").replace(/"/g,'""')}"`
+      ).join(",")
+    ).join("\n");
+
+
+    const blob = new Blob(
+      ["\uFEFF"+csv],
+      {type:"text/csv;charset=utf-8;"}
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "quaternary-atlas-literature.csv";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+  });
+
+
+// ======================================================
+// DATABASE COUNTS
+// ======================================================
+
+const totalPapers = regions.reduce(
+  (sum,region) => sum+region.papers.length,
+  0
+);
+
+document.getElementById("paper-count").textContent =
+  `${totalPapers} selected research records`;
+
+
+// ======================================================
+// INITIALISE
+// ======================================================
+
+renderList();
+
+</script>
+
+</body>
+</html>
