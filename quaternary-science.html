@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An accessible introduction to Quaternary Science: the Ice Ages, changing climates, landscapes, fossils, human evolution and the methods scientists use to reconstruct Earth's recent geological past.">
+  <meta name="theme-color" content="#f3efe6">
+  <title>Understanding the Quaternary | Fossils & Futures</title>
+  <style>
+    :root {
+      --paper: #f3efe6;
+      --paper-deep: #e9e2d5;
+      --ink: #252821;
+      --muted: #6d7068;
+      --line: #d8d0c2;
+      --terra: #b65f43;
+      --terra-dark: #87432f;
+      --sage: #667766;
+      --blue: #7895a0;
+      --white: #fbf9f4;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; }
+    a { color: inherit; }
+    .progress { position: fixed; inset: 0 auto auto 0; height: 3px; width: 0; background: var(--terra); z-index: 20; }
+    .site-header { position: sticky; top: 0; z-index: 10; background: rgba(243,239,230,.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(216,208,194,.85); }
+    .nav-wrap { max-width: var(--max); margin: auto; padding: 0 28px; min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; font-family: var(--serif); font-size: 20px; font-weight: 700; letter-spacing: -.4px; white-space: nowrap; }
+    .brand-mark { width: 30px; height: 30px; border: 1px solid var(--terra); border-radius: 50%; display: grid; place-items: center; color: var(--terra); font-family: var(--sans); font-size: 12px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { text-decoration: none; font-size: 12px; color: var(--muted); font-weight: 650; letter-spacing: .03em; }
+    .nav-links a:hover { color: var(--terra-dark); }
+    .nav-cta { border: 1px solid var(--ink); padding: 9px 13px; border-radius: 2px; color: var(--ink) !important; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: transparent; padding: 8px 10px; color: var(--ink); }
+    .hero { max-width: var(--max); margin: auto; padding: 76px 28px 62px; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(280px,.85fr); gap: 54px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--terra-dark); text-transform: uppercase; letter-spacing: .16em; font-size: 10px; font-weight: 800; }
+    .eyebrow:before { content: ''; width: 27px; height: 1px; background: var(--terra); }
+    h1,h2,h3 { font-family: var(--serif); font-weight: 500; line-height: 1.08; letter-spacing: -.035em; }
+    h1 { font-size: clamp(48px, 6.3vw, 78px); max-width: 720px; margin: 22px 0 22px; }
+    h1 em { color: var(--terra); font-weight: 400; }
+    .hero-copy { max-width: 650px; font-size: 17px; color: #555950; line-height: 1.8; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 17px; text-decoration: none; font-size: 12px; font-weight: 750; letter-spacing: .04em; border: 1px solid var(--ink); transition: .2s ease; }
+    .button.primary { background: var(--ink); color: var(--white); }
+    .button.primary:hover { background: var(--terra-dark); border-color: var(--terra-dark); }
+    .button.secondary:hover { background: var(--paper-deep); }
+    .hero-note { border-left: 2px solid var(--terra); padding: 4px 0 4px 17px; margin-top: 30px; max-width: 560px; color: var(--muted); font-size: 12px; }
+    .hero-art { min-height: 430px; position: relative; overflow: hidden; background: #d9ded7; border-radius: 2px; }
+    .hero-art img { width: 100%; height: 100%; min-height: 430px; object-fit: cover; display: block; filter: saturate(.72); }
+    .art-caption { position: absolute; bottom: 15px; left: 15px; right: 15px; padding: 12px 14px; background: rgba(37,40,33,.82); color: #f8f4eb; font-size: 10px; letter-spacing: .06em; }
+    .hero-art:after { content: '2.58'; position: absolute; right: -12px; top: 8px; color: rgba(255,255,255,.72); font-family: var(--serif); font-size: 100px; line-height: 1; }
+    .fact-strip { background: var(--ink); color: var(--paper); }
+    .fact-inner { max-width: var(--max); margin: auto; padding: 25px 28px; display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .fact strong { display: block; font-family: var(--serif); font-size: 28px; font-weight: 400; color: #e2a187; }
+    .fact span { display: block; color: #c6c7bd; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; margin-top: 3px; }
+    .section { max-width: var(--max); margin: auto; padding: 88px 28px; }
+    .section-heading { display: grid; grid-template-columns: .7fr 1.3fr; gap: 50px; align-items: end; margin-bottom: 38px; }
+    .section-kicker { color: var(--terra-dark); font-size: 10px; text-transform: uppercase; letter-spacing: .16em; font-weight: 800; }
+    h2 { font-size: clamp(34px,4vw,49px); margin: 10px 0 0; }
+    .section-intro { color: var(--muted); max-width: 650px; font-size: 14px; margin: 0 0 4px; }
+    .definition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .definition-card { background: var(--white); border: 1px solid var(--line); padding: 27px; min-height: 205px; }
+    .definition-card .number { color: var(--terra); font-family: var(--serif); font-size: 19px; }
+    .definition-card h3 { font-size: 25px; margin: 14px 0 10px; }
+    .definition-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .note-band { margin-top: 18px; padding: 20px 23px; background: #e7e6dc; border-left: 3px solid var(--sage); font-size: 13px; color: #4f584d; }
+    .timeline-section { background: var(--paper-deep); }
+    .timeline-inner { max-width: var(--max); margin: auto; padding: 82px 28px 88px; }
+    .timeline-top { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 30px; }
+    .timeline-top p { max-width: 490px; color: var(--muted); font-size: 13px; margin: 0; }
+    .timeline { background: var(--white); border: 1px solid var(--line); padding: 26px; }
+    .timeline-bar { display: grid; grid-template-columns: 2.58fr 1.1fr; min-height: 66px; margin: 20px 0 18px; color: white; font-size: 11px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+    .pleistocene { background: #718994; display: flex; align-items: center; padding: 14px; }
+    .holocene { background: #b96a4b; display: flex; align-items: center; padding: 14px; }
+    .timeline-dates { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; font-weight: 700; }
+    .timeline-controls { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+    input[type=range] { width: 100%; accent-color: var(--terra); }
+    .time-output { min-width: 150px; text-align: right; }
+    .time-output strong { display: block; font-family: var(--serif); font-size: 25px; font-weight: 400; }
+    .time-output span { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .timeline-description { margin: 16px 0 0; color: var(--muted); font-size: 12px; min-height: 38px; }
+    .topic-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .topic-card { background: var(--white); border: 1px solid var(--line); text-decoration: none; display: flex; flex-direction: column; min-height: 260px; transition: transform .2s,border-color .2s; }
+    .topic-card:hover { transform: translateY(-4px); border-color: #b7a18e; }
+    .topic-visual { height: 125px; background: var(--paper-deep); overflow: hidden; }
+    .topic-visual img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.7); }
+    .topic-body { padding: 18px 19px 20px; }
+    .topic-body span { color: var(--terra-dark); font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .topic-body h3 { font-size: 23px; margin: 8px 0; }
+    .topic-body p { color: var(--muted); font-size: 12px; margin: 0; }
+    .methods-section { background: #e6e8e1; }
+    .methods-inner { max-width: var(--max); margin: auto; padding: 84px 28px; }
+    .methods-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: #cbd0c7; border: 1px solid #cbd0c7; margin-top: 34px; }
+    .method { background: #edf0e9; padding: 22px 19px; min-height: 175px; }
+    .method .symbol { font-family: var(--serif); color: var(--terra-dark); font-size: 25px; }
+    .method h3 { font-size: 20px; margin: 12px 0 8px; }
+    .method p { font-size: 11px; color: var(--muted); margin: 0; }
+    .pathway { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .pathway-box { background: var(--ink); color: var(--paper); padding: 32px; }
+    .pathway-box h3 { font-size: 29px; margin: 0 0 12px; }
+    .pathway-box p { color: #c8c9c0; font-size: 13px; }
+    .pathway-list { list-style: none; padding: 0; margin: 22px 0 0; }
+    .pathway-list li { padding: 10px 0; border-top: 1px solid #555950; font-size: 12px; }
+    .pathway-list li span { color: #e2a187; margin-right: 10px; }
+
+    .deep-dive { border-top: 1px solid var(--line); }
+    .deep-dive.alt { background: var(--white); }
+    .deep-dive-inner { max-width: var(--max); margin: auto; padding: 78px 28px; }
+    .deep-dive-header { display: grid; grid-template-columns: .72fr 1.28fr; gap: 48px; align-items: end; margin-bottom: 32px; }
+    .deep-dive-header h2 { margin-top: 10px; }
+    .deep-dive-header p { color: var(--muted); font-size: 14px; margin: 0; }
+    .content-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .content-card { padding: 25px; background: var(--paper); border: 1px solid var(--line); }
+    .content-card h3 { font-size: 25px; margin: 0 0 10px; }
+    .content-card p { color: #62665d; font-size: 13px; margin: 0 0 10px; }
+    .content-card p:last-child { margin-bottom: 0; }
+    .content-card .tag { color: var(--terra-dark); text-transform: uppercase; letter-spacing: .13em; font-size: 9px; font-weight: 800; display: block; margin-bottom: 10px; }
+    .insight-band { margin-top: 18px; background: #e7e6dc; border-left: 3px solid var(--terra); padding: 20px 23px; color: #50564d; font-size: 13px; }
+    .process-list { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 22px; }
+    .process-step { background: var(--white); padding: 20px; }
+    .process-step strong { display: block; color: var(--terra-dark); font: 24px var(--serif); margin-bottom: 7px; }
+    .process-step span { font-size: 12px; color: var(--muted); }
+    .term-pills { display:flex; flex-wrap:wrap; gap:8px; margin-top:15px; }
+    .term-pills span { border:1px solid var(--line); padding:6px 10px; font-size:10px; color:var(--muted); background:var(--white); }
+    .topic-card:focus-visible,.button:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible { outline: 3px solid var(--terra); outline-offset: 3px; }
+    @media (max-width: 760px) { .deep-dive-header { grid-template-columns:1fr; gap:14px; } .process-list { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width: 540px) { .deep-dive-inner { padding:58px 18px; } .content-grid { grid-template-columns:1fr; } .process-list { grid-template-columns:1fr 1fr; } }
+
+    .glossary { border-top: 1px solid var(--line); }
+    .glossary-row { display: grid; grid-template-columns: 190px 1fr; gap: 20px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .glossary-row strong { font-family: var(--serif); font-size: 19px; font-weight: 400; }
+    .glossary-row p { margin: 0; font-size: 12px; color: var(--muted); }
+    .references { background: var(--paper-deep); }
+    .references-inner { max-width: var(--max); margin: auto; padding: 65px 28px; }
+    .reference-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .reference-links a { font-size: 11px; text-decoration: none; border: 1px solid #c9bfaf; padding: 9px 12px; }
+    .reference-links a:hover { background: var(--paper); }
+    footer { background: var(--ink); color: #c8c9c0; padding: 27px 28px; }
+    .footer-inner { max-width: var(--max); margin: auto; display: flex; justify-content: space-between; gap: 20px; font-size: 10px; letter-spacing: .04em; }
+    .footer-inner strong { color: var(--paper); font-family: var(--serif); font-size: 15px; font-weight: 400; }
+    @media (max-width: 800px) {
+      .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; padding: 18px 28px 22px; background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .hero { grid-template-columns: 1fr; padding-top: 54px; gap: 30px; }
+      .hero-art, .hero-art img { min-height: 300px; }
+      .section-heading { grid-template-columns: 1fr; gap: 16px; }
+      .topic-grid { grid-template-columns: repeat(2,1fr); }
+      .methods-grid { grid-template-columns: repeat(2,1fr); }
+      .pathway { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .nav-wrap { padding: 0 18px; }
+      .brand { font-size: 17px; }
+      .hero,.section,.timeline-inner,.methods-inner,.references-inner { padding-left: 18px; padding-right: 18px; }
+      h1 { font-size: 49px; }
+      .fact-inner { grid-template-columns: repeat(2,1fr); padding: 22px 18px; }
+      .definition-grid,.topic-grid { grid-template-columns: 1fr; }
+      .timeline { padding: 17px; }
+      .timeline-bar { min-height: 58px; font-size: 8px; }
+      .timeline-controls { grid-template-columns: 1fr; }
+      .time-output { text-align: left; }
+      .methods-grid { grid-template-columns: 1fr 1fr; }
+      .method { padding: 17px 13px; }
+      .glossary-row { grid-template-columns: 1fr; gap: 5px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="Understanding the Quaternary home"><span class="brand-mark">Q</span> Understanding the Quaternary</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#introduction">The Quaternary</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#topics">Explore</a>
+        <a href="#methods">Methods</a>
+        <a href="#glossary">Glossary</a>
+        <a class="nav-cta" href="#start">Start learning</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">A guide to Earth's recent geological past</div>
+        <h1>Discover the world of the <em>Quaternary.</em></h1>
+        <p class="hero-copy">From vast ice sheets and shifting coastlines to changing ecosystems and human evolution, the Quaternary is the story of a planet in constant environmental change — and the evidence that allows us to read it.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#introduction">Explore the science <span aria-hidden="true">&nbsp;→</span></a>
+          <a class="button secondary" href="#timeline">Explore the timeline</a>
+        </div>
+        <p class="hero-note">An accessible introduction to Quaternary Science, bringing together geology, geography, climate science, palaeoecology and archaeology.</p>
+      </div>
+      <div class="hero-art">
+        <img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1200&q=85" alt="Mountain landscape with glacial snow and rugged terrain" onerror="this.style.display='none'">
+        <div class="art-caption">LANDSCAPES, CLIMATE AND LIFE THROUGH THE LATE CENOZOIC</div>
+      </div>
+    </section>
+
+    <section class="fact-strip" aria-label="Quaternary facts">
+      <div class="fact-inner">
+        <div class="fact"><strong>2.58 Ma</strong><span>Beginning of the Quaternary</span></div>
+        <div class="fact"><strong>11.7 ka</strong><span>Beginning of the Holocene</span></div>
+        <div class="fact"><strong>2 epochs</strong><span>Pleistocene and Holocene</span></div>
+        <div class="fact"><strong>Today</strong><span>The Quaternary continues</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="introduction">
+      <div class="section-heading">
+        <div><div class="section-kicker">01 / The foundations</div><h2>What is the Quaternary?</h2></div>
+        <p class="section-intro">The Quaternary is the most recent period of the geological timescale. It began approximately 2.58 million years ago and extends to the present day. It is defined by major environmental fluctuations, repeated glacial cycles and the evolution and dispersal of our own species.</p>
+      </div>
+      <div class="definition-grid">
+        <article class="definition-card"><span class="number">A / Geological time</span><h3>A period, not just an Ice Age</h3><p>The Quaternary is a formal geological period within the Cenozoic Era. Although often associated with glaciation, it encompasses much more: changing climates, ecosystems, sea levels, landscapes and human histories.</p></article>
+        <article class="definition-card"><span class="number">B / An interconnected science</span><h3>Many disciplines, one record</h3><p>Quaternary scientists combine evidence from sediments, landforms, fossils, ice cores, cave deposits, soils and archaeological sites to reconstruct how environments changed through time.</p></article>
+      </div>
+      <div class="note-band"><strong>Why study it?</strong> Quaternary records help us understand the natural range of climate variability, how ecosystems respond to environmental change, how landscapes develop, and the context of modern human activity.</div>
+    </section>
+
+    <section class="timeline-section" id="timeline">
+      <div class="timeline-inner">
+        <div class="timeline-top">
+          <div><div class="section-kicker">02 / Geological timescale</div><h2>Explore 2.58 million years</h2></div>
+          <p>The Quaternary is divided into two epochs. Move the slider to explore key points in its chronology. The timeline is schematic and not intended to show every climatic cycle.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-dates"><span>2.58 million years ago</span><span>Present day</span></div>
+          <div class="timeline-bar" aria-label="Quaternary timeline showing Pleistocene and Holocene"><div class="pleistocene">Pleistocene · 2.58 Ma–11.7 ka</div><div class="holocene">Holocene</div></div>
+          <div class="timeline-dates"><span>Earlier Quaternary</span><span>11,700 years ago</span><span>Today</span></div>
+          <div class="timeline-controls">
+            <div><label for="timeSlider"><strong>Move through time</strong></label><input id="timeSlider" type="range" min="0" max="2580" value="2580" step="1"></div>
+            <div class="time-output"><strong id="timeValue">Present day</strong><span id="epochValue">Holocene</span></div>
+          </div>
+          <p class="timeline-description" id="timeDescription" aria-live="polite">The Holocene began around 11,700 years ago, following the end of the last major glacial period. It is the epoch in which agriculture, cities and complex societies developed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="topics">
+      <div class="section-heading">
+        <div><div class="section-kicker">03 / Explore the subject</div><h2>A changing Earth</h2></div>
+        <p class="section-intro">The Quaternary is best understood by following the connections between climate, landscapes, ecosystems and people. Explore the major themes below.</p>
+      </div>
+      <div class="topic-grid">
+        <a class="topic-card" href="#ice-ages"><div class="topic-visual"><img src="https://images.unsplash.com/photo-1517299321609-52687d1bc55a?auto=format&fit=crop&w=700&q=80" alt="Snow-covered mountain peaks" loading="lazy"></div><div class="topic-body"><span>Climate history</span><h3>Ice Ages & glaciation</h3><p>Understand glacial and interglacial periods, ice sheets and the drivers of long-term climate change.</p></div></a>
+        <a class="topic-card" href="#climate"><div class="topic-visual"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=80" alt="Mountain lake and forest landscape" loading="lazy"></div><div class="topic-body"><span>Past environments</span><h3>Climate reconstruction</h3><p>Discover how scientists use natural archives to investigate temperature, precipitation and atmospheric change.</p></div></a>
+        <a class="topic-card" href="#landscapes"><div class="topic-visual"><img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=700&q=80" alt="Open landscape with wildlife" loading="lazy"></div><div class="topic-body"><span>Earth surface processes</span><h3>Landscapes & sediments</h3><p>Explore the landforms and deposits left by glaciers, rivers, wind, lakes and changing coastlines.</p></div></a>
+        <a class="topic-card" href="#life"><div class="topic-visual"><img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=700&q=80" alt="Elephants in a natural grassland environment" loading="lazy"></div><div class="topic-body"><span>Life through time</span><h3>Fossils & ecosystems</h3><p>Investigate changing habitats, extinct megafauna, biodiversity and the ecological consequences of climate shifts.</p></div></a>
+        <a class="topic-card" href="#people"><div class="topic-visual"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="Open landscape beneath a wide sky" loading="lazy"></div><div class="topic-body"><span>People & environments</span><h3>Human evolution</h3><p>Place human evolution, migration, adaptation and archaeology within changing Quaternary environments.</p></div></a>
+        <a class="topic-card" href="#methods"><div class="topic-visual"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=80" alt="Layered agricultural and geological landscape" loading="lazy"></div><div class="topic-body"><span>Scientific investigation</span><h3>Methods & evidence</h3><p>Learn how dating techniques, sediment analysis and environmental proxies reveal the past.</p></div></a>
+      </div>
+    </section>
+
+
+    <section class="deep-dive" id="ice-ages">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header"><div><div class="section-kicker">04 / Climate history</div><h2>Ice Ages & glaciation</h2></div><p>Glaciation is one of the defining features of the Quaternary, but an Ice Age is not one uninterrupted freeze. The period contains repeated alternations between colder glacial conditions and warmer interglacials.</p></div>
+        <div class="content-grid">
+          <article class="content-card"><span class="tag">The basic cycle</span><h3>Glacials and interglacials</h3><p>During glacial stages, global ice volume generally increased, sea level fell and large ice sheets expanded across parts of North America and northern Eurasia. During interglacials, warmer conditions drove substantial ice retreat and sea-level rise.</p><p>These changes were not uniform everywhere. Regional temperature, precipitation, ocean circulation and landscape responses varied, which is why scientists compare many different records.</p></article>
+          <article class="content-card"><span class="tag">The mechanisms</span><h3>Milankovitch cycles</h3><p>Changes in Earth's orbit and orientation alter the seasonal and geographical distribution of incoming solar radiation. The key orbital variations are eccentricity, obliquity and precession.</p><p>Orbital variations pace important aspects of Quaternary climate change, while feedbacks involving ice, oceans, vegetation and greenhouse gases amplify or modify the response.</p></article>
+          <article class="content-card"><span class="tag">Ice on the landscape</span><h3>Ice sheets and glaciers</h3><p>Ice sheets are vast bodies of ice that flow under their own weight. Valley glaciers are more topographically confined. Both erode, transport and deposit sediment, creating distinctive landforms and sediment sequences.</p><p>Evidence includes moraines, drumlins, glacial striae, till, outwash plains and meltwater channels. Interpreting them requires attention to their setting and relationships, not just their shape.</p></article>
+          <article class="content-card"><span class="tag">A changing sea</span><h3>Sea-level change</h3><p>When water is stored in continental ice sheets, global mean sea level falls. When ice melts, sea level rises. Local relative sea level is also affected by land movement, including glacial isostatic adjustment.</p><p>Raised beaches, submerged landscapes, marine terraces and coastal sediments can preserve evidence of former shorelines.</p></article>
+        </div>
+        <div class="insight-band"><strong>Key idea:</strong> orbital forcing helps pace glacial cycles, but the climate system responds through interacting feedbacks. No single mechanism explains every regional change or every detail of the Quaternary record.</div>
+      </div>
+    </section>
+
+    <section class="deep-dive alt" id="climate">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header"><div><div class="section-kicker">05 / Past environments</div><h2>Reconstructing past climates</h2></div><p>We cannot measure the temperature of a lake or an ocean thousands of years ago directly. Instead, Quaternary scientists use proxies: measurable properties of natural archives that respond to environmental conditions.</p></div>
+        <div class="content-grid">
+          <article class="content-card"><span class="tag">Biological archives</span><h3>Pollen and plant remains</h3><p>Pollen grains are produced in enormous quantities and can be preserved in lake mud and peat. Their morphology can often identify the plant group that produced them.</p><p>Changes in pollen assemblages can indicate shifts in vegetation, treeline position and regional climate. Interpretation must consider pollen productivity, dispersal, preservation and the size of the source area.</p></article>
+          <article class="content-card"><span class="tag">Marine archives</span><h3>Foraminifera and isotopes</h3><p>Marine sediments contain the remains of organisms such as foraminifera. Their shells preserve geochemical signals, including oxygen-isotope ratios that reflect a combination of seawater temperature and global ice volume.</p><p>With calibration and supporting evidence, these records help reconstruct ocean conditions and changes in the global climate system.</p></article>
+          <article class="content-card"><span class="tag">Frozen archives</span><h3>Ice cores</h3><p>Ice sheets preserve annual to multi-annual layers, trapped air bubbles, dust and chemical signals. These provide evidence about past atmospheric composition, temperature and environmental conditions.</p><p>Ice-core chronologies can be exceptionally detailed, although layer counting, ice flow and the age difference between ice and enclosed gas must be considered.</p></article>
+          <article class="content-card"><span class="tag">Lake and peat records</span><h3>Sedimentary sequences</h3><p>Lake sediments and peat accumulate through time, preserving changing combinations of mineral matter, organic material, microfossils and geochemical signals.</p><p>A core is not automatically a climate history: scientists establish the depositional context, assess disturbance and build a robust age-depth model before interpreting change.</p></article>
+        </div>
+        <div class="insight-band"><strong>Proxy caution:</strong> a proxy is rarely a direct thermometer. It may respond to several environmental variables, and its meaning depends on calibration, preservation, chronology and the setting from which it was collected.</div>
+      </div>
+    </section>
+
+    <section class="deep-dive" id="landscapes">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header"><div><div class="section-kicker">06 / Earth surface processes</div><h2>Landscapes & sediments</h2></div><p>Quaternary landscapes are archives of process. Their landforms and deposits record the movement of ice, water, wind and sediment, as well as changing vegetation, sea level and permafrost conditions.</p></div>
+        <div class="content-grid">
+          <article class="content-card"><span class="tag">Glacial environments</span><h3>Deposits left by ice</h3><p>Glaciers can deposit poorly sorted diamicton as till, while meltwater sorts and layers sediment into outwash, sandur and glaciofluvial terraces. Ice-contact environments can produce complex, rapidly changing sequences.</p><p>Landforms such as moraines, drumlins, eskers and kettle holes help reconstruct former ice margins, flow directions and meltwater pathways.</p></article>
+          <article class="content-card"><span class="tag">River systems</span><h3>Fluvial landscapes</h3><p>Rivers erode, transport and deposit sediment. Channel form, grain-size distributions, sedimentary structures and terrace sequences can reveal changes in discharge, sediment supply, vegetation and base level.</p><p>River terraces may preserve former floodplains at different elevations, but their age and origin need to be established rather than assumed from height alone.</p></article>
+          <article class="content-card"><span class="tag">Wind and cold climates</span><h3>Loess, dunes and periglacial features</h3><p>Wind can transport fine sediment to form loess deposits and build dune systems. In cold, ice-rich ground, freeze-thaw processes and ground-ice dynamics create patterned ground, involutions and other periglacial structures.</p><p>These deposits and features can reveal past aridity, wind regimes, seasonality and the presence of permafrost.</p></article>
+          <article class="content-card"><span class="tag">Reading a section</span><h3>Stratigraphy in the field</h3><p>Field interpretation starts with careful description: lithology, grain size, sorting, clast shape and fabric, sedimentary structures, contacts and deformation.</p><p>Those observations are then used to develop and test a depositional interpretation. A sediment log records evidence; the environmental interpretation is a reasoned explanation of that evidence.</p></article>
+        </div>
+        <div class="term-pills"><span>Till</span><span>Outwash</span><span>Loess</span><span>River terrace</span><span>Varve</span><span>Diamicton</span><span>Permafrost</span><span>Stratigraphic contact</span></div>
+      </div>
+    </section>
+
+    <section class="deep-dive alt" id="life">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header"><div><div class="section-kicker">07 / Life through time</div><h2>Fossils, ecosystems & extinction</h2></div><p>Quaternary fossil records reveal how plants and animals responded to repeated environmental change. They also help us understand the changing distribution of habitats and the ecological consequences of human activity.</p></div>
+        <div class="content-grid">
+          <article class="content-card"><span class="tag">Megafauna</span><h3>Life in Ice Age worlds</h3><p>Quaternary faunas included mammoths, woolly rhinoceroses, cave bears, giant deer and many other large mammals. Their distributions shifted as habitats expanded, contracted and fragmented.</p><p>Fossils, ancient DNA and archaeological evidence help investigate their ecology, population histories and interactions with people.</p></article>
+          <article class="content-card"><span class="tag">Vegetation history</span><h3>Changing ecosystems</h3><p>Plant communities changed as temperature, moisture, seasonality and atmospheric conditions shifted. Pollen, plant macrofossils, charcoal and biomarkers provide complementary evidence.</p><p>Ecological responses can lag behind climate change, and local topography or soils can create refugia where species persist.</p></article>
+          <article class="content-card"><span class="tag">Extinction debates</span><h3>Why did some species disappear?</h3><p>Late Quaternary megafaunal extinctions occurred at different times in different regions. Research examines climate change, habitat transformation, human hunting and other pressures.</p><p>The balance of causes is debated and likely varied by species and region; simple single-cause explanations rarely capture the complexity of the evidence.</p></article>
+          <article class="content-card"><span class="tag">Microfossils</span><h3>Small organisms, big insights</h3><p>Diatoms, ostracods, foraminifera and other microfossils can be highly sensitive to water chemistry, salinity, nutrient status and habitat conditions.</p><p>Because they are often abundant and respond to environmental gradients, microfossils can provide detailed records when their ecology and preservation are understood.</p></article>
+        </div>
+        <div class="insight-band"><strong>Think across scales:</strong> a fossil assemblage reflects more than climate. Preservation, transport, sampling, habitat preference and ecological interactions all influence what appears in the record.</div>
+      </div>
+    </section>
+
+    <section class="deep-dive" id="people">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header"><div><div class="section-kicker">08 / People & environments</div><h2>Human evolution & the Quaternary</h2></div><p>The Quaternary contains the evolution and global dispersal of Homo sapiens, alongside the histories of other hominins. Archaeological evidence sits within changing landscapes, climates and ecosystems.</p></div>
+        <div class="content-grid">
+          <article class="content-card"><span class="tag">Deep human history</span><h3>Hominins through time</h3><p>The Quaternary witnessed the emergence and diversification of several hominin groups. Fossils, stone tools and other archaeological traces provide evidence of anatomy, behaviour and technological change.</p><p>Chronology is crucial: archaeological interpretations depend on establishing the age and context of finds, often by combining multiple dating approaches.</p></article>
+          <article class="content-card"><span class="tag">Movement and adaptation</span><h3>Migration and changing environments</h3><p>Climate and environmental change influenced the availability of habitats, water and resources. Human populations moved, adapted and developed technologies in response to varied local conditions.</p><p>Migration was not a simple one-way journey; it involved repeated dispersals, population interactions and regional histories.</p></article>
+          <article class="content-card"><span class="tag">Archaeological context</span><h3>Sites are landscapes</h3><p>Archaeological material is often preserved within sediments shaped by rivers, caves, lakes, dunes or glacial processes. Understanding site formation helps distinguish human activity from natural movement and redeposition.</p><p>Geoarchaeology connects sedimentology, geomorphology and archaeological interpretation.</p></article>
+          <article class="content-card"><span class="tag">The recent past</span><h3>From foraging to farming</h3><p>During the Holocene, many regions saw the development and spread of agriculture, settlement and increasingly complex societies, though these changes occurred at different times and in different ways.</p><p>Archaeological and palaeoenvironmental records together help explore how people transformed, and were shaped by, their environments.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="methods-section" id="methods">
+      <div class="methods-inner">
+        <div class="section-heading">
+          <div><div class="section-kicker">09 / Reading the record</div><h2>How do we investigate the past?</h2></div>
+          <p class="section-intro">The Quaternary is recent enough to preserve a remarkably diverse range of environmental archives. Each archive records different aspects of past conditions, and each has its own strengths and limitations.</p>
+        </div>
+        <div class="methods-grid">
+          <article class="method"><div class="symbol">01</div><h3>Sedimentology</h3><p>Grain size, sedimentary structures and lithology help identify depositional environments and processes.</p></article>
+          <article class="method"><div class="symbol">02</div><h3>Pollen analysis</h3><p>Fossil pollen preserved in lake and peat sediments provides evidence of past vegetation and ecological change.</p></article>
+          <article class="method"><div class="symbol">03</div><h3>Tephrochronology</h3><p>Distinctive volcanic ash layers can provide time-parallel marker horizons for correlating sediment records.</p></article>
+          <article class="method"><div class="symbol">04</div><h3>Geochronology</h3><p>Radiocarbon, luminescence and other dating methods establish chronological frameworks for environmental records.</p></article>
+          <article class="method"><div class="symbol">05</div><h3>Stable isotopes</h3><p>Isotopic measurements in materials such as foraminifera and ice can reveal aspects of past climate and environments.</p></article>
+          <article class="method"><div class="symbol">06</div><h3>Micropalaeontology</h3><p>Microfossils, including foraminifera and diatoms, can indicate past water conditions and environmental change.</p></article>
+          <article class="method"><div class="symbol">07</div><h3>Geomorphology</h3><p>Landforms such as moraines, eskers, terraces and dunes preserve evidence of former processes and environments.</p></article>
+          <article class="method"><div class="symbol">08</div><h3>Modelling & GIS</h3><p>Spatial analysis and numerical models help test hypotheses and connect observations across regions and timescales.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="start">
+      <div class="pathway">
+        <div>
+          <div class="section-kicker">10 / Your learning pathway</div>
+          <h2>Start with the big picture. Then follow the evidence.</h2>
+          <p class="section-intro" style="margin-top:18px">You don't need a geology degree to explore Quaternary Science. Start with the timescale and the Ice Ages, then discover how scientists reconstruct past environments from physical and biological evidence.</p>
+        </div>
+        <div class="pathway-box">
+          <h3>A suggested reading order</h3>
+          <p>A short route through the foundations of the subject.</p>
+          <ol class="pathway-list">
+            <li><span>01</span>What is the Quaternary?</li>
+            <li><span>02</span>The Pleistocene and the Ice Ages</li>
+            <li><span>03</span>How do we reconstruct past climates?</li>
+            <li><span>04</span>Reading sediments and landforms</li>
+            <li><span>05</span>People, ecosystems and environmental change</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="glossary" style="padding-top:10px">
+      <div class="section-heading">
+        <div><div class="section-kicker">11 / Field notes</div><h2>A small Quaternary glossary</h2></div>
+        <p class="section-intro">A few essential terms to help you navigate the literature and understand the language of Quaternary research.</p>
+      </div>
+      <div class="glossary">
+        <div class="glossary-row"><strong>Glacial</strong><p>A period or condition characterised by the expansion of glaciers and ice sheets.</p></div>
+        <div class="glossary-row"><strong>Interglacial</strong><p>A relatively warm interval between glacial periods, during which ice sheets retreat.</p></div>
+        <div class="glossary-row"><strong>Palaeoclimate</strong><p>The climate of the geological past, reconstructed using natural archives and proxy evidence.</p></div>
+        <div class="glossary-row"><strong>Proxy</strong><p>Indirect evidence used to infer a past environmental variable, such as temperature or vegetation.</p></div>
+        <div class="glossary-row"><strong>Stratigraphy</strong><p>The study and interpretation of layered geological materials and their relationships in time and space.</p></div>
+        <div class="glossary-row"><strong>Tephra</strong><p>Fragmented material ejected during a volcanic eruption; preserved layers can help correlate and date records.</p></div>
+        <div class="glossary-row"><strong>Chronology</strong><p>The sequence and timing of events, often established by combining dating methods and stratigraphic relationships.</p></div>
+      </div>
+    </section>
+
+    <section class="references">
+      <div class="references-inner">
+        <div class="section-kicker">Further reading</div>
+        <h2>Explore authoritative resources</h2>
+        <p class="section-intro" style="margin-top:15px">Use these organisations and resources to explore geological timescales, Quaternary research and the wider scientific community.</p>
+        <div class="reference-links">
+          <a href="https://stratigraphy.org/" target="_blank" rel="noopener">International Commission on Stratigraphy ↗</a>
+          <a href="https://www.inqua.org/" target="_blank" rel="noopener">INQUA ↗</a>
+          <a href="https://www.bgs.ac.uk/" target="_blank" rel="noopener">British Geological Survey ↗</a>
+          <a href="https://www.ncei.noaa.gov/products/paleoclimatology" target="_blank" rel="noopener">NOAA Paleoclimatology ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner"><strong>Understanding the Quaternary</strong><span>An educational feature concept for Fossils & Futures · © Elliot May</span><span>Science of Earth's recent past</span></div>
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const nav = document.getElementById('navLinks');
+    const menuToggle = document.getElementById('menuToggle');
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? window.scrollY / max * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+    menuToggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    const slider = document.getElementById('timeSlider');
+    const timeValue = document.getElementById('timeValue');
+    const epochValue = document.getElementById('epochValue');
+    const timeDescription = document.getElementById('timeDescription');
+    function updateTimeline() {
+      const ka = Number(slider.value);
+      if (ka < 11.7) {
+        timeValue.textContent = ka < 0.1 ? 'Present day' : Math.round(ka * 1000) + ' years ago';
+        epochValue.textContent = 'Holocene';
+        timeDescription.textContent = 'The Holocene began around 11,700 years ago, following the end of the last major glacial period. It is the epoch in which agriculture, cities and complex societies developed.';
+      } else if (ka < 129) {
+        timeValue.textContent = Math.round(ka * 10) / 10 + ' thousand years ago';
+        epochValue.textContent = 'Late Pleistocene';
+        timeDescription.textContent = 'The Late Pleistocene includes the last glacial cycle and the transition into the Holocene. Ice sheets expanded and retreated, while environments and ecosystems shifted substantially.';
+      } else if (ka < 780) {
+        timeValue.textContent = Math.round(ka) + ' thousand years ago';
+        epochValue.textContent = 'Middle Pleistocene';
+        timeDescription.textContent = 'The Middle Pleistocene saw major changes in the character and rhythm of glacial cycles, including the transition towards larger-amplitude ice-volume fluctuations.';
+      } else {
+        timeValue.textContent = (ka / 1000).toFixed(2) + ' million years ago';
+        epochValue.textContent = 'Early Pleistocene';
+        timeDescription.textContent = 'The Early Pleistocene encompasses the onset and development of Northern Hemisphere glaciation, with repeated climatic oscillations recorded in marine, terrestrial and ice-related archives.';
+      }
+    }
+    slider.addEventListener('input', updateTimeline);
+    updateTimeline();
+  </script>
+</body>
+</html>
