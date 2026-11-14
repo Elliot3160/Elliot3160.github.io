@@ -1,265 +1,2136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quaternary Climate Change Hub</title>
-    <link rel="canonical" href="https://elliot3160.github.io/whatisclimatechange.html" />
-    <!-- Use same stylesheet as homepage -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quaternary Climate Change | Fossils &amp; Futures</title>
+
+    <meta name="description" content="Explore 2.58 million years of Quaternary climate history. Discover ice ages, Milankovitch cycles, climate proxies, ancient environments and what geological evidence tells us about modern climate change.">
+
+    <meta name="author" content="Elliot May">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://elliot3160.github.io/whatisclimatechange.html">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f5f2eb;
+            --surface: #fffefa;
+            --ink: #252923;
+            --muted: #65685f;
+            --accent: #b65e43;
+            --accent-dark: #87432f;
+            --line: #ded9ce;
+            --soft: #eee9df;
+            --green: #536b5c;
+            --serif: 'Playfair Display', Georgia, serif;
+        }
+
+        body.climate-hub {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+        }
+
+        .climate-hub header {
+            background: #252923;
+            padding: 1.2rem 2rem;
+            box-shadow: none;
+        }
+
+        .climate-hub nav {
+            max-width: 1200px;
+        }
+
+        .climate-hub nav strong {
+            font-size: 1.05rem;
+            letter-spacing: .02em;
+        }
+
+        .climate-hub nav a {
+            font-size: .88rem;
+            color: #f5f2eb;
+        }
+
+        .climate-hub nav a:hover {
+            color: #d99a7d;
+        }
+
+        .climate-hero {
+            background:
+                linear-gradient(115deg, rgba(29,38,34,.96), rgba(51,65,56,.88)),
+                url('') center/cover;
+            color: #fffefa;
+            padding: 6rem 1.5rem 5rem;
+            text-align: left;
+        }
+
+        .hero-inner {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .eyebrow {
+            color: #e4a58b;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            font-size: .75rem;
+            font-weight: 700;
+            margin-bottom: 1.3rem;
+        }
+
+        .climate-hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.6rem, 6vw, 4.6rem);
+            line-height: 1.12;
+            font-weight: 600;
+            max-width: 850px;
+            margin-bottom: 1.5rem;
+        }
+
+        .climate-hero p {
+            max-width: 720px;
+            color: #e4e5df;
+            font-size: 1.12rem;
+            line-height: 1.85;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            color: #c8cec6;
+            font-size: .82rem;
+        }
+
+        .hero-meta span {
+            border-left: 2px solid var(--accent);
+            padding-left: .7rem;
+        }
+
+        .climate-layout {
+            max-width: 1180px;
+            margin: 3rem auto 5rem;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 245px minmax(0, 1fr);
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contents {
+            position: sticky;
+            top: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .contents h2 {
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            margin-bottom: 1rem;
+            color: var(--accent-dark);
+        }
+
+        .contents ol {
+            padding-left: 1.2rem;
+            margin: 0;
+        }
+
+        .contents li {
+            margin: .55rem 0;
+            font-size: .82rem;
+            line-height: 1.5;
+            color: var(--muted);
+        }
+
+        .contents a {
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .contents a:hover {
+            color: var(--accent);
+        }
+
+        .article {
+            min-width: 0;
+        }
+
+        .article section {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 14px rgba(40,35,25,.025);
+            scroll-margin-top: 2rem;
+        }
+
+        .article h2 {
+            font-family: var(--serif);
+            font-size: clamp(1.7rem, 3vw, 2.35rem);
+            line-height: 1.3;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: var(--ink);
+        }
+
+        .article h3 {
+            font-size: 1.15rem;
+            margin: 2rem 0 .7rem;
+            color: var(--accent-dark);
+        }
+
+        .article p {
+            color: #44483f;
+            font-size: .97rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .article p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article strong {
+            color: #292e27;
+        }
+
+        .article a {
+            color: var(--accent-dark);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
+        .article a:hover {
+            color: var(--accent);
+        }
+
+        .article ul,
+        .article ol {
+            padding-left: 1.5rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .article li {
+            color: #44483f;
+            margin-bottom: .75rem;
+            padding-left: .25rem;
+        }
+
+        .intro-lead {
+            font-family: var(--serif);
+            font-size: 1.35rem !important;
+            line-height: 1.65 !important;
+            color: #30372f !important;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            margin-bottom: .8rem;
+        }
+
+        .pullquote {
+            border-left: 4px solid var(--accent);
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0;
+            background: #f5f0e8;
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            line-height: 1.65;
+            color: #30372f;
+        }
+
+        .definition {
+            background: #f0eee7;
+            border-radius: 6px;
+            padding: 1.2rem 1.4rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--green);
+        }
+
+        .definition strong {
+            display: block;
+            margin-bottom: .3rem;
+        }
+
+        .definition p {
+            margin: 0;
+            font-size: .91rem;
+        }
+
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.8rem 0;
+        }
+
+        .fact {
+            background: #f2eee6;
+            padding: 1.3rem;
+            border-radius: 6px;
+        }
+
+        .fact strong {
+            display: block;
+            font-family: var(--serif);
+            font-size: 1.7rem;
+            color: var(--accent-dark);
+            line-height: 1.3;
+            margin-bottom: .35rem;
+        }
+
+        .fact span {
+            display: block;
+            font-size: .79rem;
+            line-height: 1.5;
+            color: var(--muted);
+        }
+
+        .timeline {
+            border-left: 2px solid var(--line);
+            margin: 2rem 0 1rem .5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.7rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -1.93rem;
+            top: .45rem;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--surface);
+            outline: 1px solid var(--accent);
+        }
+
+        .timeline-item strong {
+            display: block;
+            margin-bottom: .25rem;
+        }
+
+        .timeline-item p {
+            font-size: .9rem;
+            margin: 0;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .article table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 520px;
+            font-size: .87rem;
+        }
+
+        .article th {
+            text-align: left;
+            background: #eae5db;
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .article th,
+        .article td {
+            padding: .85rem 1rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .article td {
+            color: #45483f;
+        }
+
+        .source-list li {
+            font-size: .9rem;
+        }
+
+        .closing {
+            background: #29342d !important;
+            color: #fffefa;
+        }
+
+        .closing h2,
+        .closing p {
+            color: #fffefa !important;
+        }
+
+        .closing p {
+            opacity: .88;
+        }
+
+        .closing a {
+            color: #e9ae92;
+        }
+
+        .climate-footer {
+            background: #252923;
+            color: #d9ddd6;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-size: .85rem;
+        }
+
+        .climate-footer a {
+            color: #e4a58b;
+            text-decoration: none;
+            margin: 0 .4rem;
+        }
+
+        .back-top {
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-size: .85rem;
+        }
+
+        @media (max-width: 850px) {
+            .climate-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contents {
+                position: static;
+            }
+
+            .contents ol {
+                columns: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .climate-hub header {
+                padding: 1rem;
+            }
+
+            .climate-hub nav {
+                flex-direction: column;
+                gap: .8rem;
+            }
+
+            .climate-hub nav a {
+                margin: 0 .45rem;
+                font-size: .78rem;
+            }
+
+            .climate-hero {
+                padding: 4rem 1.3rem;
+            }
+
+            .fact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contents ol {
+                columns: 1;
+            }
+
+            .article section {
+                padding: 1.4rem;
+            }
+        }
+    </style>
 </head>
 
-<body>
 
-    <!-- ====================== HEADER ====================== -->
-    <header>
-        <nav>
-            <div><strong>Fossils & Futures</strong></div>
-            <div>
-                <a href="index.html">Home</a>
-                <a href="blog.html">Blog</a>
-                <a href="about.html">About</a>
+<body class="climate-hub">
+
+<header>
+    <nav>
+        <div><strong>Fossils &amp; Futures</strong></div>
+
+        <div>
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="climate-hero">
+    <div class="hero-inner">
+
+        <div class="eyebrow">Earth science · Palaeoclimate · Quaternary research</div>
+
+        <h1>Climate Change Through the Lens of Deep Time</h1>
+
+        <p>
+            Earth's climate has never been fixed. Over millions of years,
+            ice sheets have advanced and retreated, oceans have risen and
+            fallen, and ecosystems have repeatedly reorganised. The
+            geological record allows us to investigate these changes —
+            and to understand why the warming happening today is different.
+        </p>
+
+        <div class="hero-meta">
+            <span>2.58 million years of climate history</span>
+            <span>Natural archives and climate reconstruction</span>
+            <span>From ancient ice ages to the modern climate</span>
+        </div>
+
+    </div>
+</section>
+
+
+<div class="climate-layout">
+
+    <!-- CONTENTS -->
+    <aside class="contents">
+
+        <h2>Explore this guide</h2>
+
+        <ol>
+            <li><a href="#introduction">What is climate change?</a></li>
+            <li><a href="#quaternary">The Quaternary</a></li>
+            <li><a href="#glacials">Glacial and interglacial worlds</a></li>
+            <li><a href="#orbital">Orbital forcing</a></li>
+            <li><a href="#feedbacks">Climate feedbacks</a></li>
+            <li><a href="#proxies">Reading the climate archive</a></li>
+            <li><a href="#dating">How old are the records?</a></li>
+            <li><a href="#events">Major Quaternary events</a></li>
+            <li><a href="#holocene">The Holocene</a></li>
+            <li><a href="#modern">Modern climate change</a></li>
+            <li><a href="#anthropocene">The Anthropocene question</a></li>
+            <li><a href="#conclusion">Why deep time matters</a></li>
+            <li><a href="#references">Further reading</a></li>
+        </ol>
+
+    </aside>
+
+
+    <!-- ARTICLE -->
+    <main class="article">
+
+
+        <!-- 01 INTRODUCTION -->
+        <section id="introduction">
+
+            <div class="section-label">01 · Foundations</div>
+
+            <h2>What do we actually mean by climate change?</h2>
+
+            <p class="intro-lead">
+                A cold winter does not disprove global warming, just as
+                a particularly hot summer does not, on its own, establish
+                a long-term climate trend. To understand climate change,
+                we first need to distinguish between the weather we
+                experience and the climate system that produces it.
+            </p>
+
+            <p>
+                <strong>Weather</strong> describes the atmospheric
+                conditions experienced over relatively short periods:
+                temperature, rainfall, wind, humidity and cloud cover.
+                These conditions can change dramatically from one day
+                to the next.
+            </p>
+
+            <p>
+                <strong>Climate</strong>, by contrast, describes the
+                statistical behaviour of weather over much longer
+                periods. Scientists commonly use 30-year intervals
+                when calculating standard climate averages, although
+                climate research also examines trends over centuries,
+                millennia and geological timescales.
+            </p>
+
+            <div class="definition">
+                <strong>Climate change</strong>
+                <p>
+                    A persistent change in the statistical characteristics
+                    of the climate system, including average temperature,
+                    precipitation patterns, atmospheric circulation and
+                    the frequency or intensity of certain extremes.
+                </p>
             </div>
-        </nav>
-    </header>
-
-    <!-- ====================== PAGE HERO ====================== -->
-    <section class="hero">
-        <h1>Quaternary Climate Change Hub</h1>
-        <p>Exploring 2.6 million years of Earth's climate history – and what it tells us about the present.</p>
-    </section>
-
-    <!-- ====================== MAIN CONTENT ====================== -->
-    <main>
-
-        <!-- ---------- Introduction ---------- -->
-        <section id="intro">
-            <h2>Introduction to Climate Change</h2>
 
             <p>
-                Before climate change can be understood, it is essential to distinguish between <strong>weather</strong> and 
-                <strong>climate</strong>. Weather describes short-term atmospheric conditions such as temperature, rainfall, 
-                cloud cover and wind, which fluctuate over hours to days. Climate, in contrast, refers to the long-term statistical 
-                average of weather over decades or longer. Climate change therefore represents a sustained deviation from these 
-                long-term averages, rather than day-to-day variability.
+                Climate change is not a new phenomenon. Long before
+                humans existed, the Earth experienced major changes
+                in temperature, atmospheric composition, ocean
+                circulation and ice-sheet extent. Some of these
+                changes unfolded over millions of years; others
+                occurred rapidly enough to transform ecosystems
+                within a human lifetime.
             </p>
 
             <p>
-                Climate has changed naturally throughout Earth’s history, driven by processes such as orbital variations, 
-                volcanic activity, solar changes and feedbacks within the climate system. However, the modern pattern of warming 
-                is different: it aligns closely with the rapid rise in atmospheric greenhouse gases caused by human activities—
-                primarily fossil fuel combustion, deforestation and industrial processes. The geological record provides compelling 
-                evidence for this. High-resolution <em>climate proxies</em>, especially those from the Quaternary period, clearly 
-                show when human influence began to push the climate outside its natural range of variability.
+                The important distinction is not simply that the
+                climate is changing. It is <strong>what is driving
+                that change, how quickly it is occurring, and how
+                the different components of the Earth system are
+                responding</strong>.
             </p>
 
+            <div class="pullquote">
+                The geological record does not show us a planet with
+                a permanently stable climate. It shows us a planet
+                whose climate responds to changes in energy, atmosphere,
+                oceans, ice and life.
+            </div>
+
             <p>
-                Over geological timescales, climate has never been static. Yet the <strong>rate and magnitude</strong> of warming 
-                observed since the late 19th century are exceptional when compared with the last several million years. The 
-                Quaternary period – the most recent 2.6 million years of Earth’s history – preserves a detailed archive of natural 
-                climate fluctuations. By examining these records, we can ask a crucial question: 
-                <em>how does modern, human-driven climate change compare to past changes?</em> 
-                The answer underscores just how unprecedented today’s changes are.
+                Understanding that history is particularly important
+                when examining modern climate change. We can compare
+                present observations with natural records extending
+                thousands, hundreds of thousands and, in some cases,
+                millions of years into the past.
             </p>
+
         </section>
 
 
-        <!-- ---------- The Quaternary Period ---------- -->
+        <!-- 02 QUATERNARY -->
         <section id="quaternary">
-            <h2>The Quaternary Period</h2>
 
-            <p>
-                The Quaternary is the most recent period in the geological timescale, beginning around 
-                <strong>2.6 million years ago</strong> and continuing to the present day. It is traditionally divided into:
-            </p>
+            <div class="section-label">02 · Geological context</div>
 
-            <ul>
-                <li>
-                    <strong>Pleistocene</strong> (2.6 million – 11,700 years ago): dominated by repeated glacial–interglacial cycles, 
-                    large ice sheets and major shifts in sea level.
-                </li>
-                <li>
-                    <strong>Holocene</strong> (last 11,700 years): the current interglacial, characterised by relatively stable climate 
-                    conditions under which human societies, agriculture and complex civilisations developed.
-                </li>
-            </ul>
+            <h2>The Quaternary: a world shaped by ice</h2>
 
-            <p>
-                During the Quaternary, ice sheets repeatedly advanced over large parts of North America, northern Europe and Asia, then 
-                retreated during warmer interglacial phases. These expansions and contractions were accompanied by changes in sea level 
-                exceeding 100 metres, major reorganisations of ecosystems, and migrations and extinctions of species.
+            <p class="intro-lead">
+                The Quaternary is the most recent geological period,
+                beginning approximately 2.58 million years ago and
+                continuing to the present day. It is the interval
+                in which repeated glaciations profoundly reshaped
+                continents, coastlines and ecosystems.
             </p>
 
             <p>
-                Because it is geologically recent and exceptionally well recorded in ice, marine and terrestrial archives, the Quaternary 
-                offers a high-resolution window into how the climate system responds to changes in external forcing. It is the primary 
-                benchmark against which we judge whether current climate trends fall within, or outside, the bounds of natural variability.
+                The period belongs to the Cenozoic Era and is
+                conventionally divided into two epochs:
             </p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Epoch</th>
+                            <th>Approximate age</th>
+                            <th>Defining characteristics</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><strong>Pleistocene</strong></td>
+                            <td>2.58 million to 11,700 years ago</td>
+                            <td>Repeated glacial and interglacial cycles, large continental ice sheets and major environmental change.</td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Holocene</strong></td>
+                            <td>11,700 years ago to present</td>
+                            <td>The current interglacial, during which agriculture, settled societies and complex human civilisations developed.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                The Pleistocene is often associated with the familiar
+                idea of the Ice Age. In reality, it was not one
+                uninterrupted period of extreme cold. Instead, the
+                climate oscillated between colder glacial conditions
+                and warmer interglacial intervals.
+            </p>
+
+            <p>
+                During glacial periods, large ice sheets expanded
+                across northern Europe and North America. In places
+                such as Britain, advancing glaciers eroded bedrock,
+                transported sediment and deposited extensive
+                accumulations of till and glaciofluvial material.
+            </p>
+
+            <p>
+                These processes left an enormous geological legacy.
+                Much of the landscape visible across northern Europe
+                today reflects the influence of Quaternary glaciation:
+                valleys, moraines, drumlins, eskers, meltwater channels
+                and extensive superficial deposits.
+            </p>
+
+            <p>
+                The Quaternary is therefore important for more than
+                climate science. It is fundamental to understanding
+                landscape evolution, sedimentary environments,
+                groundwater systems, geological hazards and the
+                ground conditions encountered in engineering.
+            </p>
+
+            <div class="fact-grid">
+
+                <div class="fact">
+                    <strong>2.58 Ma</strong>
+                    <span>Beginning of the Quaternary Period</span>
+                </div>
+
+                <div class="fact">
+                    <strong>11.7 ka</strong>
+                    <span>Beginning of the Holocene Epoch</span>
+                </div>
+
+                <div class="fact">
+                    <strong>100+ m</strong>
+                    <span>Approximate magnitude of global sea-level difference between major glacial and interglacial states</span>
+                </div>
+
+            </div>
+
+            <p>
+                The formal geological divisions and their boundaries
+                are maintained by the
+                <a href="https://stratigraphy.org/chart/" target="_blank" rel="noopener">
+                    International Commission on Stratigraphy
+                </a>.
+            </p>
+
         </section>
 
 
-        <!-- ---------- Glacial–Interglacial Cycles ---------- -->
-        <section id="cycles">
-            <h2>Glacial–Interglacial Cycles</h2>
+        <!-- 03 GLACIAL CYCLES -->
+        <section id="glacials">
+
+            <div class="section-label">03 · Changing environments</div>
+
+            <h2>Glacial and interglacial worlds</h2>
+
+            <p class="intro-lead">
+                Imagine a northern Europe with vast ice sheets covering
+                much of Britain and Scandinavia, sea levels more than
+                100 metres below modern levels, and landscapes dominated
+                by cold, open environments. This was not an isolated
+                event: conditions like these occurred repeatedly
+                throughout the Pleistocene.
+            </p>
+
+            <h3>Glacial periods</h3>
 
             <p>
-                A defining feature of the Quaternary is the oscillation between cold <strong>glacial periods</strong>, when large ice 
-                sheets expanded, and warmer <strong>interglacial periods</strong>, like the Holocene. Glacials were several degrees 
-                cooler globally than present day, with lower atmospheric CO<sub>2</sub> and extensive ice cover at high latitudes.
+                A <strong>glacial</strong> is an extended interval
+                during which global temperatures are relatively low
+                and continental ice sheets expand.
             </p>
 
             <p>
-                These cycles are paced primarily by <strong>Milankovitch forcing</strong> – predictable variations in Earth’s orbit and 
-                axial tilt that alter the distribution of incoming solar radiation (insolation) across the planet:
-            </p>
-
-            <ul>
-                <li><strong>Eccentricity</strong> (~100,000-year cycles): changes in the shape of Earth’s orbit around the Sun.</li>
-                <li><strong>Obliquity</strong> (~41,000-year cycles): changes in the tilt of Earth’s rotational axis.</li>
-                <li><strong>Precession</strong> (~19,000–23,000-year cycles): the wobble of Earth’s axis, which alters the timing of seasons.</li>
-            </ul>
-
-            <p>
-                On their own, these orbital variations are relatively small perturbations to the planet’s energy balance. The large 
-                glacial–interglacial swings we observe in the geological record arise when this orbital pacing interacts with 
-                <strong>internal feedbacks</strong> in the climate system. These include changes in greenhouse gas concentrations, 
-                ice–albedo feedback, shifts in ocean circulation and vegetation cover.
+                As snowfall accumulates in high-latitude and high-altitude
+                regions, more snow survives each summer than melts.
+                Over time, successive layers compact into glacial ice.
+                As ice sheets thicken, they spread outwards under their
+                own weight.
             </p>
 
             <p>
-                The result is a characteristic pattern: slow build-up of ice sheets and gradual cooling, followed by comparatively rapid 
-                deglaciation. Understanding this behaviour is crucial, because it reveals how sensitive the climate system is to relatively 
-                small initial forcings once feedbacks are engaged.
+                The growth of these ice sheets has consequences far
+                beyond the regions they cover. Water becomes stored
+                on land as ice, lowering global sea level. Ocean
+                circulation changes, vegetation belts shift, and
+                habitats are reorganised.
             </p>
+
+            <h3>Interglacial periods</h3>
+
+            <p>
+                An <strong>interglacial</strong> is a warmer interval
+                between major glaciations. During these periods,
+                ice sheets retreat, sea levels rise and ecosystems
+                reorganise in response to warmer conditions.
+            </p>
+
+            <p>
+                The Holocene, which began approximately 11,700 years
+                ago, is the current interglacial. It followed the
+                last major deglaciation, during which large ice sheets
+                retreated from areas of northern Europe and North America.
+            </p>
+
+            <p>
+                Importantly, interglacials are not perfectly stable.
+                They contain regional variations in temperature,
+                precipitation and atmospheric circulation. The
+                distinction is that these variations occur within
+                a broader warm interval rather than a full glacial state.
+            </p>
+
+            <div class="pullquote">
+                Glacial and interglacial cycles are not simply changes
+                between cold and warm weather. They represent major
+                reorganisations of the Earth's atmosphere, oceans,
+                cryosphere and biosphere.
+            </div>
+
         </section>
 
 
-        <!-- ---------- Climate Proxies ---------- -->
+        <!-- 04 ORBITAL FORCING -->
+        <section id="orbital">
+
+            <div class="section-label">04 · The astronomical connection</div>
+
+            <h2>Milankovitch cycles: how Earth's orbit influences climate</h2>
+
+            <p class="intro-lead">
+                One of the most important discoveries in palaeoclimate
+                science is that variations in Earth's orbit and
+                orientation influence the distribution of solar
+                energy reaching different parts of the planet.
+            </p>
+
+            <p>
+                These variations are known as
+                <strong>Milankovitch cycles</strong>, named after
+                Serbian mathematician and astronomer Milutin Milanković.
+                They influence the timing and geographical distribution
+                of incoming solar radiation, particularly at high
+                northern latitudes where changes in summer insolation
+                can influence whether winter snow survives the summer.
+            </p>
+
+            <p>
+                There are three principal components:
+            </p>
+
+            <h3>1. Eccentricity — the shape of Earth's orbit</h3>
+
+            <p>
+                Earth's orbit around the Sun is not perfectly circular.
+                It varies between more circular and more elliptical
+                configurations.
+            </p>
+
+            <p>
+                These changes occur over several periodicities,
+                with an important component around 100,000 years
+                and a longer component around 405,000 years.
+                Eccentricity influences the strength of the
+                precessional effect on seasonal insolation.
+            </p>
+
+            <h3>2. Obliquity — the tilt of Earth's axis</h3>
+
+            <p>
+                Earth's rotational axis is tilted relative to the
+                plane of its orbit. This tilt varies between
+                approximately 22.1 and 24.5 degrees over a cycle
+                of around 41,000 years.
+            </p>
+
+            <p>
+                A greater axial tilt produces more pronounced
+                seasonal contrasts, particularly at high latitudes.
+                A smaller tilt produces less extreme seasonal
+                differences.
+            </p>
+
+            <h3>3. Precession — the orientation of Earth's axis</h3>
+
+            <p>
+                Earth's rotational axis slowly changes its
+                orientation, much like the wobble of a spinning top.
+                This alters the position of the seasons relative
+                to Earth's position in its orbit.
+            </p>
+
+            <p>
+                Climatically important precessional cycles occur
+                at approximately 19,000 to 23,000 years.
+            </p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Orbital parameter</th>
+                            <th>Main periodicity</th>
+                            <th>Principal influence</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Eccentricity</td>
+                            <td>~100,000 and 405,000 years</td>
+                            <td>Modulates orbital shape and the strength of precessional effects.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Obliquity</td>
+                            <td>~41,000 years</td>
+                            <td>Changes the seasonal contrast between high and low latitudes.</td>
+                        </tr>
+
+                        <tr>
+                            <td>Precession</td>
+                            <td>~19,000–23,000 years</td>
+                            <td>Changes the timing of seasons relative to Earth's orbital position.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                These orbital variations do not significantly change
+                the total annual amount of solar energy received by
+                Earth. Their importance lies in how that energy is
+                distributed across seasons and latitudes.
+            </p>
+
+            <p>
+                In particular, relatively cool summers in the
+                Northern Hemisphere can allow winter snow to survive,
+                enabling ice sheets to grow over successive years.
+                Warmer summers encourage melting and can contribute
+                to ice-sheet retreat.
+            </p>
+
+            <p>
+                This helps explain why orbital variations are
+                closely associated with the rhythm of Quaternary
+                glacial cycles.
+            </p>
+
+        </section>
+
+
+        <!-- 05 FEEDBACKS -->
+        <section id="feedbacks">
+
+            <div class="section-label">05 · The climate system</div>
+
+            <h2>Why small changes can produce large consequences: climate feedbacks</h2>
+
+            <p class="intro-lead">
+                Orbital variations help initiate changes in the
+                climate system, but they cannot explain the full
+                magnitude of glacial and interglacial transitions.
+                To understand those changes, we need to consider
+                feedbacks.
+            </p>
+
+            <p>
+                A <strong>climate feedback</strong> occurs when an
+                initial change in the climate system triggers
+                secondary processes that either amplify or reduce
+                the original change.
+            </p>
+
+            <h3>Ice–albedo feedback</h3>
+
+            <p>
+                Snow and ice reflect a large proportion of incoming
+                sunlight. This property is known as
+                <strong>albedo</strong>.
+            </p>
+
+            <p>
+                When ice sheets expand, more sunlight is reflected
+                back into space, reducing the energy absorbed by
+                Earth's surface. This encourages further cooling
+                and can promote additional ice growth.
+            </p>
+
+            <p>
+                The reverse occurs during warming: ice melts,
+                darker land and ocean surfaces become exposed,
+                and more solar energy is absorbed.
+            </p>
+
+            <h3>Greenhouse gas feedbacks</h3>
+
+            <p>
+                Carbon dioxide and methane influence how efficiently
+                Earth's atmosphere retains heat. During glacial
+                cycles, atmospheric concentrations of these gases
+                changed alongside global temperature.
+            </p>
+
+            <p>
+                Ice-core records show that carbon dioxide
+                concentrations were generally lower during
+                glacial periods and higher during interglacials.
+                Changes in ocean circulation, biological activity
+                and carbon storage contributed to these variations.
+            </p>
+
+            <p>
+                Greenhouse gases therefore acted as important
+                amplifiers of the initial climate changes associated
+                with orbital forcing.
+            </p>
+
+            <h3>Ocean circulation</h3>
+
+            <p>
+                The oceans redistribute heat around the planet.
+                Their circulation is influenced by temperature,
+                salinity, wind and the formation of dense water masses.
+            </p>
+
+            <p>
+                Changes in freshwater input, particularly from
+                melting ice sheets, can influence ocean density
+                and circulation. This can alter regional climate
+                patterns and affect the transport of heat between
+                low and high latitudes.
+            </p>
+
+            <h3>Vegetation and the carbon cycle</h3>
+
+            <p>
+                Vegetation influences climate through carbon storage,
+                surface reflectivity and the exchange of water
+                between land and atmosphere.
+            </p>
+
+            <p>
+                As climate changes, forests, grasslands and tundra
+                shift their geographical distributions. These
+                changes can influence how much carbon is stored
+                in soils and vegetation, creating further
+                interactions within the climate system.
+            </p>
+
+            <div class="definition">
+                <strong>The important distinction: forcing versus feedback</strong>
+                <p>
+                    A forcing initiates or drives a change in the
+                    climate system. A feedback modifies the response
+                    to that change. Orbital variations provide
+                    an important pacing mechanism for Quaternary
+                    glacial cycles, while greenhouse gases, ice,
+                    oceans and vegetation help determine their
+                    magnitude and character.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- 06 PROXIES -->
         <section id="proxies">
-            <h2>How We Know: Climate Proxies</h2>
+
+            <div class="section-label">06 · Reconstructing ancient environments</div>
+
+            <h2>Reading the climate archive: how do we know what happened?</h2>
+
+            <p class="intro-lead">
+                Nobody was recording daily temperatures during the
+                last ice age. There were no weather stations, satellite
+                observations or atmospheric monitoring networks.
+                So how can scientists reconstruct climate conditions
+                from thousands or even millions of years ago?
+            </p>
 
             <p>
-                Direct instrumental measurements of weather and climate extend back only about 150 years. To reconstruct climate over 
-                Quaternary timescales, scientists rely on <strong>climate proxies</strong> – natural archives that indirectly record 
-                environmental conditions. Each proxy captures different aspects of the climate system and comes with its own uncertainties, 
-                so robust reconstructions typically combine multiple lines of evidence.
+                The answer lies in natural archives.
+            </p>
+
+            <p>
+                Across the Earth, environmental materials preserve
+                chemical, biological and physical evidence of the
+                conditions under which they formed. These records
+                are known as <strong>climate proxies</strong>.
+            </p>
+
+            <p>
+                A proxy does not usually provide a direct measurement
+                of temperature or rainfall. Instead, it records
+                something that responds to environmental conditions.
+                Scientists use the relationship between that signal
+                and the environment to reconstruct past climates.
+            </p>
+
+
+            <h3>Ice cores: preserving ancient atmospheres</h3>
+
+            <p>
+                Ice cores are among the most important archives
+                in palaeoclimate research. They are drilled from
+                large ice sheets and glaciers, particularly in
+                Antarctica and Greenland.
+            </p>
+
+            <p>
+                As snow accumulates, successive layers become
+                compacted into ice. Small bubbles of air can become
+                trapped within the ice, preserving samples of
+                ancient atmospheres.
+            </p>
+
+            <p>
+                By analysing these bubbles, scientists can measure
+                past concentrations of greenhouse gases such as
+                carbon dioxide and methane.
+            </p>
+
+            <p>
+                The oxygen and hydrogen isotope composition of
+                the ice itself also provides information about
+                past temperature and moisture conditions.
+            </p>
+
+            <p>
+                Ice-core records have been central to establishing
+                the close relationship between atmospheric greenhouse
+                gas concentrations and temperature across successive
+                glacial cycles.
+            </p>
+
+
+            <h3>Marine sediments: the ocean floor as an archive</h3>
+
+            <p>
+                The seabed is covered by layers of sediment that
+                accumulate over thousands and millions of years.
+                These deposits contain the remains of marine
+                organisms, minerals transported from land,
+                volcanic ash and chemical signals from the ocean.
+            </p>
+
+            <p>
+                One particularly important group of organisms
+                is the <strong>foraminifera</strong>: microscopic,
+                often shelled marine organisms that live in the
+                water column or on the seabed.
+            </p>
+
+            <p>
+                Their shells preserve geochemical information
+                about the water in which they formed.
+            </p>
+
+            <p>
+                Measurements of oxygen isotopes, particularly
+                the ratio of oxygen-18 to oxygen-16, are widely
+                used in palaeoceanography. These measurements
+                can reflect a combination of ocean temperature
+                and changes in global ice volume.
+            </p>
+
+            <p>
+                This distinction is important. An oxygen-isotope
+                record is not automatically a direct temperature
+                record. Its interpretation depends on the archive,
+                the organism and the wider environmental context.
+            </p>
+
+
+            <h3>Pollen: reconstructing ancient vegetation</h3>
+
+            <p>
+                Plants produce pollen grains that can be transported
+                by wind or water and preserved in lake sediments,
+                peat deposits and other sedimentary environments.
+            </p>
+
+            <p>
+                Different plant species produce pollen with
+                recognisable shapes and surface characteristics.
+                By identifying and counting pollen grains in
+                successive sediment layers, scientists can
+                reconstruct changes in vegetation through time.
+            </p>
+
+            <p>
+                A shift from tree-dominated pollen assemblages
+                towards grasses and cold-tolerant plants, for
+                example, may indicate a transition towards
+                cooler or drier conditions.
+            </p>
+
+            <p>
+                Pollen analysis is particularly valuable for
+                understanding how terrestrial ecosystems
+                responded to changing climate.
+            </p>
+
+
+            <h3>Speleothems: climate records hidden in caves</h3>
+
+            <p>
+                Stalagmites and stalactites form as mineral-rich
+                water enters caves and deposits calcium carbonate.
+                These deposits are collectively known as
+                <strong>speleothems</strong>.
+            </p>
+
+            <p>
+                As a stalagmite grows, it can preserve changes
+                in oxygen isotopes, carbon isotopes and trace
+                elements. These signals may provide information
+                about rainfall, moisture sources, vegetation
+                and changes in regional climate.
+            </p>
+
+            <p>
+                Because some speleothems can be dated precisely
+                using uranium-series methods, they are valuable
+                archives of environmental change.
+            </p>
+
+
+            <h3>Lake sediments, biomarkers and ancient DNA</h3>
+
+            <p>
+                Lakes and wetlands collect material from their
+                surrounding catchments. Their sediments can
+                preserve pollen, plant fragments, microfossils,
+                charcoal, minerals and organic compounds.
+            </p>
+
+            <p>
+                Some organic molecules, known as
+                <strong>biomarkers</strong>, are produced by
+                particular groups of organisms. Their chemical
+                composition can provide clues about past
+                temperature, vegetation and environmental conditions.
+            </p>
+
+            <p>
+                Sedimentary ancient DNA provides another way
+                of identifying organisms that once inhabited
+                an environment. Even where visible fossils
+                are absent, fragments of genetic material
+                can sometimes survive in sediment.
+            </p>
+
+
+            <h3>Tephra: volcanic ash as a chronological marker</h3>
+
+            <p>
+                Volcanic eruptions can distribute ash across
+                enormous distances. When this material settles
+                into lakes, peatlands, marine sediments or ice,
+                it can form a recognisable layer within the
+                geological record.
+            </p>
+
+            <p>
+                These deposits are known as <strong>tephra</strong>.
+                Their volcanic glass can preserve distinctive
+                chemical compositions, allowing scientists
+                to compare deposits from different locations.
+            </p>
+
+            <p>
+                Where a tephra layer can be linked to a known
+                eruption, it can provide an important chronological
+                marker. The same volcanic event may be recorded
+                in several geographically separated sedimentary
+                sequences.
+            </p>
+
+            <p>
+                This is the basis of <strong>tephrochronology</strong>:
+                using volcanic ash layers to establish correlations
+                and improve the chronological framework of
+                environmental records.
+            </p>
+
+            <p>
+                It is an especially useful technique because
+                a single eruption can leave a distinctive
+                geological fingerprint across multiple archives.
+            </p>
+
+            <div class="pullquote">
+                A sediment core is not simply a column of mud.
+                It is a layered environmental record, with each
+                horizon potentially preserving evidence of
+                climate, vegetation, volcanic activity and
+                landscape change.
+            </div>
+
+        </section>
+
+
+        <!-- 07 DATING -->
+        <section id="dating">
+
+            <div class="section-label">07 · Chronology and uncertainty</div>
+
+            <h2>Putting the past in order: how are climate records dated?</h2>
+
+            <p class="intro-lead">
+                Reconstructing an ancient environment is only part
+                of the problem. Scientists also need to establish
+                when the evidence formed.
+            </p>
+
+            <p>
+                A climate record without a reliable chronology
+                can be difficult to interpret. For example,
+                identifying a major vegetation change is useful,
+                but knowing whether it occurred during a glacial
+                transition, a volcanic event or a period of
+                regional warming gives that observation much
+                greater scientific value.
+            </p>
+
+            <p>
+                Different archives require different dating
+                techniques. Some of the most widely used include:
             </p>
 
             <ul>
                 <li>
-                    <strong>Ice cores</strong> – Cylinders of ice drilled from Greenland and Antarctic ice sheets contain trapped air bubbles 
-                    that preserve past concentrations of CO<sub>2</sub>, CH<sub>4</sub> and other gases. Stable isotopes of oxygen and hydrogen 
-                    in the ice provide temperature-sensitive signals stretching back hundreds of thousands of years.
+                    <strong>Radiocarbon dating:</strong>
+                    Measures the radioactive decay of carbon-14
+                    in once-living material. It is particularly
+                    useful for dating organic remains from the
+                    late Quaternary, within its effective age range.
                 </li>
+
                 <li>
-                    <strong>Marine sediments</strong> – Layers of sediment on the ocean floor record changes in microfossil assemblages, 
-                    grain size and geochemical composition. Foraminifera shells and their isotopes (e.g. δ<sup>18</sup>O) are especially 
-                    important for reconstructing ice volume and ocean temperature.
+                    <strong>Uranium-series dating:</strong>
+                    Uses radioactive decay relationships within
+                    uranium-bearing minerals, including cave
+                    carbonates and corals.
                 </li>
+
                 <li>
-                    <strong>Speleothems</strong> – Cave deposits such as stalagmites grow layer by layer, incorporating isotopic and elemental 
-                    signals that reflect past rainfall patterns and moisture balance on land.
+                    <strong>Optically stimulated luminescence:</strong>
+                    Estimates the time since mineral grains,
+                    commonly quartz or feldspar, were last
+                    exposed to sufficient sunlight.
                 </li>
+
                 <li>
-                    <strong>Pollen records</strong> – Pollen grains preserved in lake and peat sediments document changes in vegetation 
-                    communities through time, which can be linked to temperature and precipitation regimes.
+                    <strong>Tephrochronology:</strong>
+                    Correlates volcanic ash deposits between
+                    sedimentary sequences using their
+                    stratigraphic position and geochemical
+                    characteristics.
                 </li>
+
                 <li>
-                    <strong>Ancient DNA and biomarkers</strong> – Molecular traces of plants, animals and microbes in sediments provide 
-                    additional insights into past ecosystems, sea-ice cover and biogeochemical cycles.
+                    <strong>Ice-core chronology:</strong>
+                    Uses annual layer counting, volcanic
+                    horizons, chemical signals and other
+                    chronological constraints.
+                </li>
+
+                <li>
+                    <strong>Biostratigraphy:</strong>
+                    Uses the distribution and succession
+                    of fossil organisms to establish relative
+                    ages and correlations.
                 </li>
             </ul>
 
             <p>
-                By combining these archives with robust dating methods, scientists can reconstruct past temperature, precipitation, ice volume, 
-                sea level and atmospheric composition. This integrated picture of Quaternary climate is essential for placing current changes 
-                in a long-term context.
+                These methods do not all provide the same
+                precision or operate over the same timescales.
+                Their suitability depends on the material
+                being dated, the age of the deposit and the
+                environmental context.
             </p>
+
+            <p>
+                Scientists often combine multiple dating
+                approaches to construct an
+                <strong>age-depth model</strong>, which estimates
+                the age of sediment at different depths within
+                a core.
+            </p>
+
+            <p>
+                Such models also account for uncertainty.
+                An age estimate is rarely an absolutely precise
+                point in time; it is better understood as
+                a probability distribution or an interval
+                within which the true age is likely to fall.
+            </p>
+
         </section>
 
 
-        <!-- ---------- Major Quaternary Events ---------- -->
+        <!-- 08 EVENTS -->
         <section id="events">
-            <h2>Major Climate Events of the Quaternary</h2>
+
+            <div class="section-label">08 · Major transitions</div>
+
+            <h2>Important events in Quaternary climate history</h2>
+
+            <p class="intro-lead">
+                The Quaternary is not a uniform climatic interval.
+                It contains several major transitions that reveal
+                how the Earth system has changed over geological
+                timescales.
+            </p>
+
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <strong>Approximately 2.58 million years ago — Beginning of the Quaternary</strong>
+                    <p>
+                        The formal beginning of the Quaternary
+                        marks an interval characterised by
+                        increasingly important Northern
+                        Hemisphere glaciation and major
+                        environmental fluctuations.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>Approximately 1.2–0.7 million years ago — Mid-Pleistocene Transition</strong>
+                    <p>
+                        The dominant rhythm of glacial cycles
+                        shifted from a pattern strongly associated
+                        with approximately 41,000-year periodicity
+                        towards larger, more asymmetric cycles
+                        with a prominent approximately 100,000-year
+                        rhythm. The causes involve complex
+                        interactions between ice-sheet dynamics,
+                        orbital forcing and climate feedbacks.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>Approximately 26,500–19,000 years ago — Last Glacial Maximum</strong>
+                    <p>
+                        Large ice sheets reached their maximum
+                        extent during the last glacial cycle.
+                        Global sea level was substantially lower
+                        than today, exposing continental shelves
+                        and connecting some landmasses.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>Approximately 19,000–11,700 years ago — Deglaciation</strong>
+                    <p>
+                        Global temperatures rose, ice sheets
+                        retreated and sea levels increased.
+                        The transition involved complex regional
+                        changes, including episodes of abrupt
+                        climate variability.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>Approximately 11,700 years ago — Beginning of the Holocene</strong>
+                    <p>
+                        The start of the current interglacial
+                        marks a major transition towards the
+                        warmer environmental conditions within
+                        which human societies developed.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <h3>The Mid-Pleistocene Transition</h3>
 
             <p>
-                While glacial–interglacial cycles set the overall rhythm of Quaternary climate, several key events stand out as major 
-                reorganisations of the Earth system:
+                One of the most important long-term changes
+                in Quaternary climate history is the
+                <strong>Mid-Pleistocene Transition</strong>.
+            </p>
+
+            <p>
+                Earlier in the Pleistocene, glacial cycles
+                were strongly influenced by approximately
+                41,000-year variations associated with
+                changes in Earth's axial tilt.
+            </p>
+
+            <p>
+                During the Mid-Pleistocene Transition,
+                glacial cycles became larger and increasingly
+                asymmetric, with a dominant rhythm around
+                100,000 years.
+            </p>
+
+            <p>
+                This transition cannot be explained by a
+                simple change in orbital forcing. Instead,
+                researchers investigate the role of evolving
+                ice-sheet behaviour, changing ice dynamics,
+                ocean circulation, regolith removal and
+                interactions between the climate system's
+                feedback mechanisms.
+            </p>
+
+
+            <h3>The Last Glacial Maximum</h3>
+
+            <p>
+                The Last Glacial Maximum (LGM) represents
+                the interval when global ice volume was
+                at its greatest during the most recent
+                glacial cycle.
+            </p>
+
+            <p>
+                Extensive ice sheets covered large parts
+                of northern North America and northern
+                Europe. Britain and Ireland experienced
+                major glacial activity, with ice advancing
+                across substantial areas of the landscape.
+            </p>
+
+            <p>
+                The growth of continental ice sheets
+                locked up enormous quantities of water,
+                resulting in global sea levels more than
+                120 metres below modern levels.
+            </p>
+
+            <p>
+                This transformed coastlines, altered
+                migration routes and exposed areas of
+                continental shelf that are now submerged.
+            </p>
+
+
+            <h3>Deglaciation and abrupt climate change</h3>
+
+            <p>
+                The transition out of the last glacial
+                period was not a smooth, uninterrupted
+                warming trend.
+            </p>
+
+            <p>
+                The deglaciation included periods of
+                relatively rapid warming and cooling.
+                One particularly well-known event is
+                the <strong>Younger Dryas</strong>,
+                a return to colder conditions in parts
+                of the North Atlantic region approximately
+                12,900 to 11,700 years ago.
+            </p>
+
+            <p>
+                Its expression varied geographically,
+                and its causes remain an important area
+                of palaeoclimate research. Changes in
+                freshwater input and North Atlantic
+                ocean circulation are central to many
+                explanations.
+            </p>
+
+        </section>
+
+
+        <!-- 09 HOLOCENE -->
+        <section id="holocene">
+
+            <div class="section-label">09 · The last 11,700 years</div>
+
+            <h2>The Holocene: the world in which civilisation developed</h2>
+
+            <p class="intro-lead">
+                The Holocene is the current geological epoch.
+                Beginning approximately 11,700 years ago,
+                it followed the final transition out of
+                the last glacial period.
+            </p>
+
+            <p>
+                Compared with the dramatic glacial cycles
+                of the Pleistocene, the Holocene has generally
+                experienced relatively limited global
+                temperature variability.
+            </p>
+
+            <p>
+                This does not mean that climate remained
+                unchanged. Regional temperatures, rainfall
+                patterns, monsoon systems and ocean circulation
+                all experienced significant variations.
+            </p>
+
+            <p>
+                The early and middle Holocene saw substantial
+                changes in vegetation and ecosystems as
+                glaciers retreated and forests expanded
+                into areas previously dominated by
+                cold-adapted environments.
+            </p>
+
+            <p>
+                These environmental conditions formed
+                the setting for the development of
+                agriculture, settled communities and
+                increasingly complex human societies.
+            </p>
+
+            <h3>Holocene climate variability</h3>
+
+            <p>
+                Several periods of regional climatic
+                change are particularly well documented.
             </p>
 
             <ul>
                 <li>
-                    <strong>Mid-Pleistocene Transition (MPT)</strong> – Between roughly 1.2 million and 700,000 years ago, the dominant 
-                    periodicity of glacial cycles shifted from ~41,000 years to ~100,000 years. This transition is likely related to evolving 
-                    ice-sheet dynamics and feedbacks, rather than a simple change in orbital forcing.
+                    <strong>Holocene Thermal Maximum:</strong>
+                    A period of relatively warm conditions
+                    in many northern high-latitude regions,
+                    although its timing and magnitude
+                    varied geographically.
                 </li>
+
                 <li>
-                    <strong>Last Glacial Maximum (LGM)</strong> – Around 21,000 years ago, ice sheets were at their greatest extent, global 
-                    sea level was more than 120 metres lower than today, and many mid- to high-latitude regions were colder and drier.
+                    <strong>Medieval Climate Anomaly:</strong>
+                    A period of regionally variable climate
+                    conditions, often associated with
+                    relatively warm conditions in parts
+                    of the North Atlantic region.
                 </li>
+
                 <li>
-                    <strong>Deglaciation and Meltwater Pulses</strong> – The transition from the last glacial to the Holocene involved rapid 
-                    warming, ice-sheet retreat and abrupt sea-level rise. Large meltwater pulses temporarily disrupted ocean circulation, 
-                    with knock-on effects for regional climate.
-                </li>
-                <li>
-                    <strong>Holocene Climate Variability</strong> – Although generally more stable than glacial times, the Holocene includes 
-                    notable episodes such as the Holocene Thermal Maximum, the Medieval Climate Anomaly and the Little Ice Age, driven by 
-                    a mix of solar variability, volcanism and internal dynamics.
-                </li>
-                <li>
-                    <strong>Proposed Anthropocene</strong> – Many researchers argue that human activity since the Industrial Revolution has 
-                    created a new geological interval distinct from the Holocene, marked by unprecedented greenhouse gas concentrations, 
-                    widespread biodiversity loss and pervasive human modification of landscapes and biogeochemical cycles.
+                    <strong>Little Ice Age:</strong>
+                    A period of widespread, though
+                    geographically uneven, cooling
+                    particularly evident in parts of
+                    the Northern Hemisphere between
+                    approximately the 14th and 19th centuries.
                 </li>
             </ul>
 
             <p>
-                Each of these events provides a natural experiment in how the climate system responds to different types and magnitudes of 
-                forcing, offering valuable analogues – and contrasts – for understanding current and future change.
+                These intervals are useful reminders
+                that climate variability is geographically
+                complex. A warm period in one region
+                does not necessarily represent simultaneous
+                global warming, and the same applies
+                to periods of cooling.
             </p>
+
         </section>
 
 
-        <!-- ---------- Today’s Changes in Context ---------- -->
-        <section id="today">
-            <h2>Today's Climate in Quaternary Context</h2>
+        <!-- 10 MODERN CLIMATE -->
+        <section id="modern">
 
-            <p>
-                When viewed against the backdrop of Quaternary climate history, modern warming stands out for both its 
-                <strong>speed</strong> and its <strong>cause</strong>. Past transitions from glacial to interglacial states involved 
-                global temperature changes of several degrees Celsius over thousands of years, initiated by orbital forcing and amplified 
-                by natural feedbacks. By contrast, global mean surface temperature has risen by more than 1&nbsp;°C since the late 
-                19th century, driven primarily by anthropogenic greenhouse gas emissions.
+            <div class="section-label">10 · The modern climate</div>
+
+            <h2>Modern climate change in the context of deep time</h2>
+
+            <p class="intro-lead">
+                The geological record demonstrates that
+                Earth's climate has undergone enormous
+                natural changes. However, recognising
+                natural climate variability does not
+                explain away modern warming. In fact,
+                understanding past climate behaviour
+                helps us identify what makes the present
+                situation so unusual.
             </p>
 
             <p>
-                Ice-core records show that pre-industrial atmospheric CO<sub>2</sub> fluctuated naturally between roughly 
-                180&nbsp;ppm during glacials and 280&nbsp;ppm during interglacials. Modern concentrations lie far above this range, and 
-                the rate of increase is unprecedented within the Quaternary record. This places the current climate trajectory outside the 
-                envelope of “normal” Holocene variability.
+                Since the Industrial Revolution,
+                atmospheric concentrations of greenhouse
+                gases have increased substantially.
+                The principal driver is human activity,
+                particularly the combustion of coal,
+                oil and natural gas, alongside land-use
+                change and industrial processes.
             </p>
 
             <p>
-                Quaternary archives also highlight the existence of thresholds and potential tipping points – for example, in ice-sheet 
-                stability, ocean circulation and biosphere feedbacks. Once crossed, these thresholds can commit the Earth system to 
-                large, and in some cases irreversible, changes on human timescales, even if forcing is later reduced.
+                Carbon dioxide, methane and nitrous
+                oxide absorb outgoing infrared radiation.
+                Increasing their concentrations changes
+                the Earth's energy balance, resulting
+                in a warming climate system.
             </p>
 
             <p>
-                In this sense, the Quaternary is more than a backdrop. It is the context that allows us to recognise just how unusual 
-                present-day climate change is, and why rapid mitigation of greenhouse gas emissions is critical if we are to avoid 
-                committing future generations to a profoundly different climate state.
+                This is not simply a correlation between
+                rising carbon dioxide and temperature.
+                The physical mechanisms are understood,
+                the expected pattern of atmospheric
+                warming has been observed, and multiple
+                independent lines of evidence identify
+                human influence as the dominant cause
+                of recent global warming.
             </p>
+
+            <h3>What does the geological record tell us about CO₂?</h3>
+
+            <p>
+                Ice cores provide direct records of
+                ancient atmospheric composition by
+                preserving tiny samples of air trapped
+                within compacted snow and ice.
+            </p>
+
+            <p>
+                Across the late Quaternary, carbon
+                dioxide concentrations varied substantially
+                between glacial and interglacial conditions.
+                Over much of the last 800,000 years,
+                concentrations generally ranged from
+                roughly 180 parts per million during
+                glacial periods to around 280 parts
+                per million during interglacials,
+                with some variation beyond those
+                approximate limits.
+            </p>
+
+            <p>
+                These records reveal a close relationship
+                between atmospheric carbon dioxide
+                and temperature across successive
+                glacial cycles.
+            </p>
+
+            <p>
+                The modern situation is different.
+                The IPCC's Sixth Assessment Report
+                reported that atmospheric carbon dioxide
+                reached approximately 410 parts per
+                million in 2019, higher than at any
+                time in at least two million years
+                according to the evidence assessed.
+            </p>
+
+            <p>
+                The significance is not just the
+                concentration itself. It is also
+                the speed at which the atmosphere
+                has changed.
+            </p>
+
+            <h3>How unusual is modern warming?</h3>
+
+            <p>
+                The IPCC assessed global surface
+                temperature during 2011–2020 as
+                approximately 1.1°C above the
+                1850–1900 reference period.
+            </p>
+
+            <p>
+                Its assessment also concluded that
+                human activities, principally through
+                greenhouse gas emissions, have
+                unequivocally caused global warming.
+            </p>
+
+            <p>
+                The rate of recent warming is particularly
+                important. The IPCC found that global
+                surface temperature has increased
+                faster since 1970 than during any
+                other 50-year period over at least
+                the last 2,000 years.
+            </p>
+
+            <p>
+                Comparisons with much older geological
+                intervals require care because the
+                available archives, chronological
+                precision and climate conditions
+                differ. Nevertheless, the evidence
+                from ice cores, sediments, instrumental
+                records and climate modelling provides
+                a consistent picture of rapid,
+                predominantly human-driven warming.
+            </p>
+
+            <div class="definition">
+                <strong>Why natural climate change is not an alternative explanation</strong>
+                <p>
+                    Natural factors such as volcanic
+                    activity, solar variability and
+                    internal ocean-atmosphere processes
+                    continue to influence climate.
+                    However, they cannot explain the
+                    observed pattern and magnitude
+                    of modern warming. Human greenhouse
+                    gas emissions provide the dominant
+                    explanation.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- 11 ANTHROPOCENE -->
+        <section id="anthropocene">
+
+            <div class="section-label">11 · Humans as a geological force</div>
+
+            <h2>The Anthropocene: are humans changing the geological record?</h2>
+
+            <p class="intro-lead">
+                Human activity is now altering the atmosphere,
+                oceans, ecosystems and sedimentary environments
+                on a global scale. This has led scientists
+                to ask whether humanity has become a geological
+                force in its own right.
+            </p>
+
+            <p>
+                The term <strong>Anthropocene</strong> is
+                widely used to describe the period of
+                substantial human influence on the
+                Earth system.
+            </p>
+
+            <p>
+                Its proposed geological significance
+                comes from the increasingly widespread
+                evidence of human activity preserved
+                in the geological record.
+            </p>
+
+            <p>
+                Examples include:
+            </p>
+
+            <ul>
+                <li>
+                    Rising concentrations of greenhouse
+                    gases in the atmosphere.
+                </li>
+
+                <li>
+                    Artificial radionuclides associated
+                    with nuclear weapons testing.
+                </li>
+
+                <li>
+                    Plastics and other synthetic materials
+                    entering sedimentary environments.
+                </li>
+
+                <li>
+                    Large-scale changes in sediment
+                    transport and land surfaces caused
+                    by agriculture, mining and urbanisation.
+                </li>
+
+                <li>
+                    Major changes in biodiversity and
+                    the distribution of species.
+                </li>
+            </ul>
+
+            <p>
+                However, there is an important distinction
+                between using the Anthropocene as a
+                scientific concept and recognising
+                it as a formal unit of geological time.
+            </p>
+
+            <p>
+                In March 2024, the International Union
+                of Geological Sciences and International
+                Commission on Stratigraphy approved
+                the rejection of the proposal to
+                formalise the Anthropocene as a new
+                geological epoch.
+            </p>
+
+            <p>
+                The Holocene therefore remains the
+                formally recognised current epoch
+                in the Geological Time Scale.
+            </p>
+
+            <p>
+                This decision does not mean that
+                human influence on the Earth system
+                is insignificant or disputed.
+                The Anthropocene remains a widely
+                used and valuable concept across
+                Earth and environmental sciences.
+            </p>
+
+            <p>
+                It highlights a fundamental question:
+                how will the environmental changes
+                taking place today be represented
+                in the geological record of the future?
+            </p>
+
+            <p>
+                You can read the official statement
+                from the
+                <a href="https://quaternary.stratigraphy.org/working-groups/anthropocene" target="_blank" rel="noopener">
+                    International Commission on Stratigraphy
+                </a>.
+            </p>
+
+        </section>
+
+
+        <!-- 12 CONCLUSION -->
+        <section id="conclusion" class="closing">
+
+            <div class="section-label">12 · Bringing the evidence together</div>
+
+            <h2>Why understanding the past matters</h2>
+
+            <p>
+                The Quaternary geological record provides
+                one of the most detailed accounts of
+                environmental change available to
+                Earth scientists.
+            </p>
+
+            <p>
+                Through ice cores, marine sediments,
+                lake deposits, pollen, speleothems
+                and volcanic ash layers, researchers
+                can reconstruct how the Earth system
+                responded to changing conditions
+                over thousands and millions of years.
+            </p>
+
+            <p>
+                These records reveal a climate system
+                that is dynamic, interconnected and
+                capable of substantial change.
+                They demonstrate how orbital forcing,
+                greenhouse gases, ocean circulation,
+                ice sheets and ecosystems interact
+                to shape the world around us.
+            </p>
+
+            <p>
+                But the geological record also provides
+                an important perspective on the present.
+                Modern climate change is occurring
+                rapidly, and the evidence identifies
+                human greenhouse gas emissions as
+                its dominant cause.
+            </p>
+
+            <p>
+                Understanding Earth's history does
+                not provide a perfect prediction
+                of the future. It does, however,
+                give us the evidence needed to
+                understand climate sensitivity,
+                environmental thresholds and the
+                consequences of changing the
+                composition of the atmosphere.
+            </p>
+
+            <div class="pullquote">
+                The past is not simply a record of
+                what the Earth used to be. It is
+                evidence that helps us understand
+                the processes shaping the world
+                we live in today.
+            </div>
+
+            <p>
+                The more carefully we investigate
+                that evidence, the better equipped
+                we are to understand the challenges
+                facing the Earth system.
+            </p>
+
+        </section>
+
+
+        <!-- REFERENCES -->
+        <section id="references">
+
+            <div class="section-label">Further reading · Scientific sources</div>
+
+            <h2>References and further reading</h2>
+
+            <p>
+                The following resources provide a starting
+                point for exploring Quaternary climate
+                science, geological timescales and
+                modern climate change in greater depth.
+            </p>
+
+            <ul class="source-list">
+
+                <li>
+                    <strong>International Commission on Stratigraphy.</strong>
+                    International Chronostratigraphic Chart.
+                    <br>
+                    <a href="https://stratigraphy.org/chart/" target="_blank" rel="noopener">
+                        View the geological timescale
+                    </a>
+                </li>
+
+                <li>
+                    <strong>IPCC (2023).</strong>
+                    Sixth Assessment Report: Synthesis Report,
+                    Summary for Policymakers.
+                    <br>
+                    <a href="https://www.ipcc.ch/report/ar6/syr/summary-for-policymakers/" target="_blank" rel="noopener">
+                        Read the IPCC assessment
+                    </a>
+                </li>
+
+                <li>
+                    <strong>IPCC (2021).</strong>
+                    Climate Change 2021: The Physical Science Basis.
+                    <br>
+                    <a href="https://www.ipcc.ch/report/ar6/wg1/" target="_blank" rel="noopener">
+                        Explore Working Group I
+                    </a>
+                </li>
+
+                <li>
+                    <strong>Petit, J. R. et al. (1999).</strong>
+                    Climate and atmospheric history of the past
+                    420,000 years from the Vostok ice core,
+                    Antarctica. Nature, 399, 429–436.
+                    <br>
+                    <a href="https://doi.org/10.1038/20859" target="_blank" rel="noopener">
+                        Read the research paper
+                    </a>
+                </li>
+
+                <li>
+                    <strong>Lüthi, D. et al. (2008).</strong>
+                    High-resolution carbon dioxide concentration
+                    record 650,000–800,000 years before present.
+                    Nature, 453, 379–382.
+                    <br>
+                    <a href="https://doi.org/10.1038/nature06949" target="_blank" rel="noopener">
+                        Read the research paper
+                    </a>
+                </li>
+
+                <li>
+                    <strong>International Commission on Stratigraphy.</strong>
+                    Working Group on the Anthropocene.
+                    <br>
+                    <a href="https://quaternary.stratigraphy.org/working-groups/anthropocene" target="_blank" rel="noopener">
+                        Read the official statement
+                    </a>
+                </li>
+
+            </ul>
+
+            <p>
+                These resources are intended to complement
+                the explanations in this guide. For
+                detailed scientific interpretation,
+                readers should consult the original
+                research and the wider peer-reviewed
+                literature.
+            </p>
+
+        </section>
+
+
+        <!-- MORE FROM THE SITE -->
+        <section>
+
+            <div class="section-label">Continue exploring</div>
+
+            <h2>Explore more Earth science</h2>
+
+            <p>
+                Interested in going further? Explore
+                more of the research, explanations
+                and geological topics covered by
+                Fossils &amp; Futures.
+            </p>
+
+            <ul>
+                <li>
+                    <a href="quaternary-science.html">
+                        Discover Quaternary science
+                    </a>
+                </li>
+
+                <li>
+                    <a href="dissertation.html">
+                        Explore my MSc research
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tephralink.html">
+                        Discover TephraLink
+                    </a>
+                </li>
+
+                <li>
+                    <a href="article-machine-learning.html">
+                        Machine learning and geological research
+                    </a>
+                </li>
+
+                <li>
+                    <a href="blog.html">
+                        Browse the Fossils &amp; Futures blog
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        Learn more about the author
+                    </a>
+                </li>
+            </ul>
+
         </section>
 
     </main>
 
-    <!-- ====================== FOOTER ====================== -->
-    <footer>
-        &copy; 2025 Elliot. All rights reserved. | <a href="mailto:your-email@example.com">Contact</a>
-    </footer>
+</div>
+
+
+<footer class="climate-footer">
+
+    <p>
+        <a href="index.html">Home</a> |
+        <a href="blog.html">Blog</a> |
+        <a href="about.html">About</a> |
+        <a href="dissertation.html">Research</a>
+    </p>
+
+    <p>
+        &copy; 2026 Elliot May · Fossils &amp; Futures
+    </p>
+
+    <p>
+        Independent Earth science writing and research.
+    </p>
+
+    <a href="#introduction" class="back-top">Back to the beginning ↑</a>
+
+</footer>
 
 </body>
 </html>
