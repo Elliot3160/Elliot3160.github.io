@@ -1,0 +1,2883 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An in-depth scientific guide to Quaternary palynology: pollen production, dispersal, preservation, laboratory preparation, pollen diagrams and quantitative palaeoenvironmental reconstruction.">
+  <meta name="theme-color" content="#f3efe6">
+  <title>Palynology: Reconstructing Past Environments Through Pollen | Fossils & Futures</title>
+
+  <style>
+    :root {
+      --paper: #f3efe6;
+      --paper-deep: #e9e2d5;
+      --ink: #252821;
+      --muted: #6d7068;
+      --line: #d8d0c2;
+      --terra: #b65f43;
+      --terra-dark: #87432f;
+      --sage: #667766;
+      --blue: #7895a0;
+      --white: #fbf9f4;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      height: 3px;
+      width: 0;
+      background: var(--terra);
+      z-index: 20;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(243,239,230,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(216,208,194,.85);
+    }
+
+    .nav-wrap {
+      max-width: var(--max);
+      margin: auto;
+      padding: 0 28px;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.4px;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--terra);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--terra);
+      font-family: var(--sans);
+      font-size: 12px;
+    }
+
+    .site-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-left: auto;
+    }
+
+    .site-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .035em;
+      padding: 7px 0;
+      border-bottom: 1px solid transparent;
+      transition: .2s ease;
+    }
+
+    .site-links a:hover {
+      color: var(--terra-dark);
+      border-bottom-color: var(--terra);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 650;
+      letter-spacing: .03em;
+    }
+
+    .nav-links a:hover { color: var(--terra-dark); }
+
+    .nav-cta {
+      border: 1px solid var(--ink);
+      padding: 9px 13px;
+      color: var(--ink) !important;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      padding: 8px 10px;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .hero {
+      max-width: var(--max);
+      margin: auto;
+      padding: 76px 28px 62px;
+      display: grid;
+      grid-template-columns: minmax(0,1.15fr) minmax(280px,.85fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--terra-dark);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .eyebrow:before {
+      content: '';
+      width: 27px;
+      height: 1px;
+      background: var(--terra);
+    }
+
+    h1,h2,h3,h4 {
+      font-family: var(--serif);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -.035em;
+    }
+
+    h1 {
+      font-size: clamp(46px, 6.2vw, 76px);
+      max-width: 740px;
+      margin: 22px 0;
+    }
+
+    h1 em {
+      color: var(--terra);
+      font-weight: 400;
+    }
+
+    .hero-copy {
+      max-width: 670px;
+      font-size: 17px;
+      color: #555950;
+      line-height: 1.85;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 17px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .04em;
+      border: 1px solid var(--ink);
+      transition: .2s ease;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .button.primary:hover {
+      background: var(--terra-dark);
+      border-color: var(--terra-dark);
+    }
+
+    .button.secondary:hover { background: var(--paper-deep); }
+
+    .hero-note {
+      border-left: 2px solid var(--terra);
+      padding: 4px 0 4px 17px;
+      margin-top: 30px;
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hero-art {
+      min-height: 430px;
+      position: relative;
+      overflow: hidden;
+      background: #d9ded7;
+      border-radius: 2px;
+    }
+
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.72);
+    }
+
+    .art-caption {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      padding: 12px 14px;
+      background: rgba(37,40,33,.84);
+      color: #f8f4eb;
+      font-size: 10px;
+      letter-spacing: .06em;
+    }
+
+    .hero-art:after {
+      content: '01';
+      position: absolute;
+      right: 10px;
+      top: 8px;
+      color: rgba(255,255,255,.75);
+      font-family: var(--serif);
+      font-size: 100px;
+      line-height: 1;
+    }
+
+    .fact-strip {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .fact-inner {
+      max-width: var(--max);
+      margin: auto;
+      padding: 25px 28px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 20px;
+    }
+
+    .fact strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 400;
+      color: #e2a187;
+    }
+
+    .fact span {
+      display: block;
+      color: #c6c7bd;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: auto;
+      padding: 88px 28px;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 50px;
+      align-items: end;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      color: var(--terra-dark);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: clamp(34px,4vw,49px);
+      margin: 10px 0 0;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 700px;
+      font-size: 14px;
+      margin: 0 0 4px;
+    }
+
+    .definition-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .definition-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 27px;
+      min-height: 195px;
+    }
+
+    .definition-card .number {
+      color: var(--terra);
+      font-family: var(--serif);
+      font-size: 19px;
+    }
+
+    .definition-card h3 {
+      font-size: 25px;
+      margin: 14px 0 10px;
+    }
+
+    .definition-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .deep-dive { border-top: 1px solid var(--line); }
+    .deep-dive.alt { background: var(--white); }
+
+    .deep-dive-inner {
+      max-width: var(--max);
+      margin: auto;
+      padding: 78px 28px;
+    }
+
+    .deep-dive-header {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .deep-dive-header h2 { margin-top: 10px; }
+
+    .deep-dive-header p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 16px;
+    }
+
+    .content-card {
+      padding: 25px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .content-card h3 {
+      font-size: 25px;
+      margin: 0 0 10px;
+    }
+
+    .content-card h4 {
+      font-size: 19px;
+      margin: 18px 0 8px;
+    }
+
+    .content-card p {
+      color: #62665d;
+      font-size: 13px;
+      margin: 0 0 12px;
+    }
+
+    .content-card p:last-child { margin-bottom: 0; }
+
+    .content-card ul,
+    .content-card ol {
+      color: #62665d;
+      font-size: 13px;
+      padding-left: 19px;
+      margin: 10px 0;
+    }
+
+    .content-card li { margin-bottom: 6px; }
+
+    .content-card .tag {
+      color: var(--terra-dark);
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 9px;
+      font-weight: 800;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .insight-band {
+      margin-top: 20px;
+      background: #e7e6dc;
+      border-left: 3px solid var(--terra);
+      padding: 20px 23px;
+      color: #50564d;
+      font-size: 13px;
+    }
+
+    .note-band {
+      margin-top: 18px;
+      padding: 20px 23px;
+      background: #e7e6dc;
+      border-left: 3px solid var(--sage);
+      font-size: 13px;
+      color: #4f584d;
+    }
+
+    .process-list {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 22px;
+    }
+
+    .process-step {
+      background: var(--white);
+      padding: 20px;
+    }
+
+    .process-step strong {
+      display: block;
+      color: var(--terra-dark);
+      font: 24px var(--serif);
+      margin-bottom: 7px;
+    }
+
+    .process-step span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .figure {
+      margin: 28px 0;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 16px;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      max-height: 430px;
+      object-fit: cover;
+    }
+
+    .figure figcaption {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+      padding: 12px 4px 2px;
+    }
+
+    .equation {
+      margin: 20px 0;
+      padding: 22px;
+      background: var(--ink);
+      color: var(--paper);
+      text-align: center;
+      font-family: var(--serif);
+      font-size: 23px;
+      overflow-wrap: anywhere;
+    }
+
+    .equation small {
+      display: block;
+      margin-top: 9px;
+      color: #c6c7bd;
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .data-table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      font-size: 12px;
+    }
+
+    .data-table th {
+      text-align: left;
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 650;
+      padding: 12px 14px;
+      white-space: nowrap;
+    }
+
+    .data-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--line);
+      color: #555950;
+    }
+
+    .data-table tr:last-child td { border-bottom: 0; }
+
+    .data-table td:last-child,
+    .data-table th:last-child { text-align: right; }
+
+    .term-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .term-pills span {
+      border: 1px solid var(--line);
+      padding: 6px 10px;
+      font-size: 10px;
+      color: var(--muted);
+      background: var(--white);
+    }
+
+    .case-band {
+      background: var(--paper-deep);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .case-inner {
+      max-width: var(--max);
+      margin: auto;
+      padding: 80px 28px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .case-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 25px;
+    }
+
+    .case-card .date {
+      color: var(--terra-dark);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 800;
+    }
+
+    .case-card h3 {
+      font-size: 25px;
+      margin: 13px 0 10px;
+    }
+
+    .case-card p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 0 0 10px;
+    }
+
+    .glossary { border-top: 1px solid var(--line); }
+
+    .glossary-row {
+      display: grid;
+      grid-template-columns: 205px 1fr;
+      gap: 20px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .glossary-row strong {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+    }
+
+    .glossary-row p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .references { background: var(--paper-deep); }
+
+    .references-inner {
+      max-width: var(--max);
+      margin: auto;
+      padding: 70px 28px;
+    }
+
+    .reference-list {
+      padding-left: 22px;
+      color: #555950;
+      font-size: 12px;
+    }
+
+    .reference-list li {
+      margin-bottom: 15px;
+      padding-left: 4px;
+    }
+
+    .reference-list a {
+      color: var(--terra-dark);
+      overflow-wrap: anywhere;
+    }
+
+    .reference-note {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 24px;
+      max-width: 850px;
+    }
+
+    footer {
+      background: var(--ink);
+      color: #c8c9c0;
+      padding: 27px 28px;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+
+    .footer-inner strong {
+      color: var(--paper);
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--terra);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 800px) {
+      .site-links { display: none; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 18px 28px 22px;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 54px;
+        gap: 30px;
+      }
+
+      .hero-art, .hero-art img { min-height: 300px; }
+
+      .section-heading,
+      .deep-dive-header {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .case-grid { grid-template-columns: 1fr 1fr; }
+      .process-list { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (max-width: 540px) {
+      .nav-wrap { padding: 0 18px; }
+      .brand { font-size: 17px; }
+
+      .hero, .section, .deep-dive-inner,
+      .case-inner, .references-inner {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      h1 { font-size: 47px; }
+
+      .fact-inner {
+        grid-template-columns: repeat(2,1fr);
+        padding: 22px 18px;
+      }
+
+      .definition-grid,
+      .content-grid,
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-list { grid-template-columns: 1fr 1fr; }
+
+      .glossary-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress" id="progress"></div>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="Palynology article home">
+        <span class="brand-mark">P</span>
+        Palynology
+      </a>
+
+      <div class="site-links">
+        <a href="index.html">Fossils & Futures</a>
+        <a href="whatisclimatechange.html">Understanding the Quaternary</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-expanded="false" aria-controls="navLinks">Menu</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Article navigation">
+        <a href="#foundations">Foundations</a>
+        <a href="#taphonomy">Taphonomy</a>
+        <a href="#laboratory">Laboratory</a>
+        <a href="#diagrams">Diagrams</a>
+        <a href="#reconstruction">Reconstruction</a>
+        <a class="nav-cta" href="#references">References</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Quaternary climate proxies · Part 01</div>
+        <h1>Reading past environments through <em>pollen.</em></h1>
+
+        <p class="hero-copy">
+          Preserved within lake sediments, peat deposits and marine
+          sequences, microscopic pollen grains provide one of the most
+          extensive biological records of environmental change available
+          to Quaternary scientists. Through their identification,
+          quantification and interpretation, palynologists reconstruct
+          changing vegetation communities and investigate the ecological
+          consequences of climatic and environmental change.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#foundations">Explore the science &nbsp;→</a>
+          <a class="button secondary" href="#laboratory">The analytical process</a>
+        </div>
+
+        <p class="hero-note">
+          This article examines the principles, methods and interpretative
+          limitations of Quaternary pollen analysis, from the formation
+          of the fossil assemblage to quantitative palaeoenvironmental
+          reconstruction.
+        </p>
+      </div>
+
+      <div class="hero-art">
+        <img
+          src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1200&q=85"
+          alt="Vegetated landscape illustrating the relationship between vegetation and environmental change"
+          onerror="this.style.display='none'">
+        <div class="art-caption">
+          VEGETATION HISTORY PRESERVED WITHIN THE SEDIMENTARY RECORD
+        </div>
+      </div>
+    </section>
+
+    <section class="fact-strip" aria-label="Palynology overview">
+      <div class="fact-inner">
+        <div class="fact">
+          <strong>Microscopic</strong>
+          <span>Evidence preserved at grain scale</span>
+        </div>
+        <div class="fact">
+          <strong>Quaternary</strong>
+          <span>A major archive of vegetation change</span>
+        </div>
+        <div class="fact">
+          <strong>Biological</strong>
+          <span>Evidence from plants and spores</span>
+        </div>
+        <div class="fact">
+          <strong>Indirect</strong>
+          <span>Environmental proxy, not thermometer</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 FOUNDATIONS -->
+
+    <section class="section" id="foundations">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">01 / Scientific foundations</div>
+          <h2>What is palynology?</h2>
+        </div>
+        <p class="section-intro">
+          Palynology is the study of palynomorphs: microscopic organic-walled
+          particles that include pollen, spores and a range of other
+          biological and non-biological forms. Within Quaternary science,
+          pollen analysis is particularly important because terrestrial
+          vegetation responds to environmental conditions and leaves
+          a widespread, often continuous record in accumulating sediments.
+        </p>
+      </div>
+
+      <div class="definition-grid">
+        <article class="definition-card">
+          <span class="number">A / The material</span>
+          <h3>Pollen and spores</h3>
+          <p>
+            Pollen grains are produced by seed plants during reproduction.
+            Spores are produced by organisms including ferns and mosses.
+            Their resistant outer walls allow many grains to survive
+            sedimentary burial and subsequent laboratory preparation.
+          </p>
+        </article>
+
+        <article class="definition-card">
+          <span class="number">B / The discipline</span>
+          <h3>Microscopy and interpretation</h3>
+          <p>
+            Palynology combines microscopic identification with ecological
+            knowledge, sedimentology, chronology and quantitative analysis.
+            The purpose is to interpret assemblages as evidence of past
+            vegetation and environmental conditions.
+          </p>
+        </article>
+
+        <article class="definition-card">
+          <span class="number">C / The archive</span>
+          <h3>Accumulating sediments</h3>
+          <p>
+            Pollen is deposited in lakes, mires, peatlands, marine basins
+            and other environments. Where sediment accumulates and
+            preservation conditions are favourable, successive deposits
+            retain a stratigraphically ordered record of pollen input.
+          </p>
+        </article>
+
+        <article class="definition-card">
+          <span class="number">D / The inference</span>
+          <h3>Vegetation through time</h3>
+          <p>
+            Plant distributions and abundances respond to temperature,
+            moisture availability, seasonality, soils, disturbance and
+            ecological interactions. Changes in fossil pollen assemblages
+            can therefore reveal changes in vegetation and, indirectly,
+            the environmental conditions influencing it.
+          </p>
+        </article>
+      </div>
+
+      <div class="note-band">
+        <strong>Interpretative principle:</strong> pollen is not a direct
+        measurement of past climate or vegetation cover. It is biological
+        evidence whose relationship with vegetation is modified by
+        production, dispersal, deposition, preservation and sampling.
+        Climate interpretations must be developed through ecological
+        reasoning and, where possible, independent proxy evidence.
+      </div>
+    </section>
+
+    <!-- 02 MORPHOLOGY -->
+
+    <section class="deep-dive alt" id="morphology">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">02 / Palynomorph morphology</div>
+            <h2>The structure of a pollen grain</h2>
+          </div>
+          <p>
+            Pollen identification is based primarily on morphological
+            characteristics observable under light microscopy, with
+            scanning electron microscopy providing additional detail
+            where necessary. Grain size, shape, apertures and surface
+            ornamentation collectively provide a morphological basis
+            for taxonomic discrimination.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Wall structure</span>
+            <h3>Exine and intine</h3>
+            <p>
+              The pollen wall consists of two principal layers. The
+              outer exine is largely composed of sporopollenin, a
+              chemically resistant biopolymer. Its durability is
+              central to the preservation of pollen in sediments.
+            </p>
+            <p>
+              The inner intine is composed primarily of cellulose
+              and pectin and is generally less resistant to
+              degradation. In fossil material, the exine is often
+              the principal surviving structural component.
+            </p>
+            <p>
+              Exine architecture can be complex. Differences in
+              wall thickness, layering and surface sculpture
+              provide useful diagnostic characteristics.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Aperture morphology</span>
+            <h3>Pores and colpi</h3>
+            <p>
+              Apertures are specialised regions of the pollen wall
+              associated with pollen germination. They may appear
+              as circular or elongate openings and are important
+              features in pollen identification.
+            </p>
+            <p>
+              A grain with three elongated apertures is commonly
+              described as tricolpate, while a grain with a single
+              pore is described as monoporate. Aperture number,
+              position and morphology can help distinguish
+              major angiosperm groups.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Surface ornamentation</span>
+            <h3>Sculpture and texture</h3>
+            <p>
+              Pollen surfaces may be smooth, reticulate, striate,
+              echinate or characterised by other forms of
+              ornamentation. These patterns are often sufficiently
+              consistent within a taxonomic group to be useful
+              for identification.
+            </p>
+            <p>
+              For example, echinate pollen possesses prominent
+              spines, whereas reticulate pollen displays a
+              network-like surface pattern. Such features are
+              particularly useful when examined in conjunction
+              with grain shape and aperture characteristics.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Taxonomic resolution</span>
+            <h3>What can actually be identified?</h3>
+            <p>
+              Some pollen types have distinctive morphologies
+              and can be identified confidently to genus or
+              species. Others are morphologically similar across
+              multiple genera or even families.
+            </p>
+            <p>
+              Consequently, fossil pollen identification does
+              not always permit species-level resolution.
+              Broad categories such as Poaceae (grasses) or
+              Cyperaceae (sedges) may contain many ecologically
+              different species, limiting the precision of
+              subsequent environmental interpretation.
+            </p>
+          </article>
+        </div>
+
+        <figure class="figure">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Pollen_grains.jpg/1280px-Pollen_grains.jpg"
+            alt="Microscopic pollen grains displaying variation in morphology"
+            onerror="this.style.display='none'">
+          <figcaption>
+            Pollen grains exhibit substantial morphological variation.
+            Grain shape, aperture configuration and exine ornamentation
+            provide the principal characters used in routine
+            palynological identification. Image source: Wikimedia
+            Commons. Verify the original file attribution and licence
+            before publication.
+          </figcaption>
+        </figure>
+
+        <div class="insight-band">
+          <strong>Why taxonomy matters:</strong> the taxonomic resolution
+          of a pollen record places a limit on the ecological resolution
+          of the reconstruction. Identifying a grain as Poaceae does not
+          establish which grass species was present, nor does it
+          necessarily identify a unique climatic preference.
+        </div>
+
+        <div class="term-pills">
+          <span>Palynomorph</span>
+          <span>Exine</span>
+          <span>Intine</span>
+          <span>Sporopollenin</span>
+          <span>Colpus</span>
+          <span>Pore</span>
+          <span>Reticulate</span>
+          <span>Echinate</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 POLLEN REPRESENTATION -->
+
+    <section class="deep-dive" id="representation">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">03 / Pollen representation</div>
+            <h2>From vegetation to pollen assemblage</h2>
+          </div>
+          <p>
+            A fossil pollen assemblage is not a simple census of the
+            vegetation surrounding a sampling site. It is the outcome
+            of several interacting processes, each of which affects
+            the probability that pollen from a particular plant will
+            be represented in the sediment.
+          </p>
+        </div>
+
+        <div class="process-list">
+          <div class="process-step">
+            <strong>01</strong>
+            <span><b>Production</b><br>Plants differ in pollen productivity and flowering behaviour.</span>
+          </div>
+          <div class="process-step">
+            <strong>02</strong>
+            <span><b>Dispersal</b><br>Wind and water transport pollen away from its source.</span>
+          </div>
+          <div class="process-step">
+            <strong>03</strong>
+            <span><b>Deposition</b><br>Grains accumulate in lakes, peat and other depositional settings.</span>
+          </div>
+          <div class="process-step">
+            <strong>04</strong>
+            <span><b>Preservation</b><br>Degradation and sediment chemistry influence survival.</span>
+          </div>
+        </div>
+
+        <div class="content-grid" style="margin-top:22px">
+          <article class="content-card">
+            <span class="tag">Production bias</span>
+            <h3>Differential pollen productivity</h3>
+            <p>
+              Plant taxa differ substantially in the amount of pollen
+              they produce. Wind-pollinated trees can release large
+              quantities of pollen, while insect-pollinated plants
+              may contribute relatively little to the airborne pollen
+              assemblage.
+            </p>
+            <p>
+              A taxon that produces large quantities of pollen may
+              therefore be over-represented relative to its actual
+              abundance or percentage cover in the landscape.
+              Conversely, a plant may be locally abundant but
+              contribute relatively few grains to the sediment.
+            </p>
+            <p>
+              This distinction is fundamental: pollen percentage
+              and vegetation percentage are not interchangeable
+              measurements.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Dispersal processes</span>
+            <h3>Transport through the landscape</h3>
+            <p>
+              Pollen is transported primarily by wind, although
+              surface runoff and river systems can also contribute
+              to its movement. Dispersal distance is influenced
+              by grain size, density, settling velocity, release
+              height, atmospheric conditions and vegetation structure.
+            </p>
+            <p>
+              Some taxa are represented strongly in regional pollen
+              assemblages because their pollen is readily dispersed
+              over long distances. Other taxa are more locally
+              representative.
+            </p>
+            <p>
+              This means a sediment sample can contain pollen from
+              plants that were not growing immediately adjacent
+              to the depositional basin.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Source area</span>
+            <h3>Local and regional vegetation</h3>
+            <p>
+              The pollen source area describes the geographical
+              area contributing to the assemblage preserved at
+              a particular site. It is not a fixed radius and
+              depends on basin size, vegetation structure,
+              pollen characteristics and depositional processes.
+            </p>
+            <p>
+              Small lakes and peatlands can be strongly influenced
+              by nearby vegetation, whereas larger lake basins
+              generally integrate pollen from a wider area.
+              However, regional pollen can contribute to records
+              from both small and large sites.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Preservation bias</span>
+            <h3>Selective survival</h3>
+            <p>
+              Sporopollenin provides considerable resistance to
+              degradation, but pollen preservation is not uniform.
+              Oxidation, microbial activity, sediment chemistry
+              and reworking can alter assemblage composition.
+            </p>
+            <p>
+              Differential preservation can affect both the
+              abundance and condition of pollen types. Poorly
+              preserved grains may become difficult to identify,
+              introducing uncertainty into taxonomic counts.
+            </p>
+          </article>
+        </div>
+
+        <div class="note-band">
+          <strong>The taphonomic filter:</strong> the pollen assemblage
+          is a transformed representation of the original vegetation.
+          Any interpretation that moves directly from pollen percentages
+          to vegetation cover without considering production,
+          dispersal and preservation risks overlooking the processes
+          that formed the record.
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 SEDIMENTARY ARCHIVES -->
+
+    <section class="deep-dive alt" id="archives">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">04 / Sedimentary archives</div>
+            <h2>Where is fossil pollen preserved?</h2>
+          </div>
+          <p>
+            Pollen analysis depends on the existence of sedimentary
+            environments capable of accumulating and preserving
+            palynomorphs. The depositional setting influences the
+            geographical scale, ecological character and temporal
+            resolution of the resulting record.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Lacustrine environments</span>
+            <h3>Lake sediments</h3>
+            <p>
+              Lakes are among the most widely used archives in
+              Quaternary palynology. Pollen enters through direct
+              atmospheric deposition, surface runoff and inflowing
+              streams. It can then become incorporated into
+              accumulating lake sediment.
+            </p>
+            <p>
+              The record may integrate vegetation from the
+              immediate shoreline, catchment and wider region.
+              The relative contribution of these areas depends
+              on basin size, catchment characteristics and
+              pollen transport.
+            </p>
+            <p>
+              Sediment focusing, resuspension and changes in
+              lake level can complicate the relationship between
+              pollen input and the final stratigraphic sequence.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Peatlands and mires</span>
+            <h3>Peat sequences</h3>
+            <p>
+              Peat accumulates through the partial decomposition
+              of plant material under waterlogged conditions.
+              Oxygen limitation can slow decomposition and
+              favour the preservation of organic remains.
+            </p>
+            <p>
+              Peat records are particularly useful for investigating
+              vegetation and hydrological changes. However,
+              the pollen assemblage can be strongly influenced
+              by local peat-forming vegetation and changes in
+              the mire's own hydrology.
+            </p>
+            <p>
+              Peat accumulation rates can also vary considerably,
+              meaning that equal-depth samples do not necessarily
+              represent equal periods of time.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Marine environments</span>
+            <h3>Ocean sediment cores</h3>
+            <p>
+              Terrestrial pollen can be transported offshore by
+              wind and river systems. Marine sediment cores
+              therefore provide an opportunity to investigate
+              vegetation change across continental margins
+              and wider regions.
+            </p>
+            <p>
+              Marine records can be especially valuable when
+              combined with foraminiferal assemblages, stable
+              isotopes and other marine proxies.
+            </p>
+            <p>
+              However, the terrestrial pollen signal may be
+              affected by river discharge, changing drainage
+              systems, ocean currents and sediment transport.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Terrestrial deposits</span>
+            <h3>Caves and archaeological sequences</h3>
+            <p>
+              Pollen can also be recovered from cave sediments,
+              archaeological deposits and other terrestrial
+              sequences. These settings may preserve valuable
+              evidence of local environmental conditions.
+            </p>
+            <p>
+              Their depositional histories can be complex.
+              Pollen may be introduced through water movement,
+              animals, human activity or redeposition from
+              older sediments.
+            </p>
+            <p>
+              Establishing the stratigraphic and taphonomic
+              context is therefore essential before interpreting
+              these assemblages as records of contemporary
+              vegetation.
+            </p>
+          </article>
+        </div>
+
+        <div class="insight-band">
+          <strong>Archive selection matters:</strong> two cores
+          collected from the same region may record different
+          vegetation signals because they have different source
+          areas, depositional histories and sedimentation rates.
+          Site characteristics should be treated as part of the
+          interpretation, not merely as background information.
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 FIELD AND LABORATORY -->
+
+    <section class="deep-dive" id="laboratory">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">05 / Analytical methodology</div>
+            <h2>From sediment core to microscope slide</h2>
+          </div>
+          <p>
+            The laboratory objective is to isolate fossil pollen
+            from the surrounding sediment matrix, concentrate
+            the palynomorphs and prepare representative microscope
+            slides. Procedures vary with sediment type and
+            research objectives, but the analytical sequence
+            follows a broadly consistent framework.
+          </p>
+        </div>
+
+        <div class="process-list">
+          <div class="process-step">
+            <strong>01</strong>
+            <span><b>Sampling</b><br>Collect measured sediment intervals and document stratigraphy.</span>
+          </div>
+          <div class="process-step">
+            <strong>02</strong>
+            <span><b>Preparation</b><br>Remove unwanted mineral and organic components.</span>
+          </div>
+          <div class="process-step">
+            <strong>03</strong>
+            <span><b>Concentration</b><br>Separate and concentrate pollen and other palynomorphs.</span>
+          </div>
+          <div class="process-step">
+            <strong>04</strong>
+            <span><b>Microscopy</b><br>Mount, identify and quantify the recovered grains.</span>
+          </div>
+        </div>
+
+        <div class="content-grid" style="margin-top:22px">
+          <article class="content-card">
+            <span class="tag">Field sampling</span>
+            <h3>Core collection and subsampling</h3>
+            <p>
+              Sediment cores are commonly recovered using coring
+              equipment appropriate to the depositional environment.
+              Lake sediments may be collected using piston, percussion
+              or gravity corers, while peat sequences can be sampled
+              using a range of peat coring devices.
+            </p>
+            <p>
+              Once recovered, cores are described, photographed
+              and subsampled at measured depth intervals. Sampling
+              resolution should be selected according to the
+              research question, expected sedimentation rate and
+              desired temporal resolution.
+            </p>
+            <p>
+              A 1 cm sample interval does not represent a fixed
+              period of time. Its temporal significance depends
+              on the sediment accumulation rate and the
+              chronological model.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Chemical preparation</span>
+            <h3>Removing the sediment matrix</h3>
+            <p>
+              Sediment samples contain mixtures of mineral grains,
+              organic material and other components that can
+              obscure pollen during microscopic examination.
+              Chemical preparation is used to remove or reduce
+              these unwanted materials.
+            </p>
+            <p>
+              Depending on the sediment matrix, preparation may
+              involve treatments designed to remove carbonates,
+              silicates and humic substances. Acetolysis is
+              commonly used to remove cellulose and other
+              unwanted organic material while retaining the
+              resistant pollen exine.
+            </p>
+            <p>
+              The exact sequence is method-dependent. Preparation
+              protocols must be adapted to the sample and
+              laboratory objectives, with appropriate specialist
+              controls for hazardous reagents.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Concentration and recovery</span>
+            <h3>Separating palynomorphs</h3>
+            <p>
+              Following chemical treatment, physical separation
+              techniques can be used to concentrate palynomorphs
+              and remove residual mineral particles. Sieving
+              and density separation may be incorporated
+              depending on the preparation protocol.
+            </p>
+            <p>
+              The objective is to produce a residue in which
+              pollen grains can be identified reliably without
+              excessive interference from the sediment matrix.
+              Preparation efficiency and potential grain loss
+              should be considered when comparing samples.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Microscope preparation</span>
+            <h3>Producing permanent slides</h3>
+            <p>
+              The concentrated residue is mounted in an
+              appropriate medium on a microscope slide.
+              Slides are labelled and archived so that
+              identifications can be checked and material
+              can be revisited.
+            </p>
+            <p>
+              Consistent slide preparation, laboratory
+              documentation and contamination control are
+              important for producing reproducible counts.
+              Reference collections and illustrated
+              identification keys support taxonomic work.
+            </p>
+          </article>
+        </div>
+
+        <div class="note-band">
+          <strong>Methodological caution:</strong> laboratory preparation
+          is not necessarily neutral. Chemical treatment, sieving and
+          separation can affect the recovery of different palynomorphs.
+          The protocol should therefore be documented, particularly
+          when datasets from different laboratories are compared.
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 IDENTIFICATION AND COUNTING -->
+
+    <section class="deep-dive alt" id="counting">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">06 / Microscopic analysis</div>
+            <h2>Identification and pollen counting</h2>
+          </div>
+          <p>
+            Once prepared, samples are examined under a light microscope.
+            Individual grains are identified using morphological
+            characteristics and counted to produce an assemblage
+            from which relative pollen frequencies can be calculated.
+            This stage converts the physical sample into a
+            quantitative palaeoecological dataset.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Taxonomic identification</span>
+            <h3>Recognising pollen types</h3>
+            <p>
+              Identification is undertaken by comparing observed
+              grains with reference material and published
+              morphological descriptions. Analysts consider
+              grain size, shape, aperture arrangement and
+              exine ornamentation.
+            </p>
+            <p>
+              Identifications are commonly recorded at the
+              highest taxonomic level considered defensible.
+              Where morphology does not permit reliable
+              discrimination, grains may be assigned to
+              broader categories or recorded as indeterminate.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Counting strategy</span>
+            <h3>The pollen sum</h3>
+            <p>
+              A pollen sum is the defined group of pollen taxa
+              included in the denominator when calculating
+              relative pollen percentages. The composition
+              of this sum must be stated clearly because
+              it determines how the percentages are calculated.
+            </p>
+            <p>
+              Aquatic taxa, spores and other palynomorphs may
+              be excluded from the terrestrial pollen sum
+              and reported separately. The decision depends
+              on the research question and the conventions
+              adopted in the study.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Counting precision</span>
+            <h3>How many grains are enough?</h3>
+            <p>
+              Counting more grains generally improves the
+              precision with which relative frequencies
+              are estimated, particularly for less abundant
+              taxa. However, the required count depends
+              on the research question, preservation quality
+              and composition of the assemblage.
+            </p>
+            <p>
+              Counts of around 300 terrestrial pollen grains
+              are commonly used as a practical minimum for
+              estimating dominant taxa, while larger counts
+              may be needed where rare taxa are important.
+              A target count should not be treated as a
+              universal guarantee of statistical adequacy.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Quality assurance</span>
+            <h3>Reproducibility and analyst decisions</h3>
+            <p>
+              Pollen identification involves expert judgement.
+              Differences in taxonomic practice, reference
+              material and counting conventions can
+              influence the resulting dataset.
+            </p>
+            <p>
+              Consistent taxonomic nomenclature, explicit
+              pollen-sum definitions, documented counting
+              procedures and archived slides improve
+              reproducibility. Independent recounts can
+              help assess identification and counting
+              consistency.
+            </p>
+          </article>
+        </div>
+
+        <div class="insight-band">
+          <strong>Sampling uncertainty:</strong> a pollen count is a
+          finite sample from a larger assemblage. Rare taxa may be
+          missed simply because too few grains have been counted.
+          An apparent absence in a sample is therefore not always
+          evidence that a plant was absent from the surrounding
+          vegetation.
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 PERCENTAGES AND COMPOSITION -->
+
+    <section class="deep-dive" id="percentages">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">07 / Quantitative data</div>
+            <h2>Understanding pollen percentages</h2>
+          </div>
+          <p>
+            Pollen counts are commonly converted into relative
+            percentages to allow assemblages from different
+            samples to be compared. These values are useful
+            descriptive statistics, but they require careful
+            interpretation because they express the relative
+            composition of a defined pollen sum rather than
+            absolute pollen abundance.
+          </p>
+        </div>
+
+        <article class="content-card">
+          <span class="tag">The percentage calculation</span>
+          <h3>Relative pollen frequency</h3>
+          <p>
+            The percentage of an individual pollen taxon is
+            calculated by dividing its count by the total
+            number of grains included in the defined pollen
+            sum, then multiplying by 100.
+          </p>
+
+          <div class="equation">
+            Pollen percentage = (n / N) × 100
+            <small>n = count of a particular taxon · N = total pollen sum</small>
+          </div>
+
+          <p>
+            For example, if 120 Betula grains are identified
+            within a pollen sum of 400 grains, Betula accounts
+            for 30% of that sum. This does not mean that
+            birch represented 30% of the vegetation.
+          </p>
+        </article>
+
+        <div class="content-grid" style="margin-top:18px">
+          <article class="content-card">
+            <span class="tag">Worked example</span>
+            <h3>A hypothetical pollen assemblage</h3>
+            <p>
+              The following example illustrates how raw pollen
+              counts are converted into relative percentages.
+              It is an illustrative dataset rather than a
+              real palaeoenvironmental record.
+            </p>
+
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Taxon</th>
+                    <th>Count</th>
+                    <th>Percentage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Betula</td><td>120</td><td>30%</td></tr>
+                  <tr><td>Pinus</td><td>100</td><td>25%</td></tr>
+                  <tr><td>Alnus</td><td>80</td><td>20%</td></tr>
+                  <tr><td>Quercus</td><td>60</td><td>15%</td></tr>
+                  <tr><td>Poaceae</td><td>40</td><td>10%</td></tr>
+                  <tr><td><strong>Total</strong></td><td><strong>400</strong></td><td><strong>100%</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Interpretation</span>
+            <h3>What does the example tell us?</h3>
+            <p>
+              Betula is the most abundant taxon in this
+              hypothetical pollen sum, representing 30%
+              of the counted terrestrial pollen. Pinus
+              contributes 25%, while Poaceae contributes 10%.
+            </p>
+            <p>
+              These values describe the composition of
+              the pollen assemblage. They do not directly
+              quantify the proportional abundance of
+              birch, pine, alder, oak or grass in the
+              vegetation.
+            </p>
+            <p>
+              To move from pollen composition to vegetation
+              reconstruction, the analyst must consider
+              pollen productivity, dispersal, source area
+              and preservation.
+            </p>
+          </article>
+        </div>
+
+        <div class="content-grid" style="margin-top:18px">
+          <article class="content-card">
+            <span class="tag">Compositional data</span>
+            <h3>The problem of closure</h3>
+            <p>
+              Pollen percentages are compositional data:
+              each value is expressed relative to a total
+              constrained to 100%. The proportions are
+              therefore mathematically dependent.
+            </p>
+            <p>
+              If the percentage of one taxon increases,
+              the percentages of one or more other taxa
+              must decrease, even if their absolute
+              pollen inputs have not changed.
+            </p>
+            <p>
+              This is known as the closure problem. It
+              means that percentage changes should not
+              automatically be interpreted as equivalent
+              changes in the absolute abundance of the
+              taxa concerned.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Statistical implications</span>
+            <h3>Working with relative data</h3>
+            <p>
+              Standard statistical methods can produce
+              misleading relationships when applied
+              uncritically to compositional datasets.
+              The constant-sum constraint can generate
+              artificial correlations and distort
+              measures of similarity.
+            </p>
+            <p>
+              Depending on the analytical objective,
+              approaches may include log-ratio
+              transformations, ordination methods
+              appropriate for ecological data, or
+              models designed specifically for
+              compositional observations.
+            </p>
+            <p>
+              Zero values require particular attention
+              in log-ratio analysis because logarithms
+              of zero are undefined. The treatment of
+              zeros should be justified rather than
+              handled automatically.
+            </p>
+          </article>
+        </div>
+
+        <div class="note-band">
+          <strong>Key distinction:</strong> relative pollen percentages,
+          pollen concentration and pollen accumulation rate are
+          different measurements. They answer different questions
+          and should not be used interchangeably.
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 CONCENTRATION AND ACCUMULATION -->
+
+    <section class="deep-dive alt" id="accumulation">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">08 / Absolute measures</div>
+            <h2>Concentration and pollen accumulation rates</h2>
+          </div>
+          <p>
+            Relative percentages describe the composition of an
+            assemblage, but they do not reveal how many pollen
+            grains entered the sediment. Concentration and
+            accumulation-rate measurements provide additional
+            information about pollen abundance and deposition.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Pollen concentration</span>
+            <h3>Grains per unit volume</h3>
+            <p>
+              Pollen concentration expresses the number of
+              pollen grains within a defined volume or mass
+              of sediment. It can be estimated using a known
+              quantity of an exotic marker, commonly
+              Lycopodium spores, added to the sample before
+              processing.
+            </p>
+            <p>
+              The marker spores provide a reference quantity.
+              By comparing the number of marker spores
+              counted with the number originally added,
+              the analyst can estimate the concentration
+              of fossil pollen in the sample.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Pollen accumulation rate</span>
+            <h3>Grains deposited through time</h3>
+            <p>
+              Pollen accumulation rate (PAR) estimates
+              the number of pollen grains deposited per
+              unit area per unit time. It combines pollen
+              concentration with the sediment accumulation
+              rate derived from the chronological model.
+            </p>
+            <p>
+              PAR can help distinguish changes in pollen
+              input from changes in sediment accumulation.
+              However, it is sensitive to chronological
+              uncertainty and assumptions about sediment
+              deposition.
+            </p>
+          </article>
+        </div>
+
+        <div class="equation">
+          PAR = C × S
+          <small>C = pollen concentration · S = sediment accumulation rate</small>
+        </div>
+
+        <p class="section-intro">
+          If concentration is expressed as grains per cubic centimetre
+          and sediment accumulation as centimetres per year, the
+          resulting accumulation rate is expressed as grains per
+          square centimetre per year.
+        </p>
+
+        <div class="insight-band">
+          <strong>Why this matters:</strong> a high pollen concentration
+          does not necessarily indicate increased pollen production.
+          It can also result from slower sediment accumulation.
+          Conversely, rapid sediment deposition can dilute pollen
+          concentration even when pollen input remains relatively
+          constant.
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 POLLEN DIAGRAMS -->
+
+    <section class="deep-dive" id="diagrams">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">09 / Visualising the record</div>
+            <h2>Pollen diagrams and stratigraphic change</h2>
+          </div>
+          <p>
+            Pollen diagrams provide a visual representation of
+            changes in pollen assemblages through a sediment
+            sequence. They are among the most recognisable
+            outputs of Quaternary palynology and allow
+            researchers to identify changes in vegetation
+            composition, assemblage structure and ecological
+            transitions.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Diagram construction</span>
+            <h3>Depth, age and pollen percentage</h3>
+            <p>
+              Pollen diagrams commonly display sediment depth
+              or modelled age on the vertical axis, with
+              individual pollen taxa represented as percentage
+              curves or stratigraphic bars.
+            </p>
+            <p>
+              Taxa are often grouped into ecological categories,
+              such as trees and shrubs, herbs, aquatic plants
+              and spores. The organisation of the diagram
+              should make the structure of the assemblage
+              clear without obscuring the underlying data.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Zonation</span>
+            <h3>Identifying assemblage zones</h3>
+            <p>
+              Pollen diagrams are frequently divided into
+              local pollen assemblage zones (LPAZs). These
+              zones represent intervals within which the
+              composition of the pollen assemblage is
+              comparatively similar.
+            </p>
+            <p>
+              Boundaries are identified where substantial
+              changes in assemblage composition occur.
+              They may be established through visual
+              inspection, numerical zonation methods
+              or a combination of approaches.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Ecological interpretation</span>
+            <h3>Reading changing vegetation</h3>
+            <p>
+              A rise in arboreal pollen may indicate woodland
+              expansion, while an increase in herbaceous
+              taxa may be consistent with more open
+              vegetation. Changes in individual tree
+              taxa can indicate shifts in woodland
+              composition.
+            </p>
+            <p>
+              Such interpretations depend on regional
+              ecology. A rise in Pinus, for example,
+              may reflect woodland expansion in one
+              setting but changes in pollen transport
+              or source-area representation in another.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Numerical analysis</span>
+            <h3>Beyond visual inspection</h3>
+            <p>
+              Numerical methods can identify patterns
+              that are difficult to recognise through
+              visual inspection alone. Constrained and
+              unconstrained ordination, clustering and
+              stratigraphically constrained zonation
+              can be used to investigate changes
+              in assemblage composition.
+            </p>
+            <p>
+              Numerical outputs still require ecological
+              interpretation. A statistical zone boundary
+              is not automatically a climatic event,
+              and the analytical choices used to produce
+              the zonation should be documented.
+            </p>
+          </article>
+        </div>
+
+        <div class="note-band">
+          <strong>A pollen zone is not a climate zone.</strong>
+          Assemblage boundaries describe changes in the pollen
+          record. Establishing why those changes occurred requires
+          additional evidence, including chronology, vegetation
+          ecology, sedimentology and other environmental proxies.
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 CHRONOLOGY -->
+
+    <section class="deep-dive alt" id="chronology">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">10 / Temporal framework</div>
+            <h2>Dating pollen records</h2>
+          </div>
+          <p>
+            A pollen diagram describes change through a sediment
+            sequence, but depth alone does not provide an age.
+            Chronological control is needed to establish when
+            vegetation changes occurred and to compare records
+            from different locations.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Radiocarbon dating</span>
+            <h3>Constraining the Holocene record</h3>
+            <p>
+              Radiocarbon dating is widely used to establish
+              chronologies for late Quaternary lake and peat
+              sequences. Suitable terrestrial plant macrofossils
+              are often preferred because they can provide
+              a more direct association with the depositional
+              horizon than bulk sediment.
+            </p>
+            <p>
+              Radiocarbon ages require calibration to calendar
+              years using an appropriate calibration curve.
+              Reservoir effects, reworked material and
+              contamination can complicate interpretation.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Age-depth modelling</span>
+            <h3>From dated horizons to a chronology</h3>
+            <p>
+              Age-depth models estimate the relationship
+              between sediment depth and calendar age.
+              They integrate dated horizons and assumptions
+              about sediment accumulation to estimate
+              the timing of undated levels.
+            </p>
+            <p>
+              Accumulation rates are not necessarily constant.
+              Hiatuses, changes in sedimentation, compaction
+              and disturbed intervals can all affect the
+              age-depth relationship.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Independent markers</span>
+            <h3>Tephrochronology</h3>
+            <p>
+              Volcanic ash layers can provide valuable
+              chronological tie-points within sedimentary
+              sequences. Where a tephra layer has been
+              geochemically characterised and correlated
+              to a known eruption, it can act as an
+              isochronous marker horizon.
+            </p>
+            <p>
+              Tephra is particularly useful for comparing
+              records from different depositional settings
+              and assessing the consistency of age-depth
+              models.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Chronological uncertainty</span>
+            <h3>Precision is not certainty</h3>
+            <p>
+              An age-depth model is an estimate, not an
+              exact representation of sedimentation history.
+              Dates have analytical uncertainty, while
+              interpolation between dated levels introduces
+              additional uncertainty.
+            </p>
+            <p>
+              Apparent synchrony between two pollen records
+              should therefore be assessed against their
+              age uncertainties rather than inferred
+              from similar depth positions or visually
+              aligned diagram boundaries.
+            </p>
+          </article>
+        </div>
+
+        <div class="insight-band">
+          <strong>Chronology is part of the interpretation.</strong>
+          Without a robust age model, a pollen record may reveal
+          the order of vegetation changes but cannot reliably
+          establish their timing, rate or synchrony with
+          external climatic events.
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 ENVIRONMENTAL RECONSTRUCTION -->
+
+    <section class="deep-dive" id="reconstruction">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">11 / Palaeoenvironmental reconstruction</div>
+            <h2>From pollen assemblage to past environment</h2>
+          </div>
+          <p>
+            The central interpretative challenge in palynology is
+            translating a fossil assemblage into a defensible
+            reconstruction of past vegetation and environmental
+            conditions. This requires moving beyond the description
+            of percentage changes to consider plant ecology,
+            spatial representation, chronology and the influence
+            of non-climatic factors.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Qualitative reconstruction</span>
+            <h3>Vegetation history</h3>
+            <p>
+              Qualitative interpretation uses changes in pollen
+              assemblages to infer changes in vegetation
+              composition and structure. The appearance,
+              expansion, decline or disappearance of particular
+              taxa can indicate ecological transitions.
+            </p>
+            <p>
+              These interpretations are strongest when
+              supported by knowledge of regional vegetation
+              history, modern plant distributions and
+              independent palaeoenvironmental evidence.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Ecological inference</span>
+            <h3>Climate and plant distributions</h3>
+            <p>
+              Plant distributions are influenced by climatic
+              variables including temperature, precipitation
+              and seasonality. Changes in the abundance and
+              geographical distribution of vegetation can
+              therefore provide evidence of climatic change.
+            </p>
+            <p>
+              However, vegetation also responds to soil
+              development, hydrology, disturbance, competition,
+              migration and ecological succession. These
+              processes can produce changes that are not
+              attributable to climate alone.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Quantitative reconstruction</span>
+            <h3>Modern calibration datasets</h3>
+            <p>
+              Quantitative climate reconstruction requires
+              relationships between modern pollen assemblages
+              and measured environmental variables.
+              Modern calibration datasets pair pollen
+              observations with climate information
+              across a geographical gradient.
+            </p>
+            <p>
+              Statistical models can then estimate the
+              environmental conditions associated with
+              fossil assemblages. This is a space-for-time
+              approach: modern relationships are used
+              to infer past conditions.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Model selection</span>
+            <h3>Transfer functions and analogues</h3>
+            <p>
+              Common approaches include weighted averaging,
+              weighted-averaging partial least squares,
+              modern analogue techniques and other
+              regression or machine-learning methods.
+            </p>
+            <p>
+              Each method makes different assumptions
+              about the relationship between pollen,
+              vegetation and climate. Their performance
+              depends on calibration-data coverage,
+              ecological gradients, taxonomic resolution
+              and validation strategy.
+            </p>
+          </article>
+        </div>
+
+        <div class="content-grid" style="margin-top:18px">
+          <article class="content-card">
+            <span class="tag">Pollen productivity</span>
+            <h3>Correcting representation bias</h3>
+            <p>
+              Quantitative vegetation reconstruction can
+              require estimates of relative pollen
+              productivity (RPP). These estimates describe
+              the pollen productivity of one taxon relative
+              to a reference taxon, often Poaceae.
+            </p>
+            <p>
+              RPP values can be incorporated into models
+              that account for differences in pollen
+              production and dispersal. Approaches such
+              as REVEALS and LOVE use pollen data and
+              vegetation representation models to
+              estimate regional and local vegetation
+              composition respectively.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Calibration limitations</span>
+            <h3>The modern analogue problem</h3>
+            <p>
+              Transfer-function methods rely on the
+              assumption that relationships observed
+              in modern calibration data are informative
+              for past conditions.
+            </p>
+            <p>
+              Fossil assemblages with no close modern
+              analogue may produce unreliable estimates.
+              This can occur when past climates or
+              vegetation combinations fall outside
+              the range represented by the calibration
+              dataset.
+            </p>
+          </article>
+        </div>
+
+        <div class="note-band">
+          <strong>Quantitative output does not remove uncertainty.</strong>
+          A numerical climate estimate is conditional on the
+          calibration dataset, model structure, taxonomic
+          harmonisation, modern analogue quality and chronology.
+          Model validation and uncertainty reporting are
+          essential parts of the reconstruction.
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 QUATERNARY APPLICATIONS -->
+
+    <section class="case-band" id="applications">
+      <div class="case-inner">
+        <div class="section-kicker">12 / Applications in Quaternary science</div>
+        <h2>Reading major environmental transitions</h2>
+        <p class="section-intro" style="margin-top:17px">
+          Pollen analysis has been central to the reconstruction
+          of late-glacial and Holocene vegetation history. Its
+          value is particularly apparent during intervals when
+          rapid climatic change produced substantial shifts
+          in plant communities and landscape structure.
+        </p>
+
+        <div class="case-grid">
+          <article class="case-card">
+            <div class="date">Late Pleistocene · c. 14.7–11.7 ka</div>
+            <h3>The Late Glacial</h3>
+            <p>
+              The transition from full-glacial conditions towards
+              the Holocene involved substantial changes in
+              temperature, vegetation and ecosystem structure.
+              Pollen records can reveal the expansion of
+              shrub and woodland communities as climatic
+              conditions ameliorated.
+            </p>
+            <p>
+              Regional differences are important: vegetation
+              responses were influenced by migration routes,
+              soil development, topography and the availability
+              of suitable habitats.
+            </p>
+          </article>
+
+          <article class="case-card">
+            <div class="date">Late Pleistocene · c. 12.9–11.7 ka</div>
+            <h3>The Younger Dryas</h3>
+            <p>
+              The Younger Dryas was a major episode of renewed
+              cooling in the North Atlantic region during the
+              final part of the last deglaciation.
+            </p>
+            <p>
+              Pollen records from parts of Europe show renewed
+              expansion of open-ground and cold-adapted
+              vegetation, although the expression and
+              magnitude of this change varied geographically.
+            </p>
+          </article>
+
+          <article class="case-card">
+            <div class="date">Holocene · 11.7 ka to present</div>
+            <h3>Postglacial woodland development</h3>
+            <p>
+              The Holocene saw widespread changes in vegetation
+              as forests developed and plant communities
+              responded to changing climate and ecological
+              conditions.
+            </p>
+            <p>
+              Later records increasingly reflect the influence
+              of human activity, including clearance, cultivation,
+              grazing and changes in land management.
+            </p>
+          </article>
+        </div>
+
+        <div class="insight-band">
+          <strong>Regional context is essential.</strong> A pollen
+          sequence from Britain, Scandinavia or the Mediterranean
+          does not necessarily record the same vegetation response
+          to a climatic event. Local ecological conditions and
+          migration histories influence the expression of
+          regional environmental change.
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 LIMITATIONS -->
+
+    <section class="deep-dive" id="limitations">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">13 / Critical evaluation</div>
+            <h2>Limitations and sources of uncertainty</h2>
+          </div>
+          <p>
+            Pollen analysis is an exceptionally versatile
+            palaeoenvironmental method, but its interpretative
+            strength depends on understanding the limitations
+            of the archive and analytical process. These
+            limitations do not invalidate pollen records;
+            they define the conditions under which their
+            interpretations are reliable.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Biological bias</span>
+            <h3>Differential pollen productivity</h3>
+            <p>
+              Plant taxa produce different quantities of pollen.
+              Relative pollen frequencies can therefore differ
+              from the relative abundance of plants in the
+              surrounding landscape. Without accounting for
+              productivity, vegetation reconstructions may
+              overestimate some taxa and underestimate others.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Spatial bias</span>
+            <h3>Transport and source area</h3>
+            <p>
+              Long-distance transport can introduce pollen
+              from vegetation outside the immediate catchment.
+              The resulting assemblage may combine local
+              and regional signals, making it difficult
+              to attribute a change to a specific
+              geographical area.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Preservation bias</span>
+            <h3>Degradation and reworking</h3>
+            <p>
+              Pollen can be damaged or destroyed during
+              deposition, burial and later sediment
+              disturbance. Reworked pollen may be older
+              than the sediment in which it is found,
+              while poor preservation can reduce the
+              number of identifiable grains.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Taxonomic uncertainty</span>
+            <h3>Identification resolution</h3>
+            <p>
+              Morphological similarity limits the
+              identification of some pollen types.
+              Broad taxonomic categories can contain
+              species with different environmental
+              tolerances, reducing the precision of
+              ecological and climatic inference.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Statistical uncertainty</span>
+            <h3>Compositional constraints</h3>
+            <p>
+              Relative pollen percentages are constrained
+              to a fixed total. Changes in one component
+              affect the relative values of others.
+              Statistical analysis must account for
+              the properties of compositional data
+              and the uncertainty associated with
+              finite pollen counts.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Chronological uncertainty</span>
+            <h3>Age-depth models</h3>
+            <p>
+              Dating uncertainties, variable sedimentation,
+              hiatuses and reworking can affect the timing
+              of inferred vegetation changes. Chronological
+              uncertainty must be propagated into
+              interpretations of rates and synchrony.
+            </p>
+          </article>
+        </div>
+
+        <div class="insight-band">
+          <strong>Good palaeoecological interpretation is critical,
+          not merely descriptive.</strong> A strong study explains
+          how the assemblage was formed, identifies the assumptions
+          behind the reconstruction and distinguishes observed
+          changes from the environmental mechanisms proposed
+          to explain them.
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 MULTIPROXY -->
+
+    <section class="deep-dive alt" id="multiproxy">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">14 / Integrating evidence</div>
+            <h2>Palynology within a multiproxy framework</h2>
+          </div>
+          <p>
+            Pollen records are most powerful when interpreted
+            alongside other environmental proxies. Different
+            indicators respond to different aspects of
+            environmental change, allowing researchers to
+            distinguish ecological responses from the
+            climatic or depositional processes that may
+            have driven them.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Aquatic ecology</span>
+            <h3>Diatoms and chironomids</h3>
+            <p>
+              Diatoms can provide evidence of aquatic conditions,
+              including pH, salinity, nutrient status and
+              lake-water characteristics. Chironomid head
+              capsules can be used to reconstruct aspects
+              of aquatic ecology and, with appropriate
+              calibration, past summer temperature.
+            </p>
+            <p>
+              These proxies can help establish whether
+              changes in pollen assemblages occurred
+              alongside changes in lake conditions.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Geochemical evidence</span>
+            <h3>Stable isotopes</h3>
+            <p>
+              Stable-isotope records from materials such
+              as carbonate, organic matter and biogenic
+              silica can provide evidence of changing
+              hydrology, temperature and environmental
+              conditions.
+            </p>
+            <p>
+              Their interpretation depends on the
+              material analysed and the processes
+              controlling isotope fractionation.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Sedimentary properties</span>
+            <h3>Loss on ignition and lithology</h3>
+            <p>
+              Loss-on-ignition analysis can estimate
+              organic matter and carbonate content
+              in sediment. Grain size and lithological
+              description provide evidence of changes
+              in sediment supply, depositional
+              processes and catchment conditions.
+            </p>
+            <p>
+              These measurements help place pollen
+              changes within the wider sedimentary
+              history of a sequence.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Chronostratigraphy</span>
+            <h3>Tephrochronology</h3>
+            <p>
+              Geochemically characterised volcanic
+              ash layers can provide independent
+              chronological tie-points. Where a
+              tephra horizon is securely correlated
+              to a known eruption, it can help
+              synchronise pollen records between
+              different sites.
+            </p>
+            <p>
+              This is particularly useful when
+              comparing vegetation responses across
+              regional landscapes.
+            </p>
+          </article>
+        </div>
+
+        <div class="note-band">
+          <strong>Multiproxy does not mean more data for its own sake.</strong>
+          Each proxy should address a defined part of the research
+          question. Agreement between independent indicators
+          strengthens an interpretation; disagreement can be
+          equally informative because proxies may respond to
+          different processes, spatial scales or timescales.
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 MODERN DEVELOPMENTS -->
+
+    <section class="deep-dive" id="developments">
+      <div class="deep-dive-inner">
+        <div class="deep-dive-header">
+          <div>
+            <div class="section-kicker">15 / Current directions</div>
+            <h2>Developments in palynological research</h2>
+          </div>
+          <p>
+            Advances in imaging, computational methods and
+            data infrastructure are changing how pollen
+            records are identified, analysed and synthesised.
+            These developments offer opportunities to improve
+            consistency and scale, while introducing new
+            questions about validation and reproducibility.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <article class="content-card">
+            <span class="tag">Digital microscopy</span>
+            <h3>Imaging and automated identification</h3>
+            <p>
+              High-resolution imaging and computer vision
+              offer the possibility of assisting pollen
+              identification. Machine-learning models can
+              be trained to recognise morphological
+              patterns across reference collections.
+            </p>
+            <p>
+              However, performance depends on image quality,
+              representative training data, taxonomic
+              consistency and the ability to distinguish
+              genuinely similar pollen types. Automated
+              classification should be validated against
+              expert identifications.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Quantitative ecology</span>
+            <h3>Improved vegetation models</h3>
+            <p>
+              Process-based models and improved pollen
+              productivity estimates are helping to
+              strengthen the relationship between
+              fossil pollen assemblages and past
+              vegetation composition.
+            </p>
+            <p>
+              Models such as REVEALS and LOVE represent
+              important developments in accounting
+              for pollen representation and spatial
+              vegetation patterns.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Data synthesis</span>
+            <h3>Large-scale pollen databases</h3>
+            <p>
+              Open-access palaeoecological databases
+              allow individual pollen records to be
+              combined into regional and continental
+              syntheses. These datasets support
+              research into vegetation dynamics,
+              biodiversity and long-term ecological
+              change.
+            </p>
+            <p>
+              Taxonomic harmonisation, chronological
+              standardisation and transparent data
+              processing are essential when combining
+              records produced by different analysts
+              and research groups.
+            </p>
+          </article>
+
+          <article class="content-card">
+            <span class="tag">Reproducible science</span>
+            <h3>Transparent analytical workflows</h3>
+            <p>
+              Reproducible workflows can preserve
+              the decisions made during data cleaning,
+              taxonomic harmonisation, age modelling
+              and statistical reconstruction.
+            </p>
+            <p>
+              Publishing code, metadata and clear
+              methodological documentation allows
+              other researchers to evaluate and
+              reproduce the analytical process.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 CONCLUSION -->
+
+    <section class="section" id="conclusion">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">16 / Synthesis</div>
+          <h2>Reading the vegetation record</h2>
+        </div>
+        <p class="section-intro">
+          Palynology remains one of the most important methods
+          for reconstructing Quaternary vegetation history.
+          Its widespread application reflects the abundance
+          of pollen in sedimentary archives, the durability
+          of its biological structure and the ecological
+          information preserved within assemblages.
+        </p>
+      </div>
+
+      <div class="content-grid">
+        <article class="content-card">
+          <span class="tag">What the record provides</span>
+          <h3>A long-term ecological perspective</h3>
+          <p>
+            Pollen sequences allow researchers to investigate
+            changes in vegetation composition, woodland
+            development, ecosystem responses and the
+            influence of human activity over timescales
+            that extend far beyond instrumental observations.
+          </p>
+        </article>
+
+        <article class="content-card">
+          <span class="tag">What interpretation requires</span>
+          <h3>Understanding how the record formed</h3>
+          <p>
+            The pollen assemblage is shaped by ecological,
+            atmospheric, hydrological, sedimentary and
+            analytical processes. Robust interpretation
+            requires these influences to be considered
+            alongside the pollen counts themselves.
+          </p>
+        </article>
+      </div>
+
+      <div class="insight-band">
+        Palynology is not simply the identification of fossil
+        pollen. It is the interpretation of a biological
+        signal preserved through a complex sequence of
+        environmental and sedimentary processes. Its
+        strength lies not in providing a perfect record
+        of past vegetation, but in providing a widespread,
+        interpretable and increasingly quantifiable
+        archive of ecological change.
+      </div>
+    </section>
+
+    <!-- GLOSSARY -->
+
+    <section class="section" id="glossary" style="padding-top:10px">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">17 / Field notes</div>
+          <h2>Palynology glossary</h2>
+        </div>
+        <p class="section-intro">
+          A reference to the principal terms used in pollen
+          analysis and palaeoecological interpretation.
+        </p>
+      </div>
+
+      <div class="glossary">
+        <div class="glossary-row">
+          <strong>Palynomorph</strong>
+          <p>A microscopic organic-walled particle studied in palynology, including pollen and spores.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Exine</strong>
+          <p>The resistant outer wall of a pollen grain, largely composed of sporopollenin.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Sporopollenin</strong>
+          <p>A chemically resistant biopolymer forming a major component of the outer walls of pollen and spores.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Pollen sum</strong>
+          <p>The defined group of pollen taxa included in the denominator when calculating relative pollen percentages.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Pollen rain</strong>
+          <p>The assemblage of pollen grains deposited over a particular area during a given period.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Source area</strong>
+          <p>The geographical area contributing pollen to a particular depositional site.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Taphonomy</strong>
+          <p>The processes affecting biological remains from production and death through transport, deposition and preservation.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Pollen concentration</strong>
+          <p>The number of pollen grains per unit volume or mass of sediment.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Pollen accumulation rate</strong>
+          <p>The estimated number of pollen grains deposited per unit area per unit time.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Relative pollen productivity</strong>
+          <p>An estimate of the pollen production of one taxon relative to a reference taxon.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Transfer function</strong>
+          <p>A statistical relationship between modern pollen assemblages and environmental variables used to infer past conditions.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Compositional data</strong>
+          <p>Data expressed as proportions of a constrained total, such as pollen percentages summing to 100%.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Local pollen assemblage zone</strong>
+          <p>A stratigraphic interval defined by a characteristic pollen assemblage at an individual site.</p>
+        </div>
+        <div class="glossary-row">
+          <strong>Tephrochronology</strong>
+          <p>The use of volcanic ash layers as chronological markers for correlating and dating sedimentary records.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFERENCES -->
+
+    <section class="references" id="references">
+      <div class="references-inner">
+        <div class="section-kicker">18 / Academic literature</div>
+        <h2>References and further reading</h2>
+
+        <p class="section-intro" style="margin-top:17px">
+          The following publications provide a foundation
+          for the methods and concepts discussed in this
+          article. They include established texts on
+          pollen analysis, theoretical work on pollen
+          representation, and more recent reviews of
+          quantitative palaeoclimate reconstruction
+          and data standardisation.
+        </p>
+
+        <ol class="reference-list">
+          <li>
+            Birks, H.J.B. & Birks, H.H. (1980).
+            <em>Quaternary Palaeoecology.</em>
+            Edward Arnold, London.
+          </li>
+
+          <li>
+            Chevalier, M. et al. (2020).
+            Pollen-based climate reconstruction techniques
+            for late Quaternary studies.
+            <em>Earth-Science Reviews</em>, 210, 103384.
+            <a href="https://doi.org/10.1016/j.earscirev.2020.103384" target="_blank" rel="noopener">
+              https://doi.org/10.1016/j.earscirev.2020.103384
+            </a>
+          </li>
+
+          <li>
+            Davis, M.B. (2000).
+            Palynology after Y2K—understanding the source
+            area of pollen in sediments.
+            <em>Annual Review of Earth and Planetary Sciences</em>,
+            28, 1–18.
+            <a href="https://doi.org/10.1146/annurev.earth.28.1.1" target="_blank" rel="noopener">
+              https://doi.org/10.1146/annurev.earth.28.1.1
+            </a>
+          </li>
+
+          <li>
+            Faegri, K., Iversen, J., Kaland, P.E. & Krzywinski, K.
+            (1989). <em>Textbook of Pollen Analysis</em>,
+            4th edition. John Wiley & Sons.
+          </li>
+
+          <li>
+            Flantua, S.G.A. et al. (2023).
+            A guide to the processing and standardization
+            of global palaeoecological data for large-scale
+            syntheses using fossil pollen.
+            <em>Global Ecology and Biogeography</em>,
+            32, 1377–1394.
+            <a href="https://doi.org/10.1111/geb.13693" target="_blank" rel="noopener">
+              https://doi.org/10.1111/geb.13693
+            </a>
+          </li>
+
+          <li>
+            Moore, P.D., Webb, J.A. & Collinson, M.E. (1991).
+            <em>Pollen Analysis</em>, 2nd edition.
+            Blackwell Scientific Publications.
+          </li>
+
+          <li>
+            Prentice, I.C. (1985).
+            Pollen representation, source area, and basin size:
+            toward a unified theory of pollen analysis.
+            <em>Quaternary Research</em>, 23, 76–86.
+            <a href="https://doi.org/10.1016/0033-5894(85)90073-0" target="_blank" rel="noopener">
+              https://doi.org/10.1016/0033-5894(85)90073-0
+            </a>
+          </li>
+
+          <li>
+            Riding, J.B. (2021).
+            A guide to preparation protocols in palynology.
+            <em>Palynology</em>, 45 (suppl. 1), 1–110.
+            <a href="https://doi.org/10.1080/01916122.2021.1878305" target="_blank" rel="noopener">
+              https://doi.org/10.1080/01916122.2021.1878305
+            </a>
+          </li>
+
+          <li>
+            Sugita, S. (1993).
+            A model of pollen source area for an entire lake surface.
+            <em>Quaternary Research</em>, 39, 239–244.
+            <a href="https://doi.org/10.1006/qres.1993.1027" target="_blank" rel="noopener">
+              https://doi.org/10.1006/qres.1993.1027
+            </a>
+          </li>
+
+          <li>
+            Sugita, S. (1994).
+            Pollen representation of vegetation in Quaternary
+            sediments: theory and method in patchy vegetation.
+            <em>Journal of Ecology</em>, 82, 881–897.
+          </li>
+        </ol>
+
+        <p class="reference-note">
+          Bibliographic details and page ranges should be checked
+          against the publisher or library record before formal
+          academic citation. This article is an educational
+          synthesis and does not replace consultation of the
+          original research literature.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <strong>Palynology · Quaternary Climate Proxies</strong>
+      <span>An educational scientific feature for Fossils & Futures · © Elliot May</span>
+      <span>Reading Earth's environmental history</span>
+    </div>
+  </footer>
+
+  <script>
+    const progress = document.getElementById('progress');
+    const nav = document.getElementById('navLinks');
+    const menuToggle = document.getElementById('menuToggle');
+
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const percentage = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progress.style.width = percentage + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    menuToggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
